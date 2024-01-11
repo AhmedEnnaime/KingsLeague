@@ -1,0 +1,108 @@
+@startuml
+class Team {
+  id: int
+  name: string
+  creation_date: date
+  country: string
+  players: List<Player>
+}
+
+class Player {
+  id: int
+  first_name: string
+  last_name: string
+  birthDate: date
+  team: Team
+}
+
+class Tournament {
+  id: int
+  name: string
+  debut_date: date
+  end_date: date
+  location: string
+  type: TournamentType
+  teams: List<Team>
+  matches: List<Match>
+  organizer: Organizer
+}
+
+class Organizer {
+  id: int
+  name: string
+  contact_info: string
+  tournaments: List<Tournament>
+}
+
+enum TournamentType {
+  LEAGUE
+  CUP
+}
+
+class Match {
+  id: int
+  date: date
+  venue: string
+  status: MatchStatus
+  teams: List<Team>
+  referees: List<Referee>
+  tickets: List<Ticket>
+  stadium: Stadium
+}
+
+enum MatchStatus {
+  SCHEDULED
+  PLAYED
+  POSTPONED
+}
+
+class Referee {
+  id: int
+  name: string
+  experience: int
+  matches: List<Match>
+}
+
+class Bracket {
+  id: int
+  tournament: Tournament
+  rounds: List<Round>
+}
+
+class Round {
+  id: int
+  matches: List<Match>
+}
+
+class Stadium {
+  id: int
+  name: string
+  location: string
+  capacity: int
+}
+
+class Ticket {
+  id: int
+  match: Match
+  price: double
+  status: TicketStatus
+}
+
+enum TicketStatus {
+  AVAILABLE
+  SOLD
+}
+
+Team --|{ Player
+Tournament --|> Team
+Tournament *-- Match
+Tournament *-- Organizer
+Match *-- Team
+Match -- Team : winner
+Match *-- Referee
+Bracket --|> Tournament
+Bracket *-- Round
+Match -- Stadium
+Match --|> Ticket
+Match -- Ticket
+@enduml
