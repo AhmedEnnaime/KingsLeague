@@ -1,10 +1,10 @@
 @startuml
+
 class Team {
   id: int
   name: string
   creation_date: date
   country: string
-  players: List<Player>
 }
 
 class Player {
@@ -12,7 +12,6 @@ class Player {
   first_name: string
   last_name: string
   birthDate: date
-  team: Team
 }
 
 class Tournament {
@@ -22,16 +21,12 @@ class Tournament {
   end_date: date
   location: string
   type: TournamentType
-  teams: List<Team>
-  matches: List<Match>
-  organizer: Organizer
 }
 
 class Organizer {
   id: int
   name: string
   contact_info: string
-  tournaments: List<Tournament>
 }
 
 enum TournamentType {
@@ -44,10 +39,7 @@ class Match {
   date: date
   venue: string
   status: MatchStatus
-  teams: List<Team>
-  referees: List<Referee>
-  tickets: List<Ticket>
-  stadium: Stadium
+  winner: Team
 }
 
 enum MatchStatus {
@@ -60,20 +52,22 @@ class Referee {
   id: int
   name: string
   experience: int
-  matches: List<Match>
 }
 
 class Bracket {
   id: int
-  tournament: Tournament
-  rounds: List<Round>
 }
 
 class Round {
   id: int
-  matches: List<Match>
+  date: Date
+
 }
 
+class MatchReferees {
+  
+
+}
 class Stadium {
   id: int
   name: string
@@ -81,28 +75,37 @@ class Stadium {
   capacity: int
 }
 
-class Ticket {
+class Result {
   id: int
-  match: Match
-  price: double
-  status: TicketStatus
+  score: String
+  
 }
 
-enum TicketStatus {
-  AVAILABLE
-  SOLD
+
+class Fixture {
+  id: int
+  tournament: Tournament
+}
+
+class MatchDay {
+  id: int
+  date: date
 }
 
 Team --|{ Player
 Tournament --|> Team
-Tournament *-- Match
 Tournament *-- Organizer
 Match *-- Team
 Match -- Team : winner
-Match *-- Referee
+Match -- MatchReferees
+Referee -- MatchReferees
 Bracket --|> Tournament
-Bracket *-- Round
 Match -- Stadium
-Match --|> Ticket
-Match -- Ticket
+Match -- Result
+Bracket -- Round
+Match -- Round
+Fixture --|> Tournament
+Fixture *-- MatchDay
+MatchDay -- Match
+
 @enduml
