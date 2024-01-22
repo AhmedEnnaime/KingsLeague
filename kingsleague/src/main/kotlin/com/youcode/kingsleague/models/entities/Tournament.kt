@@ -15,7 +15,6 @@ class Tournament (
     @Temporal(TemporalType.DATE) var debut_date: LocalDate,
     @Temporal(TemporalType.DATE) var end_date: LocalDate,
     @Column(nullable = false) @NotNull var location: String,
-    @Column(nullable = false) @NotNull var type: TournamentType,
     @ManyToOne @JoinColumn(name = "organizer_id", nullable = false) val organizer: Organizer
 ) {
 

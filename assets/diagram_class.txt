@@ -20,26 +20,20 @@ class Tournament {
   debut_date: date
   end_date: date
   location: string
-  type: TournamentType
 }
 
 class Organizer {
   id: int
   name: string
   contact_info: string
-}
-
-enum TournamentType {
-  LEAGUE
-  CUP
+  email: string
+  password: string
 }
 
 class Match {
   id: int
   date: date
-  venue: string
   status: MatchStatus
-  winner: Team
 }
 
 enum MatchStatus {
@@ -54,8 +48,8 @@ class Referee {
   experience: int
 }
 
-class Bracket {
-  id: int
+class Cup {
+  
 }
 
 class Round {
@@ -65,9 +59,9 @@ class Round {
 }
 
 class MatchReferees {
-  
-
+  notes: string
 }
+
 class Stadium {
   id: int
   name: string
@@ -78,13 +72,13 @@ class Stadium {
 class Result {
   id: int
   score: String
+  winner: Team
   
 }
 
 
-class Fixture {
-  id: int
-  tournament: Tournament
+class League {
+  
 }
 
 class MatchDay {
@@ -92,20 +86,39 @@ class MatchDay {
   date: date
 }
 
-Team --|{ Player
-Tournament --|> Team
+class TeamPlayers {
+
+  joining_date: Date
+  apart_date: Date
+  
+}
+
+class MatchStats {
+  goals: int
+  yellow_cards: int
+  red_card: boolean
+  assists: int
+}
+
+
+
+Tournament -- Team
 Tournament *-- Organizer
 Match *-- Team
 Match -- Team : winner
 Match -- MatchReferees
 Referee -- MatchReferees
-Bracket --|> Tournament
+Cup --|> Tournament
 Match -- Stadium
 Match -- Result
-Bracket -- Round
+Cup -- Round
 Match -- Round
-Fixture --|> Tournament
-Fixture *-- MatchDay
+League --|> Tournament
+League *-- MatchDay
 MatchDay -- Match
+Team -- TeamPlayers
+TeamPlayers -- Player
+Match -- MatchStats
+MatchStats -- Player
 
 @enduml
