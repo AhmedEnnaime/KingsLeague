@@ -1,6 +1,6 @@
 spring:
   application:
-    name: organizer_service
+    name: tournament_service
   config:
     import: optional:configserver:http://localhost:8888
 

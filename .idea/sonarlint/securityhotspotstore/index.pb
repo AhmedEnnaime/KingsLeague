@@ -7,3 +7,13 @@ jorganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/Org
 horganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/models/entities/Organizer.kt,2/a/2adac5939c48ef3a4535d70c53209be5125f8915
 N
 organizer_service/build.gradle,2/c/2c5762dffc2247613e905d257ad8085f02714100
+b
+2gateway_service/src/main/resources/application.yml,4/e/4e01d4f40d5d056165597c44d0f30a5847813c71
+ë
+aconfig_service/src/main/kotlin/com/youcode/kingsleague/config_service/ConfigServiceApplication.kt,b/d/bdc4c08e67e0d945e5bd27b41b1cf2472b9e0b15
+O
+config_service/build.gradle.kts,a/d/ad3508420adfae2218b29485b97c3f4d726c212c
+S
+#tournament_service/build.gradle.kts,0/9/09d70842c9f18fcd3022a711313a2b14c8f15862
+ù
+mtournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/TournamentServiceApplication.kt,c/9/c9c6a1d3a2f59724e8a28c6765d0f8695b4326b0

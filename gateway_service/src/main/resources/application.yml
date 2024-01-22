@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: gateway_service
+  cloud:
+    gateway:
+      routes:
+        - id: s1
+          predicates:
+            - Path= /organizers/**
+          uri: http://localhost:8081/
+#        - id: second
+#          predicates:
+#            - Path=/second/
+#          uri: localhost:8082
+#        - id : auth-server
+#          predicates:
+#            - Path=/login/
+#          uri: localhost:8088
+server:
+  port: 8888
+eureka:
+  client:
+    enabled: false

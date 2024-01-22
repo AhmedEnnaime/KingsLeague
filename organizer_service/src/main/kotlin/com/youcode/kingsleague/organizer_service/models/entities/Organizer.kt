@@ -3,11 +3,12 @@ package com.youcode.kingsleague.organizer_service.models.entities
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotNull
 import lombok.Builder
+import kotlin.jvm.Transient
 
 @Entity
 @Table(name = "organizers")
 @Builder
-class Organizer(
+data class Organizer(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @NotNull(message = "name can't be null") var name: String,
     @Column(nullable = false) @NotNull(message = "email can't be null") var email: String,
