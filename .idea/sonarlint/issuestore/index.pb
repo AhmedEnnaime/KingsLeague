@@ -17,3 +17,7 @@ S
 #tournament_service/build.gradle.kts,0/9/09d70842c9f18fcd3022a711313a2b14c8f15862
 ù
 mtournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/TournamentServiceApplication.kt,c/9/c9c6a1d3a2f59724e8a28c6765d0f8695b4326b0
+î
+dgateway_service/src/main/kotlin/com/youcode/kingsleague/gateway_service/GatewayServiceApplication.kt,1/b/1b2d1b87fbbd10cfaa0ac5154015c882c9193b58
+P
+ gateway_service/build.gradle.kts,0/0/0042c6b96c1465289fa08b56b63549a0d6d2e0e2

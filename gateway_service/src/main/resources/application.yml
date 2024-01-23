@@ -1,23 +1,20 @@
 spring:
   application:
     name: gateway_service
-  cloud:
-    gateway:
-      routes:
-        - id: s1
-          predicates:
-            - Path= /organizers/**
-          uri: http://localhost:8081/
-#        - id: second
-#          predicates:
-#            - Path=/second/
-#          uri: localhost:8082
-#        - id : auth-server
-#          predicates:
-#            - Path=/login/
-#          uri: localhost:8088
 server:
-  port: 8888
+  port: 9999
 eureka:
   client:
-    enabled: false
+    enabled: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+  instance:
+    preferIpAddress: true
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health, gateway

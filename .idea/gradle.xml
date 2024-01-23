@@ -22,6 +22,15 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/gateway_service" />
+        <option name="gradleJvm" value="19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/gateway_service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/kingsleague" />
         <option name="gradleJvm" value="19" />
         <option name="modules">
@@ -36,6 +45,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/organizer_service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tournament_service" />
+        <option name="gradleJvm" value="19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/tournament_service" />
           </set>
         </option>
       </GradleProjectSettings>
