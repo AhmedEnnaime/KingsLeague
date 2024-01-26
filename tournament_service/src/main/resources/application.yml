@@ -3,6 +3,8 @@ spring:
     name: tournament_service
   config:
     import: optional:configserver:http://localhost:8888
+  profiles:
+    active: dev
 
 management:
   endpoints:
