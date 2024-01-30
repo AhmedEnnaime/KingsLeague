@@ -9,7 +9,7 @@ import lombok.Builder
 @Builder
 data class Organizer(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
-    @Column(nullable = false) @NotNull(message = "name can't be null") var name: String,
+    @Column(nullable = false) @NotNull(message = "username can't be null") var username: String,
     @Column(nullable = false) @NotNull(message = "email can't be null") var email: String,
     @Column(nullable = false) @NotNull(message = "password can't be null") var password: String,
     var phone: String,

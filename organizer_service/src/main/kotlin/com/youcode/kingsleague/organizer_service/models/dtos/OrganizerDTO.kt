@@ -9,7 +9,7 @@ import lombok.Setter
 @Setter
 @Builder
 data class OrganizerDTO(
-    @NotBlank(message = "name can't be blank") val name: String,
+    @NotBlank(message = "username can't be blank") val username: String,
     @NotBlank(message = "email can't be blank") val email: String,
     @NotBlank(message = "password can't be blank") val password: String,
     val phone: String?
