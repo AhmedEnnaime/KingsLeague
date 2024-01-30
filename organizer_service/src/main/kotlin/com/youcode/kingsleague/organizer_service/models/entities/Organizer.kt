@@ -3,7 +3,6 @@ package com.youcode.kingsleague.organizer_service.models.entities
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotNull
 import lombok.Builder
-import kotlin.jvm.Transient
 
 @Entity
 @Table(name = "organizers")
