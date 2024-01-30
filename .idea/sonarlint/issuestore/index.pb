@@ -27,3 +27,9 @@ _
 /team_service/src/main/resources/application.yml,9/1/9155929ec782435b657fcf89f806f3cf4356006d
 ›
 ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/entities/Tournament.kt,4/a/4a1efa91b1de093682a8a9ba217262d6fe10a13c
+ž
+ntournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Organizer.java,9/9/99a064485c01683f72145f470911b8fe7b0ccc1f
+œ
+ltournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Organizer.kt,c/f/cfe180d464cf812ac7bb5b0692f93ca26eb501a4
+—
+gorganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/models/dtos/OrganizerDTO.kt,b/b/bb11b0931edc3dce73f966a2daee13e72f6e9dfd
