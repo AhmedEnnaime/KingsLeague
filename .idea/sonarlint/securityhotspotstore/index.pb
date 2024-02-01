@@ -69,3 +69,11 @@ J
 eureka_server/build.gradle,9/d/9dc5b323aa6e5edc018b9573f67d97a2c042401d
 ™
 itournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/dto/TournamentDTO.kt,a/e/ae17163d8fdf605e4cd49d2f827d02655f26d82b
+—
+gtournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/entities/League.kt,8/6/86787acb94fafee3dba10b860f676922275f7a0a
+”
+dtournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/entities/Cup.kt,6/1/61ba8e887f99e3f6349f629e89bac043904f6724
+’
+btournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/dto/CupDTO.kt,4/3/439a5c4a133f02cc0e19f504bcb1935d114dddef
+•
+etournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/dto/LeagueDTO.kt,4/8/4878e9b66a567c18b12f562946350bd4103ca7a1
