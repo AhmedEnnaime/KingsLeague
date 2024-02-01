@@ -15,6 +15,9 @@
       <module name="commun_service" target="17" />
       <module name="commun_service.main" target="17" />
       <module name="commun_service.test" target="17" />
+      <module name="Kings_League.app" target="17" />
+      <module name="Kings_League.app.main" target="17" />
+      <module name="Kings_League.app.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

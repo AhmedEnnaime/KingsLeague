@@ -11,6 +11,11 @@ plugins {
 }
 
 rootProject.name = "Kings League"
-include("app")
 include("common_service")
+include("organizer_service")
 include("tournament_service")
+include("match_service")
+include("round_service")
+include("matchDay_service")
+include("team_service")
+include("matchStats_service")
