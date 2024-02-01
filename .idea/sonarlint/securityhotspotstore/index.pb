@@ -67,3 +67,5 @@ V
 &tournament_service/settings.gradle.kts,5/f/5f2483ab443c2633b89c3190ac93c0b2c6deb9d5
 J
 eureka_server/build.gradle,9/d/9dc5b323aa6e5edc018b9573f67d97a2c042401d
+™
+itournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/dto/TournamentDTO.kt,a/e/ae17163d8fdf605e4cd49d2f827d02655f26d82b

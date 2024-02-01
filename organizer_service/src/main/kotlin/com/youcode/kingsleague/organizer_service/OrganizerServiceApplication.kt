@@ -8,8 +8,6 @@ import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RefreshScope
-@ComponentScan("com.youcode.kingsleague.common_service")
 class OrganizerServiceApplication
 
 fun main(args: Array<String>) {

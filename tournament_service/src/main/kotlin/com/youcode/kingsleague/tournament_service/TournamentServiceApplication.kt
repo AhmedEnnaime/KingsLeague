@@ -7,7 +7,6 @@ import org.springframework.cloud.context.config.annotation.RefreshScope
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@RefreshScope
 class TournamentServiceApplication
 
 fun main(args: Array<String>) {
