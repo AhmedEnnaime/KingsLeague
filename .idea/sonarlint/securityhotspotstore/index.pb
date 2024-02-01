@@ -43,10 +43,6 @@ qorganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/ser
 acommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/CommonServiceApplication.kt,f/e/fe2151718fad0f9db93fb084ff3e012e4e8591f0
 O
 common_service/build.gradle.kts,8/9/890d3cd867e92e265d139f0a3fa2f3f57275beb4
-ó
-gcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHanlderExceptions.kt,3/c/3cdb6cabdc4438fd51d191303b5af8cbf908b356
-ó
-gcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHandlerExceptions.kt,a/9/a943427c1cbcba158a8913abaab7d593c6139810
 ù
 mcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/exceptions/ResourceNotFoundException.kt,3/a/3ac17f8714aad692598f0abd242ed3d17c815da6
 å
