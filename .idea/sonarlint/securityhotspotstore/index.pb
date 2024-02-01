@@ -27,8 +27,6 @@ _
 /team_service/src/main/resources/application.yml,9/1/9155929ec782435b657fcf89f806f3cf4356006d
 õ
 ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/entities/Tournament.kt,4/a/4a1efa91b1de093682a8a9ba217262d6fe10a13c
-û
-ntournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Organizer.java,9/9/99a064485c01683f72145f470911b8fe7b0ccc1f
 ú
 ltournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Organizer.kt,c/f/cfe180d464cf812ac7bb5b0692f93ca26eb501a4
 ó
@@ -41,3 +39,23 @@ norganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/con
 horganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/services/OrganizerService.kt,d/c/dc1dc238de99534952e3fa7207372f3e0d06203c
 °
 qorganizer_service/src/main/kotlin/com/youcode/kingsleague/organizer_service/services/Impl/OrganizerServiceImpl.kt,9/a/9aba46f50136988eeedb7fcab8d69b6d49ab9821
+ë
+acommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/CommonServiceApplication.kt,f/e/fe2151718fad0f9db93fb084ff3e012e4e8591f0
+O
+common_service/build.gradle.kts,8/9/890d3cd867e92e265d139f0a3fa2f3f57275beb4
+ó
+gcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHanlderExceptions.kt,3/c/3cdb6cabdc4438fd51d191303b5af8cbf908b356
+ó
+gcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHandlerExceptions.kt,a/9/a943427c1cbcba158a8913abaab7d593c6139810
+ù
+mcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/exceptions/ResourceNotFoundException.kt,3/a/3ac17f8714aad692598f0abd242ed3d17c815da6
+å
+\common_service/src/main/kotlin/com/youcode/kingsleague/common_service/models/ErrorMessage.kt,9/b/9be9f3a08a8fa4fa664d1b90c6fce1c1b8cc9cf1
+R
+"common_service/settings.gradle.kts,f/c/fc6f991effe3e125121ecd7a8112c0ad1ca7439a
+C
+settings.gradle.kts,7/4/749edfcc96398253e5b3416184e95c46621da850
+J
+tournament_service/gradlew,5/3/534c06f7e92ea38a8278feacb91cfefaf604bb43
+ñ
+fcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHandlerException.kt,7/f/7f750044ec052c7c3058e2eb4416712ea16ef969
