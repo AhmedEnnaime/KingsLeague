@@ -55,3 +55,15 @@ J
 tournament_service/gradlew,5/3/534c06f7e92ea38a8278feacb91cfefaf604bb43
 –
 fcommon_service/src/main/kotlin/com/youcode/kingsleague/common_service/config/GlobalHandlerException.kt,7/f/7f750044ec052c7c3058e2eb4416712ea16ef969
+D
+app/build.gradle.kts,d/2/d2a4383452aad84a18429a5844d31330a012a9e6
+J
+common/settings.gradle.kts,8/b/8bbd4568bd91035ee54f8d232eb61c27406cf432
+z
+Jcommon/src/main/kotlin/com/youcode/kingsleague/common/CommonApplication.kt,9/5/95c65f502f98d0e488778990bed5ae91a4efaedf
+G
+common/build.gradle.kts,3/2/325c85c59c155f2016d748c1ea6d29a8db46025a
+V
+&tournament_service/settings.gradle.kts,5/f/5f2483ab443c2633b89c3190ac93c0b2c6deb9d5
+J
+eureka_server/build.gradle,9/d/9dc5b323aa6e5edc018b9573f67d97a2c042401d
