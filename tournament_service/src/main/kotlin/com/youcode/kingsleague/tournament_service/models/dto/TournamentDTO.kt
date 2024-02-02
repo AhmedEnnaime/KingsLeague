@@ -15,5 +15,6 @@ open class TournamentDTO (
     var organizer: Organizer,
     var createdAt: LocalDateTime,
     var updatedAt: LocalDateTime,
-    var teams: List<Team>
-)
+) {
+    var teams: List<Team> = listOf()
+}

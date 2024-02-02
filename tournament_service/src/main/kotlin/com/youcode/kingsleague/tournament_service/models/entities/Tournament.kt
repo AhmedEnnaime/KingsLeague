@@ -20,7 +20,8 @@ open class Tournament(
     @NotNull(message = "location can't be null") var location: String,
     var organizerId: Long,
     @Transient val organizer: Organizer,
-    @Transient val teams: List<Team>,
     @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
     @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
-)
+) {
+    @Transient val teams: List<Team> = listOf()
+}
