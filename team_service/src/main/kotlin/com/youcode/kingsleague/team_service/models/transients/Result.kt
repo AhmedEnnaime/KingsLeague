@@ -7,6 +7,6 @@ import lombok.Builder
 data class Result (
     var id: Long,
     var score: String,
-    var team: TeamDTO,
+    var winner: TeamDTO,
     var match: Match
 )

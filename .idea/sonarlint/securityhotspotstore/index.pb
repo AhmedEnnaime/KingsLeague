@@ -141,3 +141,15 @@ htournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/m
 ateam_service/src/main/kotlin/com/youcode/kingsleague/team_service/models/transients/Tournament.kt,c/9/c9e9f0834121b1728d009e44285baa72b047e165
 —
 gtournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Team.kt,3/1/314e199fd17296c20b19c207856e5902bbb59512
+‹
+[match_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/ResultDTO.kt,6/1/616d21dd932940a82ee3ed8bdbf5982401cf9211
+Œ
+\match_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/StadiumDTO.kt,2/0/202c8ac10e3830f90993a135e232b5573ec8905a
+‰
+Ymatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/Referee.kt,f/d/fd0b44d4970916a9386983b1438d830c88842b38
+Ž
+^match_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/MatchReferee.kt,f/2/f2b96ee0b19f00a7d3b5e5586935fd2a47a7ae71
+Œ
+\match_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/RefereeDTO.kt,c/6/c68db5c63191783afd2a7a7769985cd4a5a013eb
+‘
+amatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/MatchRefereeDTO.kt,2/2/2232ed8d6bdb4a41ab8b362c78aa21c2f9efb18e
