@@ -169,3 +169,5 @@ ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/m
 amatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/MatchDay.kt,e/b/ebf80e0bd0ba963ef4227bfe6417fd0767620b14
 è
 _match_service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/League.kt,1/9/19fb96d36454d26dc6a8dc1caca9cee194b09cb9
+T
+$matchDay_service/settings.gradle.kts,c/f/cf7c34100239bec31628b3cfa9054937b5855ba5
