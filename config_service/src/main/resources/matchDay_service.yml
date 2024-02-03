@@ -1,6 +1,6 @@
 spring:
   application:
-    name: organizer_service
+    name: matchDay_service
   datasource:
     url: "jdbc:postgresql://localhost:5432/matchday_db"
     username: "postgres"

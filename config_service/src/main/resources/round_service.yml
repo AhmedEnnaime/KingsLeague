@@ -1,6 +1,6 @@
 spring:
   application:
-    name: organizer_service
+    name: round_service
   datasource:
     url: "jdbc:postgresql://localhost:5432/round_db"
     username: "postgres"
