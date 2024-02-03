@@ -9,6 +9,7 @@ import java.time.LocalDate
 data class RoundDTO (
     var id: Long,
     var date: LocalDate,
-    var match: Match,
     var cup: Cup
-)
+) {
+    val matches: List<Match> = listOf()
+}

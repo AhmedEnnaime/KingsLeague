@@ -15,7 +15,8 @@ data class Round (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @Temporal(value = TemporalType.DATE) @Future var date: LocalDate,
     @Column(nullable = false) @NotNull(message = "cup should not be null") var cupId: Long,
-    @Column(nullable = false) @NotNull(message = "match should not be null") var matchId: Long,
     @Transient val match: Match,
     @Transient val cup: Cup
-)
+) {
+    @Transient val matches: List<Match> = listOf()
+}

@@ -10,7 +10,6 @@ data class MatchDayDTO (
     var id: Long,
     var date: LocalDate,
     var league: League,
-    var match: Match,
 ) {
     var matches: List<Match> = listOf()
 }
