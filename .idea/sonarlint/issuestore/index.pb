@@ -205,3 +205,5 @@ htournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/m
 htournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/models/transients/Match.kt,2/e/2efea7e3b507db5e1d30d38ec754ee1576433a2d
 é
 ^round_service/src/main/kotlin/com/youcode/kingsleague/round_service/RoundServiceApplication.kt,a/f/af63b060d982316ada06bd525bbd040cde8c985f
+ù
+mmatchStats_service/src/main/kotlin/com/youcode/kingsleague/matchstats_service/MatchStatsServiceApplication.kt,4/a/4a83bd386e5b49faaed42fbc929c967741da6871
