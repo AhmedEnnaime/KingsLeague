@@ -207,3 +207,9 @@ htournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/m
 ^round_service/src/main/kotlin/com/youcode/kingsleague/round_service/RoundServiceApplication.kt,a/f/af63b060d982316ada06bd525bbd040cde8c985f
 ù
 mmatchStats_service/src/main/kotlin/com/youcode/kingsleague/matchstats_service/MatchStatsServiceApplication.kt,4/a/4a83bd386e5b49faaed42fbc929c967741da6871
+ê
+`team_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/TeamRepository.kt,a/7/a70469e760eb5bbc02de5ede522b6a90ec72064f
+í
+bteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/PlayerRepository.kt,3/8/3888c44f92c24e1571428913c1c4a4d14532ef20
+ñ
+fteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/TeamPlayerRepository.kt,3/9/393d5d74b8b1c99d0c089e1ae70980fc71e53561
