@@ -217,3 +217,15 @@ fteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/
 ntournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/repositories/LeagueRepository.kt,3/3/3307c7db8a8f0a89fd9fb319d628004733748196
 ›
 ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/repositories/CupRepository.kt,1/e/1ee7de457f1033ba37a7d8a7672de8cd8fbccb24
+“
+cmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRepository.kt,9/9/99dc2b1a603518425211a314e96fa618b1ce396d
+Š
+Zmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/Result.kt,4/3/4393eae9913b67daeabd3f206369ed5c4f594124
+”
+dmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/ResultRepository.kt,4/f/4fb88016796b9a45f86331612ab15bdd59bae99a
+•
+ematch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/StadiumRepository.kt,1/4/1445dd7553bdc59a106cebbbc022e5edf2a271f2
+•
+ematch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/RefereeRepository.kt,7/5/75aa3e661227ca2da4f2403ba89090bc87f53698
+š
+jmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRefereeRepository.kt,f/a/fac02a418764d979d5ab8ee87ee691215b125ee8
