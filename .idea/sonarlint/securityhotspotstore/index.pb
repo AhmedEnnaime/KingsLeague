@@ -213,3 +213,7 @@ mmatchStats_service/src/main/kotlin/com/youcode/kingsleague/matchstats_service/M
 bteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/PlayerRepository.kt,3/8/3888c44f92c24e1571428913c1c4a4d14532ef20
 –
 fteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/repositories/TeamPlayerRepository.kt,3/9/393d5d74b8b1c99d0c089e1ae70980fc71e53561
+ž
+ntournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/repositories/LeagueRepository.kt,3/3/3307c7db8a8f0a89fd9fb319d628004733748196
+›
+ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/repositories/CupRepository.kt,1/e/1ee7de457f1033ba37a7d8a7672de8cd8fbccb24
