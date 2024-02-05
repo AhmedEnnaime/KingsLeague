@@ -16,7 +16,7 @@ spring:
       enabled: true
 
 server:
-  port: 8082
+  port: 8083
 eureka:
   client:
     serviceUrl:

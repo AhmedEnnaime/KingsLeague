@@ -6,15 +6,15 @@ spring:
     username: "postgres"
     password: "3ea14367A4"
     driver-class-name: org.postgresql.Driver
-    jpa:
-      database-platform: org.hibernate.dialect.PostgreSQLDialect
-      hibernate:
-        ddl-auto: update
-      show-sql: true
-logging:
-  level:
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  graphql:
+    graphiql:
+      enabled: true
+
 server:
   port: 8084
 eureka:
@@ -23,3 +23,8 @@ eureka:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
   instance:
     preferIpAddress: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
