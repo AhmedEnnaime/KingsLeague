@@ -229,3 +229,5 @@ ematch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositorie
 ematch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/RefereeRepository.kt,7/5/75aa3e661227ca2da4f2403ba89090bc87f53698
 š
 jmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRefereeRepository.kt,f/a/fac02a418764d979d5ab8ee87ee691215b125ee8
+œ
+lmatchDay_service/src/main/kotlin/com/youcode/kingsleague/matchday_service/repositories/MatchDayRepository.kt,d/7/d7a2f8bb35b72ac48b69dbb5f08709d32c7b42ec
