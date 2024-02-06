@@ -245,3 +245,7 @@ Lcommon/src/main/kotlin/com/youcode/kingsleague/common/models/ErrorMessage.kt,a
 Vcommon/src/main/kotlin/com/youcode/kingsleague/common/config/GlobalExceptionHandler.kt,0/9/09712df743f865eebe901327b404c0d5543fd6ec
 ç
 ]common/src/main/kotlin/com/youcode/kingsleague/common/exceptions/ResourceNotFoundException.kt,a/1/a1a2d3556730d6d977429ccbf6651250819a23f6
+
+Ocommon/src/main/kotlin/com/youcode/kingsleague/common/services/GlobalService.kt,6/a/6a72c5a6fb0e50728ac169891360d3a247b9b634
+Ç
+Rcommon/src/main/kotlin/com/youcode/kingsleague/common/services/GlobalController.kt,6/6/669114176fe3973ee79bf7eedb6bb27bb64bdac9
