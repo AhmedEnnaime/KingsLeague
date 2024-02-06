@@ -219,8 +219,6 @@ ntournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/r
 ktournament_service/src/main/kotlin/com/youcode/kingsleague/tournament_service/repositories/CupRepository.kt,1/e/1ee7de457f1033ba37a7d8a7672de8cd8fbccb24
 ì
 cmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRepository.kt,9/9/99dc2b1a603518425211a314e96fa618b1ce396d
-ä
-Zmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/Result.kt,4/3/4393eae9913b67daeabd3f206369ed5c4f594124
 î
 dmatch_service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/ResultRepository.kt,4/f/4fb88016796b9a45f86331612ab15bdd59bae99a
 ï
@@ -239,3 +237,11 @@ Yteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/services/Team
 Xteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/config/MapperConfig.kt,7/e/7e0cbad5a6052f463d05ffde5bfb5678e507cec2
 í
 bteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/services/impl/TeamServiceImpl.kt,f/f/ffced14ace6ff6f0ce5f52b9c09574ffef6a8576
+|
+Lcommon/src/main/kotlin/com/youcode/kingsleague/common/config/MapperConfig.kt,a/c/ac2fee1a125aa8131015759dcd4f5d429621b446
+|
+Lcommon/src/main/kotlin/com/youcode/kingsleague/common/models/ErrorMessage.kt,a/d/ade31e339050f8e74be657f0595cd53d92d52593
+Ü
+Vcommon/src/main/kotlin/com/youcode/kingsleague/common/config/GlobalExceptionHandler.kt,0/9/09712df743f865eebe901327b404c0d5543fd6ec
+ç
+]common/src/main/kotlin/com/youcode/kingsleague/common/exceptions/ResourceNotFoundException.kt,a/1/a1a2d3556730d6d977429ccbf6651250819a23f6

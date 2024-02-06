@@ -1,4 +1,4 @@
-package com.youcode.kingsleague.team_service.config
+package com.youcode.kingsleague.common.config
 
 import org.modelmapper.ModelMapper
 import org.springframework.context.annotation.Bean
