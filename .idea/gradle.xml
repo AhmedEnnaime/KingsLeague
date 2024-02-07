@@ -10,13 +10,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/matchDay_service" />
-            <option value="$PROJECT_DIR$/matchStats_service" />
-            <option value="$PROJECT_DIR$/match_service" />
+            <option value="$PROJECT_DIR$/match-service" />
+            <option value="$PROJECT_DIR$/matchDay-service" />
+            <option value="$PROJECT_DIR$/matchStats-service" />
             <option value="$PROJECT_DIR$/organizer_service" />
-            <option value="$PROJECT_DIR$/round_service" />
+            <option value="$PROJECT_DIR$/round-service" />
             <option value="$PROJECT_DIR$/team-service" />
-            <option value="$PROJECT_DIR$/tournament_service" />
+            <option value="$PROJECT_DIR$/tournament-service" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -80,6 +80,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/organizer_service" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/tournament-service" />
+        <option name="gradleJvm" value="19" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/tournament-service" />
           </set>
         </option>
       </GradleProjectSettings>
