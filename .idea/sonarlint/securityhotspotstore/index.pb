@@ -255,3 +255,29 @@ Rcommon/src/main/kotlin/com/youcode/kingsleague/common/services/GlobalController
 dteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/services/impl/PlayerServiceImpl.kt,3/5/350e51e9c0ce5017ec64dee37277a5a07da6b49e
 è
 _team_service/src/main/kotlin/com/youcode/kingsleague/team_service/controllers/TeamController.kt,7/4/74e49da7877110e37da0aaf2453de70422deb7e5
+P
+ team_service/settings.gradle.kts,6/2/621ce01d2ddfaf98df34f6f192104bf712f8fe7f
+S
+#gateway_service/settings.gradle.kts,d/9/d90f692a0a9569bad7be2ac52f41e892d839a048
+M
+eureka_server/settings.gradle,2/0/204fed29e89e93ee2111769894a8c468317d2331
+P
+ gateway-service/build.gradle.kts,6/b/6b165e7ebd45b432bb85f4a655d0a7b80cb1871b
+J
+eureka-server/build.gradle,9/2/926f3c0072d8ffed034ab5418b00a4ab803f7479
+M
+eureka-server/settings.gradle,d/b/db91605a4b2f7c96aec46b457e09bdb0cbad6837
+é
+^eureka-server/src/main/kotlin/com/youcode/kingsleague/eureka_server/EurekaServerApplication.kt,3/0/309c67c902b9e481001144e3ef9862adb636af4a
+Q
+!match-service/settings.gradle.kts,9/6/9627527da3093630d9fd9dc01b5e42dd1c712600
+E
+match-service/gradlew,7/4/74b801591c3a8faa41a451656da5365dc523ce16
+I
+match-service/gradlew.bat,6/4/64759879cfd73aed9766988f6e50bd8c73d1c199
+M
+team-service/build.gradle.kts,5/2/5277f0032894bc5473e490341df1a81a41f1a4d3
+P
+ team-service/settings.gradle.kts,9/3/93e7a208fa7b3c5ac3030b522ae92b1b2e1eb690
+Q
+!round_service/settings.gradle.kts,2/1/21eed1b9b0a5ed5959be8171d5af94590d167dfc
