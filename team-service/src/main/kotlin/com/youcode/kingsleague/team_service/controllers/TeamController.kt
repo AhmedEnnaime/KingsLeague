@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("api/teams", produces = [MediaType.APPLICATION_JSON_VALUE])
+@RequestMapping("api/v1/teams", produces = [MediaType.APPLICATION_JSON_VALUE])
 @Validated
 class TeamController(private val teamService: TeamService): GlobalController<TeamDTO, Long>() {
 }

@@ -171,3 +171,7 @@ jtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/re
 mtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/repositories/LeagueRepository.kt,c/7/c7dc6c58be1ca3bc6511b6950852414e7b6770a4
 V
 &matchStats-service/settings.gradle.kts,a/b/abaf3614aea209a8a776a639e70baa9314c59d1d
+ë
+ateam-service/src/main/kotlin/com/youcode/kingsleague/team_service/controllers/PlayerController.kt,7/e/7e2543ba3c1818789e6387504bdbc4d07fbe6885
+è
+_team-service/src/main/kotlin/com/youcode/kingsleague/team_service/controllers/TeamController.kt,4/1/41487b02079e5840aa6c02ecfe46c3c8f3aef519
