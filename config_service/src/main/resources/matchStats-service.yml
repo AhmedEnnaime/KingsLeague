@@ -1,6 +1,6 @@
 spring:
   application:
-    name: matchStats_service
+    name: matchStats-service
   datasource:
     url: "jdbc:postgresql://localhost:5432/matchstats_db"
     username: "postgres"

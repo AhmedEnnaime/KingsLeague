@@ -169,3 +169,5 @@ dtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/mo
 jtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/repositories/CupRepository.kt,a/6/a6f8b5ca64fd4059099bc1205f82055cea034160
 ù
 mtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/repositories/LeagueRepository.kt,c/7/c7dc6c58be1ca3bc6511b6950852414e7b6770a4
+V
+&matchStats-service/settings.gradle.kts,a/b/abaf3614aea209a8a776a639e70baa9314c59d1d
