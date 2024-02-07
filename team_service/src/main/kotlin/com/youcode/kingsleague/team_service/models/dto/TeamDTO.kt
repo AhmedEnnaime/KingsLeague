@@ -8,6 +8,6 @@ data class TeamDTO (
     var id: Long,
     var name: String,
     var country: String,
-    var createdAt: LocalDateTime,
-    var updatedAt: LocalDateTime
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
 )

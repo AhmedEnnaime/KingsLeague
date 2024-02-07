@@ -253,3 +253,5 @@ Rcommon/src/main/kotlin/com/youcode/kingsleague/common/services/GlobalController
 [team_service/src/main/kotlin/com/youcode/kingsleague/team_service/services/PlayerService.kt,9/6/9611076027d68746ac5f978371d09c03fc437c23
 î
 dteam_service/src/main/kotlin/com/youcode/kingsleague/team_service/services/impl/PlayerServiceImpl.kt,3/5/350e51e9c0ce5017ec64dee37277a5a07da6b49e
+è
+_team_service/src/main/kotlin/com/youcode/kingsleague/team_service/controllers/TeamController.kt,7/4/74e49da7877110e37da0aaf2453de70422deb7e5
