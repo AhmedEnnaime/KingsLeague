@@ -13,7 +13,7 @@
             <option value="$PROJECT_DIR$/match-service" />
             <option value="$PROJECT_DIR$/matchDay-service" />
             <option value="$PROJECT_DIR$/matchStats-service" />
-            <option value="$PROJECT_DIR$/organizer_service" />
+            <option value="$PROJECT_DIR$/organizer-service" />
             <option value="$PROJECT_DIR$/round-service" />
             <option value="$PROJECT_DIR$/team-service" />
             <option value="$PROJECT_DIR$/tournament-service" />
@@ -26,15 +26,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/common" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/common_service" />
-        <option name="gradleJvm" value="19" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/common_service" />
           </set>
         </option>
       </GradleProjectSettings>
@@ -66,15 +57,6 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/kingsleague" />
-        <option name="gradleJvm" value="19" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/kingsleague" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/organizer_service" />
         <option name="gradleJvm" value="19" />
         <option name="modules">
@@ -89,15 +71,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/tournament-service" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/tournament_service" />
-        <option name="gradleJvm" value="19" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/tournament_service" />
           </set>
         </option>
       </GradleProjectSettings>

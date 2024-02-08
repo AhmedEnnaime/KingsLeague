@@ -6,6 +6,7 @@ import java.time.LocalDateTime
 
 @Builder
 data class PlayerDTO (
+    var id: Long?,
     var firstName: String,
     var lastName: String,
     var weight: Double,

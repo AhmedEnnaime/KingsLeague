@@ -7,10 +7,19 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
         </processorPath>
-        <module name="tournament-service.main" />
+        <module name="Kings_League.matchDay-service.main" />
+        <module name="Kings_League.common.main" />
+        <module name="Kings_League.round-service.main" />
+        <module name="Kings_League.tournament-service.main" />
+        <module name="Kings_League.match-service.main" />
+        <module name="Kings_League.team-service.main" />
+        <module name="Kings_League.matchStats-service.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common_service" target="17" />
+      <module name="common_service.main" target="17" />
+      <module name="common_service.test" target="17" />
       <module name="commun_service" target="17" />
       <module name="commun_service.main" target="17" />
       <module name="commun_service.test" target="17" />
@@ -30,15 +39,22 @@
       <module name="Kings_League.matchStats_service" target="17" />
       <module name="Kings_League.matchStats_service.main" target="17" />
       <module name="Kings_League.matchStats_service.test" target="17" />
+      <module name="Kings_League.organizer_service" target="17" />
+      <module name="Kings_League.organizer_service.main" target="17" />
+      <module name="Kings_League.organizer_service.test" target="17" />
       <module name="Kings_League.round_service.main" target="17" />
       <module name="Kings_League.round_service.test" target="17" />
       <module name="Kings_League.team_service.main" target="17" />
       <module name="Kings_League.team_service.test" target="17" />
-      <module name="Kings_League.tournament-service" target="17" />
       <module name="Kings_League.tournament_service" target="17" />
       <module name="Kings_League.tournament_service.main" target="17" />
       <module name="Kings_League.tournament_service.test" target="17" />
-      <module name="tournament-service" target="17" />
+      <module name="kingsleague" target="17" />
+      <module name="kingsleague.main" target="17" />
+      <module name="kingsleague.test" target="17" />
+      <module name="tournament_service" target="17" />
+      <module name="tournament_service.main" target="17" />
+      <module name="tournament_service.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

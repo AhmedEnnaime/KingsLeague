@@ -6,9 +6,9 @@ import java.time.LocalDateTime
 
 @Builder
 data class TeamPlayerDTO (
-    var id: TeamPlayerKey,
+    var id: TeamPlayerKey?,
     var player: PlayerDTO,
     var team: TeamDTO,
-    var joinedAt: LocalDateTime,
-    var updatedAt: LocalDateTime,
+    var joinedAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?,
 )
