@@ -1,7 +1,5 @@
 package com.youcode.kingsleague.team_service.services
 
-import com.youcode.kingsleague.team_service.models.dto.PlayerDTO
-import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.dto.TeamPlayerDTO
 import org.springframework.stereotype.Repository
 
@@ -9,6 +7,6 @@ import org.springframework.stereotype.Repository
 interface TeamPlayerService {
 
     fun save(teamPlayer: TeamPlayerDTO): TeamPlayerDTO
-    fun findPlayersByTeam(team: TeamDTO): List<TeamPlayerDTO>
-    fun findTeamsByPlayer(player: PlayerDTO): List<TeamPlayerDTO>
+    fun findPlayersByTeam(teamId: Long): List<TeamPlayerDTO>
+    fun findTeamsByPlayer(playerId: Long): List<TeamPlayerDTO>
 }

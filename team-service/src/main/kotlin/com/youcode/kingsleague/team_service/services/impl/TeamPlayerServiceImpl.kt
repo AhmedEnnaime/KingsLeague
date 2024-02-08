@@ -19,17 +19,17 @@ class TeamPlayerServiceImpl(private val teamPlayerRepository: TeamPlayerReposito
         return modelMapper.map(teamPlayerRepository.save(teamPlayerEntity), TeamPlayerDTO::class.java)
     }
 
-    override fun findPlayersByTeam(team: TeamDTO): List<TeamPlayerDTO> {
-        if (teamService.findByID(team.id) == null)
-            throw ResourceNotFoundException("Team with id ${team.id} not found")
-        val teamPlayers = teamPlayerRepository.findByTeamId(team.id)
+    override fun findPlayersByTeam(teamId: Long): List<TeamPlayerDTO> {
+        if (teamService.findByID(teamId) == null)
+            throw ResourceNotFoundException("Team with id $teamId not found")
+        val teamPlayers = teamPlayerRepository.findByTeamId(teamId)
         return teamPlayers.map { modelMapper.map(it.player, TeamPlayerDTO::class.java) }
     }
 
-    override fun findTeamsByPlayer(player: PlayerDTO): List<TeamPlayerDTO> {
-        if (player.id?.let { playerService.findByID(it) } == null)
-            throw ResourceNotFoundException("Player with id ${player.id} not found")
-        val teamPlayers = teamPlayerRepository.findByPlayerId(player.id!!)
+    override fun findTeamsByPlayer(playerId: Long): List<TeamPlayerDTO> {
+        if (playerId.let { playerService.findByID(it) } == null)
+            throw ResourceNotFoundException("Player with id $playerId not found")
+        val teamPlayers = teamPlayerRepository.findByPlayerId(playerId)
         return teamPlayers.map { modelMapper.map(it.team, TeamPlayerDTO::class.java) }
     }
 }
