@@ -2,10 +2,11 @@ package com.youcode.kingsleague.tournamentservice.models.dto
 
 import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
 import com.youcode.kingsleague.tournamentservice.models.transients.Team
+import lombok.Builder
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-
+@Builder
 open class TournamentDTO (
     var id: Long,
     var name: String,

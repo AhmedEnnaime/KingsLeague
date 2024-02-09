@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/round-service" />
             <option value="$PROJECT_DIR$/team-service" />
             <option value="$PROJECT_DIR$/tournament-service" />
+            <option value="$PROJECT_DIR$/tournamentTeams-service" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -7,7 +7,14 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
         </processorPath>
-        <module name="tournamentTeams-service.main" />
+        <module name="Kings_League.tournamentTeams-service.main" />
+        <module name="Kings_League.matchDay-service.main" />
+        <module name="Kings_League.common.main" />
+        <module name="Kings_League.round-service.main" />
+        <module name="Kings_League.tournament-service.main" />
+        <module name="Kings_League.match-service.main" />
+        <module name="Kings_League.team-service.main" />
+        <module name="Kings_League.matchStats-service.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
