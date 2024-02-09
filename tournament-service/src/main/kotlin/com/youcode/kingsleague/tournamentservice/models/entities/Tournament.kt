@@ -2,6 +2,7 @@ package com.youcode.kingsleague.tournamentservice.models.entities
 
 import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
 import com.youcode.kingsleague.tournamentservice.models.transients.Team
+import com.youcode.kingsleague.tournamentservice.models.transients.TournamentTeam
 import jakarta.persistence.*
 import jakarta.validation.constraints.Future
 import jakarta.validation.constraints.NotNull
@@ -23,5 +24,5 @@ open class Tournament(
     @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
     @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
 ) {
-    @Transient val teams: List<Team> = listOf()
+    @Transient val teams: List<TournamentTeam> = listOf()
 }

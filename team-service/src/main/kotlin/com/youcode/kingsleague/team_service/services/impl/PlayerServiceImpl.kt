@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class PlayerServiceImpl(private val playerRepository: PlayerRepository, private val modelMapper: ModelMapper): PlayerService {
-    override fun save(dto: PlayerDTO?): PlayerDTO? {
+    override fun save(dto: PlayerDTO): PlayerDTO {
         val playerEntity: Player = modelMapper.map(dto, Player::class.java)
         val savedPlayer: Player = playerRepository.save(playerEntity)
         return modelMapper.map(savedPlayer, PlayerDTO::class.java)
@@ -21,7 +21,7 @@ class PlayerServiceImpl(private val playerRepository: PlayerRepository, private 
         return players.map { player -> modelMapper.map(player, PlayerDTO::class.java)  }
     }
 
-    override fun update(identifier: Long, dto: PlayerDTO?): PlayerDTO? {
+    override fun update(identifier: Long, dto: PlayerDTO): PlayerDTO {
         val existingPlayer: Player = playerRepository.findById(identifier)
             .orElseThrow {ResourceNotFoundException("Team with id $identifier not found")}
 

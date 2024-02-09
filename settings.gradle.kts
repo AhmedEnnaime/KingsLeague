@@ -9,6 +9,7 @@ rootProject.name = "Kings League"
 include("common")
 include("organizer-service")
 include("tournament-service")
+include("tournamentTeams-service")
 include("match-service")
 include("round-service")
 include("matchDay-service")
