@@ -22,12 +22,16 @@ class Tournament {
   location: string
 }
 
-class Organizer {
+class TournamenTeam {
+
+}
+
+class User {
   id: int
-  name: string
-  contact_info: string
+  username: string
   email: string
   password: string
+  phone: string
 }
 
 class Match {
@@ -49,7 +53,7 @@ class Referee {
 }
 
 class Cup {
-  
+
 }
 
 class Round {
@@ -73,12 +77,12 @@ class Result {
   id: int
   score: String
   winner: Team
-  
+
 }
 
 
 class League {
-  
+
 }
 
 class MatchDay {
@@ -90,7 +94,7 @@ class TeamPlayers {
 
   joining_date: Date
   apart_date: Date
-  
+
 }
 
 class MatchStats {
@@ -102,8 +106,9 @@ class MatchStats {
 
 
 
-Tournament -- Team
-Tournament *-- Organizer
+Tournament -- TournamenTeam
+TournamenTeam -- Team
+Tournament *-- User
 Match *-- Team
 Match -- Team : winner
 Match -- MatchReferees

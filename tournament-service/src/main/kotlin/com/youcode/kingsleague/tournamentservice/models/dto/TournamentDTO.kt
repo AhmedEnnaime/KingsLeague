@@ -1,7 +1,6 @@
 package com.youcode.kingsleague.tournamentservice.models.dto
 
 import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
-import com.youcode.kingsleague.tournamentservice.models.transients.Team
 import lombok.Builder
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -16,6 +15,4 @@ open class TournamentDTO (
     var organizer: Organizer,
     var createdAt: LocalDateTime,
     var updatedAt: LocalDateTime,
-) {
-    var teams: List<Team> = listOf()
-}
+)
