@@ -13,6 +13,7 @@
         <module name="Kings_League.round-service.main" />
         <module name="Kings_League.tournament-service.main" />
         <module name="Kings_League.match-service.main" />
+        <module name="Kings_League.user-service.main" />
         <module name="Kings_League.team-service.main" />
         <module name="Kings_League.matchStats-service.main" />
       </profile>
@@ -53,9 +54,21 @@
       <module name="kingsleague" target="17" />
       <module name="kingsleague.main" target="17" />
       <module name="kingsleague.test" target="17" />
+      <module name="organizer-service" target="17" />
+      <module name="organizer_service.main" target="17" />
+      <module name="organizer_service.test" target="17" />
+      <module name="tournament-service" target="17" />
+      <module name="tournament-service.main" target="17" />
+      <module name="tournament-service.test" target="17" />
       <module name="tournament_service" target="17" />
       <module name="tournament_service.main" target="17" />
       <module name="tournament_service.test" target="17" />
+      <module name="tournamentTeams-service" target="17" />
+      <module name="tournamentTeams-service.main" target="17" />
+      <module name="tournamentTeams-service.test" target="17" />
+      <module name="user-service" target="17" />
+      <module name="user-service.main" target="17" />
+      <module name="user-service.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

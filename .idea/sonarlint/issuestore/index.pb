@@ -159,19 +159,15 @@ N
 round-service/build.gradle.kts,a/8/a82c2919a37a804986303398bf4a3fb73854704e
 [
 +tournamentTeams-service/settings.gradle.kts,b/e/beca308d2061eaab9f5ba017e3dc80e5db6245ab
-Q
-!organizer-service/settings.gradle,7/b/7b5695e56225094f398950464ff642b659d9abb1
 ä
 Zuser-service/src/main/kotlin/com/youcode/kingsleague/userservice/UserServiceApplication.kt,7/2/720b7363f0644e990f5b8c749b0dd200596b0adc
 à
 Xuser-service/src/main/kotlin/com/youcode/kingsleague/userservice/models/entities/User.kt,9/8/9840e2e19c01732f2b5c3105c991c619e2bce2ff
-ò
-horganizer-service/src/main/kotlin/com/youcode/kingsleague/organizer_service/models/entities/Organizer.kt,9/c/9c46f7659be6ecdbf78a3b471542c3a8111f5f7f
 M
 user-service/build.gradle.kts,3/c/3ccf26bdbd0e04d8b350b283d73362279eaac0e3
 Ü
 Vuser-service/src/main/kotlin/com/youcode/kingsleague/userservice/models/dto/UserDTO.kt,a/6/a6c2efefdb24dc49f4c5babd22c632772f274f27
-ó
-gorganizer-service/src/main/kotlin/com/youcode/kingsleague/organizer_service/models/dtos/OrganizerDTO.kt,b/1/b1d32853137c4089e14d087d7047931011250842
 ê
 `user-service/src/main/kotlin/com/youcode/kingsleague/userservice/models/transients/Tournament.kt,5/f/5f67287cda87a4d2bf2e098403cd77336a65ee54
+ã
+[team-service/src/main/kotlin/com/youcode/kingsleague/team_service/services/PlayerService.kt,9/3/932cba544fcb6e998cbb4cf90738c5d64770ceaf
