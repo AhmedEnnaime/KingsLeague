@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository
 interface TeamPlayerService {
 
     fun save(teamPlayer: TeamPlayerDTO): TeamPlayerDTO
+    fun findAll(): List<TeamPlayerDTO?>?
     fun findPlayersByTeam(teamId: Long): List<TeamPlayerDTO>
     fun findTeamsByPlayer(playerId: Long): List<TeamPlayerDTO>
 }

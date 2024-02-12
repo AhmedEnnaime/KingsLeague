@@ -11,4 +11,6 @@ data class TeamPlayerDTO (
     var team: TeamDTO,
     var joinedAt: LocalDateTime?,
     var updatedAt: LocalDateTime?,
-)
+){
+    constructor() : this(null, PlayerDTO(), TeamDTO(), null, null)
+}

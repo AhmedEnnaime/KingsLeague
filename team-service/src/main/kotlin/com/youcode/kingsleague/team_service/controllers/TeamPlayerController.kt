@@ -24,6 +24,12 @@ class TeamPlayerController(private val teamPlayerService: TeamPlayerService) {
         return ResponseEntity(savedTeamPlayer, HttpStatus.CREATED)
     }
 
+    @GetMapping
+    fun getAllTeamPlayers(): ResponseEntity<List<TeamPlayerDTO?>> {
+        val teamPlayers = teamPlayerService.findAll()
+        return ResponseEntity(teamPlayers, HttpStatus.OK)
+    }
+
     @GetMapping("/players/{teamId}")
     fun getPlayersByTeam(@PathVariable("teamId") teamId: Long): ResponseEntity<List<TeamPlayerDTO>> {
         val foundPlayers = teamPlayerService.findPlayersByTeam(teamId)

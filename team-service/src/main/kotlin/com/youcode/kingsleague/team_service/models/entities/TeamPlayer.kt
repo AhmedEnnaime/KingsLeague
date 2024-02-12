@@ -14,6 +14,6 @@ data class TeamPlayer (
     @EmbeddedId var id: TeamPlayerKey,
     @ManyToOne @MapsId("playedId") var player: Player,
     @ManyToOne @MapsId("teamId") var team: Team,
-    @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "joined_at") var joinedAt: LocalDateTime,
-    @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
+    @CreationTimestamp @Column(nullable = true, name = "joined_at") var joinedAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 )
