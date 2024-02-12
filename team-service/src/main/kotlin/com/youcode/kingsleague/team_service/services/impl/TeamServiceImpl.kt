@@ -28,9 +28,7 @@ class TeamServiceImpl(private val teamRepository: TeamRepository, private val mo
         val existingTeam: Team = teamRepository.findById(identifier)
             .orElseThrow { ResourceNotFoundException("Team with id $identifier not found") }
 
-        val currentTime = LocalDateTime.now()
-        dto.updatedAt = currentTime
-
+        dto.updatedAt = LocalDateTime.now()
         existingTeam.apply {
             dto.let {
                 this.name = it.name

@@ -13,6 +13,8 @@ data class PlayerDTO (
     var height: Double,
     var birthday: LocalDate,
     var nationality: String,
-    var createdAt: LocalDateTime,
-    var updatedAt: LocalDateTime,
-)
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?,
+){
+    constructor() : this(null, "", "", 0.0, 0.0, LocalDate.now(), "", LocalDateTime.now(), LocalDateTime.now())
+}

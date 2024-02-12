@@ -20,8 +20,8 @@ data class Player (
     @Column(nullable = true) @Min(value = 0) var height: Double,
     @Column(nullable = false) @Temporal(TemporalType.DATE) var birthday: LocalDate,
     @Column(nullable = false) @NotNull(message = "nationality can't be null") var nationality: String,
-    @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
-    @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 ) {
     @OneToMany(mappedBy = "player") var teams: List<TeamPlayer> = listOf()
 }
