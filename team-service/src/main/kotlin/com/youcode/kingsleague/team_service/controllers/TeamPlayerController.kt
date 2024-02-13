@@ -1,5 +1,7 @@
 package com.youcode.kingsleague.team_service.controllers
 
+import com.youcode.kingsleague.team_service.models.dto.PlayerDTO
+import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.dto.TeamPlayerDTO
 import com.youcode.kingsleague.team_service.services.TeamPlayerService
 import jakarta.validation.Valid
@@ -31,13 +33,13 @@ class TeamPlayerController(private val teamPlayerService: TeamPlayerService) {
     }
 
     @GetMapping("/players/{teamId}")
-    fun getPlayersByTeam(@PathVariable("teamId") teamId: Long): ResponseEntity<List<TeamPlayerDTO>> {
+    fun getPlayersByTeam(@PathVariable("teamId") teamId: Long): ResponseEntity<List<PlayerDTO>> {
         val foundPlayers = teamPlayerService.findPlayersByTeam(teamId)
         return ResponseEntity(foundPlayers, HttpStatus.OK)
     }
 
     @GetMapping("/teams/{playerId}")
-    fun getTeamsByPlayer(@PathVariable("playerId") playerId: Long): ResponseEntity<List<TeamPlayerDTO>> {
+    fun getTeamsByPlayer(@PathVariable("playerId") playerId: Long): ResponseEntity<List<TeamDTO>> {
         val foundTeams = teamPlayerService.findTeamsByPlayer(playerId)
         return ResponseEntity(foundTeams, HttpStatus.OK)
     }
