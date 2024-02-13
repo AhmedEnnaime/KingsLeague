@@ -171,3 +171,17 @@ Vuser-service/src/main/kotlin/com/youcode/kingsleague/userservice/models/dto/Use
 `user-service/src/main/kotlin/com/youcode/kingsleague/userservice/models/transients/Tournament.kt,5/f/5f67287cda87a4d2bf2e098403cd77336a65ee54
 ‹
 [team-service/src/main/kotlin/com/youcode/kingsleague/team_service/services/PlayerService.kt,9/3/932cba544fcb6e998cbb4cf90738c5d64770ceaf
+–
+ftournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/services/LeagueService.kt,7/0/707d128855632f2a64e07b3ac2baa1ea06b3323e
+“
+ctournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/services/CupService.kt,7/6/765fe78af493ac78570abd96b1e8610086172967
+Ÿ
+otournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/services/impl/LeagueServiceImpl.kt,4/5/45e09874638cba081f2706ab9d50e36f810eabb7
+“
+ctournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/config/MapperConfig.kt,a/9/a9703ffb9baa94a7b5c6b46da0f2429d9973c56e
+œ
+ltournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/services/impl/CupServiceImpl.kt,e/2/e25d0904c1b780d03b5cd7ee1a6ec31233dda13d
+œ
+ltournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/controllers/LeagueController.kt,1/3/13fdddc2b30d541b4c4ccee7b1e129c85990886c
+™
+itournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/controllers/CupController.kt,2/8/28c5f4272dc1bfba1b98efb470d86caa00206b43

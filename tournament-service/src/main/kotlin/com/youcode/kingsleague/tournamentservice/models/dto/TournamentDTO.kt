@@ -13,6 +13,6 @@ open class TournamentDTO (
     var endDate: LocalDate,
     var location: String,
     var organizer: Organizer,
-    var createdAt: LocalDateTime,
-    var updatedAt: LocalDateTime,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?,
 )

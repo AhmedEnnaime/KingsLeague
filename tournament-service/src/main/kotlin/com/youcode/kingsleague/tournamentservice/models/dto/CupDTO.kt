@@ -14,6 +14,6 @@ class CupDTO(
     endDate: LocalDate,
     location: String,
     organizer: Organizer,
-    createdAt: LocalDateTime,
-    updatedAt: LocalDateTime,
+    createdAt: LocalDateTime?,
+    updatedAt: LocalDateTime?,
 ) : TournamentDTO(id, name, debutDate, endDate, location, organizer, createdAt, updatedAt)

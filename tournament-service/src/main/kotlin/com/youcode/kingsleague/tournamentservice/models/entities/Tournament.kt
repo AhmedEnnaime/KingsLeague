@@ -19,10 +19,10 @@ open class Tournament(
     @Temporal(TemporalType.DATE) @Future @NotNull(message = "debut date can't be null") var debutDate: LocalDate,
     @Temporal(TemporalType.DATE) @Future @NotNull(message = "end date can't be null") var endDate: LocalDate,
     @NotNull(message = "location can't be null") var location: String,
-    var organizerId: Long,
+    @Column(nullable = true) var organizerId: Long,
     @Transient val organizer: Organizer,
-    @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
-    @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 ) {
     @Transient val teams: List<TournamentTeam> = listOf()
 }
