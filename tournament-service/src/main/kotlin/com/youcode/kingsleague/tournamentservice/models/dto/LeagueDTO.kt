@@ -4,6 +4,7 @@ import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
 import java.time.LocalDate
 import java.time.LocalDateTime
 
+
 class LeagueDTO : TournamentDTO {
 
     constructor() : super(null, "", LocalDate.now(), LocalDate.now(), "", null, "", null, null)
@@ -15,8 +16,8 @@ class LeagueDTO : TournamentDTO {
         endDate: LocalDate,
         location: String,
         organizer: Organizer?,
-        tournament_type: String?,
+        tournamentType: String?, // Adjusted property name to match entity
         createdAt: LocalDateTime?,
         updatedAt: LocalDateTime?
-    ) : super(id, name, debutDate, endDate, location, organizer, tournament_type, createdAt, updatedAt)
+    ) : super(id, name, debutDate, endDate, location, organizer, tournamentType, createdAt, updatedAt)
 }

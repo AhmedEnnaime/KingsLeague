@@ -4,9 +4,7 @@ import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
 import com.youcode.kingsleague.tournamentservice.models.transients.Round
 import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity
-import jakarta.persistence.Table
 import jakarta.persistence.Transient
-import lombok.Builder
 import java.time.LocalDate
 import java.time.LocalDateTime
 

@@ -12,7 +12,7 @@ open class TournamentDTO(
     var endDate: LocalDate,
     var location: String,
     var organizer: Organizer?,
-    var tournament_type: String?,
+    var tournamentType: String?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {

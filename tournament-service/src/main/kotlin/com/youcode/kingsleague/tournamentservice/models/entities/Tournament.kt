@@ -14,15 +14,15 @@ import java.time.LocalDateTime
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "tournament_type", discriminatorType = DiscriminatorType.STRING)
 open class Tournament(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
-    @NotNull(message = "name can't be null") var name: String,
-    @Temporal(TemporalType.DATE) @Future @NotNull(message = "debut date can't be null") var debutDate: LocalDate,
-    @Temporal(TemporalType.DATE) @Future @NotNull(message = "end date can't be null") var endDate: LocalDate,
-    @NotNull(message = "location can't be null") var location: String,
-    @Column(nullable = true) var organizerId: Long,
-    @Transient val organizer: Organizer,
-    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
-    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) open var id: Long,
+    @NotNull(message = "name can't be null") open var name: String,
+    @Temporal(TemporalType.DATE) @Future @NotNull(message = "debut date can't be null") open var debutDate: LocalDate,
+    @Temporal(TemporalType.DATE) @Future @NotNull(message = "end date can't be null") open var endDate: LocalDate,
+    @NotNull(message = "location can't be null") open var location: String,
+    @Column(nullable = true) open var organizerId: Long,
+    @Transient open val organizer: Organizer,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") open var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") open var updatedAt: LocalDateTime?,
 ) {
-    @Transient val teams: List<TournamentTeam> = listOf()
+    @Transient open val teams: List<TournamentTeam> = listOf()
 }

@@ -15,8 +15,8 @@ class CupDTO : TournamentDTO {
         endDate: LocalDate,
         location: String,
         organizer: Organizer?,
-        tournament_type: String?,
+        tournamentType: String?, // Adjusted property name to match entity
         createdAt: LocalDateTime?,
         updatedAt: LocalDateTime?
-    ) : super(id, name, debutDate, endDate, location, organizer, tournament_type, createdAt, updatedAt)
+    ) : super(id, name, debutDate, endDate, location, organizer, tournamentType, createdAt, updatedAt)
 }
