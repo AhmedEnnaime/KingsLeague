@@ -2,6 +2,7 @@ package com.youcode.kingsleague.tournamentservice.models.entities
 
 import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
 import com.youcode.kingsleague.tournamentservice.models.transients.Round
+import jakarta.persistence.DiscriminatorValue
 import jakarta.persistence.Entity
 import jakarta.persistence.Table
 import jakarta.persistence.Transient
@@ -10,8 +11,7 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "cups")
-@Builder
+@DiscriminatorValue("CUP")
 class Cup (
     id: Long,
     name: String,

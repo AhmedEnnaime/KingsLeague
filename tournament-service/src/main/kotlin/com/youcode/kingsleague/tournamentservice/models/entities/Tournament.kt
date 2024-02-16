@@ -1,7 +1,6 @@
 package com.youcode.kingsleague.tournamentservice.models.entities
 
 import com.youcode.kingsleague.tournamentservice.models.transients.Organizer
-import com.youcode.kingsleague.tournamentservice.models.transients.Team
 import com.youcode.kingsleague.tournamentservice.models.transients.TournamentTeam
 import jakarta.persistence.*
 import jakarta.validation.constraints.Future
@@ -11,8 +10,9 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-@MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tournament_type", discriminatorType = DiscriminatorType.STRING)
 open class Tournament(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @NotNull(message = "name can't be null") var name: String,
