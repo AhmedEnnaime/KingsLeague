@@ -10,4 +10,6 @@ data class TournamentTeamDTO (
     var id: TournamentTeamKey,
     var team: Team,
     var tournament: Tournament
-)
+) {
+    constructor() : this(TournamentTeamKey(0, 0), Team(), Tournament())
+}

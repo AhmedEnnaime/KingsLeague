@@ -10,4 +10,6 @@ data class Team (
     var country: String,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
-)
+) {
+    constructor() : this(null, "", "", null, null)
+}
