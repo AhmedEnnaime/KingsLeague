@@ -7,9 +7,9 @@ import lombok.Builder
 
 @Builder
 data class TournamentTeamDTO (
-    var id: TournamentTeamKey,
+    var id: TournamentTeamKey?,
     var team: Team,
     var tournament: Tournament
 ) {
-    constructor() : this(TournamentTeamKey(0, 0), Team(), Tournament())
+    constructor() : this(null, Team(), Tournament())
 }

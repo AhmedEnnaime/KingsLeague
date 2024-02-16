@@ -209,3 +209,5 @@ qtournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/re
 ptournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/controllers/TournamentController.kt,9/2/9277045ad088f78c450f8effd73f30285fe1ed8b
 «
 {tournamentTeams-service/src/main/kotlin/com/youcode/kingsleague/tournamentteamsservice/services/client/TeamServiceClient.kt,b/c/bc4ad86f282aabf2f305f472c4d6fce07f7be5a2
+®
+~tournamentTeams-service/src/main/kotlin/com/youcode/kingsleague/tournamentteamsservice/controllers/TournamentTeamController.kt,e/8/e8c91b70c0447f26aae7fc3b74461dae0e32b89c

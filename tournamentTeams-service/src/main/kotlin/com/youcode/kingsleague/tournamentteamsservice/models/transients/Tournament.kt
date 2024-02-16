@@ -9,7 +9,7 @@ data class Tournament (
     var debutDate: LocalDate,
     var endDate: LocalDate,
     var location: String,
-    var tournament_type: String?,
+    var tournamentType: String?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
