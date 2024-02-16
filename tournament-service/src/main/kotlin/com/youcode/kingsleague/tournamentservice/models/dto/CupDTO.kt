@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 
 class CupDTO : TournamentDTO {
 
-    constructor() : super(null, "", LocalDate.now(), LocalDate.now(), "", null, null, null)
+    constructor() : super(null, "", LocalDate.now(), LocalDate.now(), "", null, "", null, null)
 
     constructor(
         id: Long?,
@@ -15,7 +15,8 @@ class CupDTO : TournamentDTO {
         endDate: LocalDate,
         location: String,
         organizer: Organizer?,
+        tournament_type: String?,
         createdAt: LocalDateTime?,
         updatedAt: LocalDateTime?
-    ) : super(id, name, debutDate, endDate, location, organizer, createdAt, updatedAt)
+    ) : super(id, name, debutDate, endDate, location, organizer, tournament_type, createdAt, updatedAt)
 }

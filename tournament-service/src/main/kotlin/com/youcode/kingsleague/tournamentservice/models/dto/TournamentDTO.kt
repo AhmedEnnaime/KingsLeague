@@ -12,8 +12,9 @@ open class TournamentDTO(
     var endDate: LocalDate,
     var location: String,
     var organizer: Organizer?,
+    var tournament_type: String?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "", null, null, null)
+    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "", null, "", null, null)
 }

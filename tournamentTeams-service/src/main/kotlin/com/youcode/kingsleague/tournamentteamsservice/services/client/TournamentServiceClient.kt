@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable
 @FeignClient(name = "TOURNAMENT-SERVICE")
 interface TournamentServiceClient {
 
-    @GetMapping( "/api/v1/leagues/{leagueId}")
-    fun findLeagueById(@PathVariable leagueId: Long): Tournament
+    @GetMapping( "/api/v1/tournaments/{tournamentId}")
+    fun findTournamentById(@PathVariable tournamentId: Long): Tournament
 
-    @GetMapping( "/api/v1/cups/{cupId}")
-    fun findCupById(@PathVariable cupId: Long): Tournament
 }
