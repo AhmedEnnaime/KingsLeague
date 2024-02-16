@@ -1,15 +1,17 @@
 package com.youcode.kingsleague.tournamentteamsservice.models.transients
 
-import lombok.Builder
 import java.time.LocalDate
+import java.time.LocalDateTime
 
-@Builder
 data class Tournament (
     var id: Long?,
-    var name: String = "",
-    var debutDate: LocalDate = LocalDate.now(),
-    var endDate: LocalDate = LocalDate.now(),
-    var location: String = ""
+    var name: String,
+    var debutDate: LocalDate,
+    var endDate: LocalDate,
+    var location: String,
+    var tournament_type: String?,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "")
+    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "", "", null, null)
 }

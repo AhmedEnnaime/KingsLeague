@@ -50,7 +50,7 @@ class TournamentController(private val tournamentService: TournamentService) {
     fun deleteTournament(@PathVariable id: Long): ResponseEntity<Map<String, String>> {
         tournamentService.delete(id)
         val response = mutableMapOf<String, String>()
-        response["message"] = "Level deleted successfully."
+        response["message"] = "Tournament deleted successfully."
         response["deletedElementIdentifier"] = id.toString()
         return ResponseEntity(response, HttpStatus.OK)
     }
