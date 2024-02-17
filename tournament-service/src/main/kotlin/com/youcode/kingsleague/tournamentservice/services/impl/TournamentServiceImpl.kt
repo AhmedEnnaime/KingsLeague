@@ -9,6 +9,7 @@ import com.youcode.kingsleague.tournamentservice.models.entities.League
 import com.youcode.kingsleague.tournamentservice.models.entities.Tournament
 import com.youcode.kingsleague.tournamentservice.repositories.TournamentRepository
 import com.youcode.kingsleague.tournamentservice.services.TournamentService
+import jakarta.persistence.DiscriminatorValue
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
@@ -33,15 +34,22 @@ class TournamentServiceImpl(private val tournamentRepository: TournamentReposito
 
     override fun findAll(): List<TournamentDTO> {
         val tournaments: List<Tournament> = tournamentRepository.findAll()
-        return tournaments.map { tounament -> modelMapper.map(tounament, TournamentDTO::class.java) }
+        return tournaments.map { tournament ->
+            val dto = modelMapper.map(tournament, TournamentDTO::class.java)
+            dto.tournamentType = tournament.javaClass.getAnnotation(DiscriminatorValue::class.java)?.value
+            dto
+        }
     }
 
     override fun findById(id: Long): TournamentDTO {
         val tournament: Tournament = tournamentRepository.findById(id).orElseThrow {
             ResourceNotFoundException("Tournament with id $id not found")
         }
-        return modelMapper.map(tournament, TournamentDTO::class.java)
+        val dto = modelMapper.map(tournament, TournamentDTO::class.java)
+        dto.tournamentType = tournament.javaClass.getAnnotation(DiscriminatorValue::class.java)?.value // Set the tournamentType
+        return dto
     }
+
 
     override fun update(id: Long, tournamentDTO: TournamentDTO): TournamentDTO {
         val existingTournament: Tournament = tournamentRepository.findById(id)
