@@ -35,6 +35,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.modelmapper:modelmapper:3.2.0")
 	implementation(project(":common"))
+	implementation("org.springframework.boot:spring-boot-starter-validation:3.2.1")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
