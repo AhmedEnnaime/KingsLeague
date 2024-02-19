@@ -24,12 +24,20 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         return modelMapper.map(savedTournamentTeam, TournamentTeamDTO::class.java)
     }
 
-    override fun removeTeamFromTournament(tournamentId: Long, teamId: Long) {
+    override fun removeTeamFromTournament(teamId: Long, tournamentId: Long) {
         tournamentServiceClient.findTournamentById(tournamentId)
         teamServiceClient.findTeamById(teamId)
         val tournamentTeamKey = TournamentTeamKey(teamId = teamId, tournamentId = tournamentId)
         val tournamentTeam: TournamentTeam = tournamentTeamRepository.findById(tournamentTeamKey).orElseThrow{ResourceNotFoundException("Tournament Team with id $tournamentTeamKey not found")}
         tournamentTeamRepository.delete(tournamentTeam)
+    }
+
+    override fun findTournamentTeams(tournamentId: Long): List<Tournament> {
+        TODO("Not yet implemented")
+    }
+
+    override fun findTeamTournaments(teamId: Long): List<Team> {
+        TODO("Not yet implemented")
     }
 
 }
