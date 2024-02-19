@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TournamentTeamRepository: JpaRepository<TournamentTeam, TournamentTeamKey> {
+    fun findTeamIdsByTournamentId(tournamentId: Long): List<Long>
 }

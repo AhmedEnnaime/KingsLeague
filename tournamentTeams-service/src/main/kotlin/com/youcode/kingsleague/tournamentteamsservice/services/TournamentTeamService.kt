@@ -8,6 +8,6 @@ interface TournamentTeamService {
 
     fun registerTeamInTournament(tournamentTeamDTO: TournamentTeamDTO): TournamentTeamDTO
     fun removeTeamFromTournament(teamId: Long, tournamentId: Long)
-    fun findTournamentTeams(tournamentId: Long): List<Tournament>
-    fun findTeamTournaments(teamId: Long): List<Team>
+    fun findTournamentTeams(tournamentId: Long): List<Team>
+    fun findTeamTournaments(teamId: Long): List<Tournament>
 }

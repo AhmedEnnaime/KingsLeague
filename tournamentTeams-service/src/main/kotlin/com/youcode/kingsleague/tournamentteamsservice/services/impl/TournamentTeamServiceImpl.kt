@@ -32,11 +32,15 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         tournamentTeamRepository.delete(tournamentTeam)
     }
 
-    override fun findTournamentTeams(tournamentId: Long): List<Tournament> {
-        TODO("Not yet implemented")
+    override fun findTournamentTeams(tournamentId: Long): List<Team> {
+        val teamIds: List<Long> = tournamentTeamRepository.findTeamIdsByTournamentId(tournamentId)
+        val teams: List<Team> = teamIds.map { teamId ->
+            teamServiceClient.findTeamById(teamId)
+        }
+        return teams
     }
 
-    override fun findTeamTournaments(teamId: Long): List<Team> {
+    override fun findTeamTournaments(teamId: Long): List<Tournament> {
         TODO("Not yet implemented")
     }
 
