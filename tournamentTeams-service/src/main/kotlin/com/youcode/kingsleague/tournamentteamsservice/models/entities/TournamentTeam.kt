@@ -11,7 +11,7 @@ import jakarta.persistence.Transient
 @Entity
 @Table(name = "tournament_teams")
 data class TournamentTeam (
-    @EmbeddedId var id: TournamentTeamKey,
-    @Transient val team: Team,
-    @Transient val tournament: Tournament
+    @EmbeddedId var id: TournamentTeamKey?,
+    @Transient val team: Team?,
+    @Transient val tournament: Tournament?
 )
