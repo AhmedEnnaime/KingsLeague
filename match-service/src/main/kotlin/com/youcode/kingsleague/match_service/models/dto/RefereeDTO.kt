@@ -1,10 +1,13 @@
 package com.youcode.kingsleague.match_service.models.dto
 
-import lombok.Builder
+import java.time.LocalDateTime
 
-@Builder
 data class RefereeDTO (
-    var id: Long,
+    var id: Long?,
     var name: String,
     var nationality: String,
-)
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
+){
+    constructor() : this(null, "", "", null, null)
+}

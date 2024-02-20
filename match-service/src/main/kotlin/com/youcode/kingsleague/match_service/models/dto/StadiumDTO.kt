@@ -1,12 +1,15 @@
 package com.youcode.kingsleague.match_service.models.dto
 
-import lombok.Builder
+import java.time.LocalDateTime
 
-@Builder
 data class StadiumDTO (
-    var id: Long,
+    var id: Long?,
     var name: String,
     var location: String,
     var capacity: Int,
-    var matches: List<MatchDTO>
-)
+    var matches: List<MatchDTO>?,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
+){
+    constructor() : this(null, "", "", 0, emptyList(), null, null)
+}

@@ -32,8 +32,8 @@ data class Match (
     @Transient val teamB: Team,
     @Transient val matchDay: MatchDay,
     @Transient val round: Round,
-    @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
-    @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 ){
     @OneToMany(mappedBy = "match") val matchReferee: List<MatchReferee> = listOf()
 }

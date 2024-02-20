@@ -18,6 +18,6 @@ data class Result (
     @Column(nullable = false, name = "team_id") @NotNull(message = "you should set the winner team") var teamId: Long,
     @OneToOne @JoinColumn(name = "match_id", referencedColumnName = "id") val match: Match,
     @Transient val winner: Team,
-    @CreationTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "created_at") var createdAt: LocalDateTime,
-    @UpdateTimestamp @Column(nullable = false, updatable = false, insertable = false, name = "updated_at") var updatedAt: LocalDateTime,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
     )
