@@ -235,3 +235,5 @@ ematch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositorie
 Zmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/config/MapperConfig.kt,6/1/61ae02f2cbec45829fab666bed81b3d4e997fb0a
 N
 match-service/build.gradle.kts,8/c/8c063b622c61c8225044ef17a685002c80503f49
+”
+dmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/StadiumController.kt,4/b/4bdc548f90350f06929f1968b067dd2ad631f556
