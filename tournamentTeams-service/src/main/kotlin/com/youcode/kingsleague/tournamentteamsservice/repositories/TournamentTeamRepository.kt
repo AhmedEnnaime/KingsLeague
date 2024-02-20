@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository
 interface TournamentTeamRepository: JpaRepository<TournamentTeam, TournamentTeamKey> {
     @Query("SELECT t.id.teamId FROM TournamentTeam t WHERE t.id.tournamentId = :tournamentId")
     fun findTeamIdsByTournamentId(tournamentId: Long): List<Long>
+    @Query("SELECT t.id.tournamentId FROM TournamentTeam t WHERE t.id.teamId = :teamId")
+    fun findTournamentIdsByTeamId(teamId: Long): List<Long>
 }

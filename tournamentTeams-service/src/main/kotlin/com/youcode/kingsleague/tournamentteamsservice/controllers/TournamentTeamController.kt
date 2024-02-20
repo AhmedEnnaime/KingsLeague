@@ -3,6 +3,7 @@ package com.youcode.kingsleague.tournamentteamsservice.controllers
 import com.youcode.kingsleague.tournamentteamsservice.models.dto.TournamentTeamDTO
 import com.youcode.kingsleague.tournamentteamsservice.models.embeddables.TournamentTeamKey
 import com.youcode.kingsleague.tournamentteamsservice.models.transients.Team
+import com.youcode.kingsleague.tournamentteamsservice.models.transients.Tournament
 import com.youcode.kingsleague.tournamentteamsservice.services.TournamentTeamService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
@@ -42,5 +43,11 @@ class TournamentTeamController(private val tournamentTeamService: TournamentTeam
     fun getTournamentTeams(@PathVariable tournamentId: Long): ResponseEntity<List<Team>> {
         val teams: List<Team> = tournamentTeamService.findTournamentTeams(tournamentId)
         return ResponseEntity(teams, HttpStatus.OK)
+    }
+
+    @GetMapping("/tournaments/{teamId}")
+    fun getTeamTournaments(@PathVariable teamId: Long): ResponseEntity<List<Tournament>> {
+        val tournaments: List<Tournament> = tournamentTeamService.findTeamTournaments(teamId)
+        return ResponseEntity(tournaments, HttpStatus.OK)
     }
 }

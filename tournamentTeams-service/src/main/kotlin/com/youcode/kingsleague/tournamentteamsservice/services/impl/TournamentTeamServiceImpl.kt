@@ -41,7 +41,11 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
     }
 
     override fun findTeamTournaments(teamId: Long): List<Tournament> {
-        TODO("Not yet implemented")
+        val tournamentIds: List<Long> = tournamentTeamRepository.findTournamentIdsByTeamId(teamId)
+        val tournaments: List<Tournament> = tournamentIds.map { tournamentId ->
+            tournamentServiceClient.findTournamentById(tournamentId)
+        }
+        return tournaments
     }
 
 }
