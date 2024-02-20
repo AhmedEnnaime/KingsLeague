@@ -25,7 +25,18 @@ class StadiumServiceImpl(private val modelMapper: ModelMapper, private val stadi
     }
 
     override fun update(identifier: Long, dto: StadiumDTO): StadiumDTO {
-        TODO("Not yet implemented")
+        val existingStadium: Stadium = stadiumRepository.findById(identifier)
+            .orElseThrow { ResourceNotFoundException("Stadium with id $identifier not found") }
+        dto.updatedAt = LocalDateTime.now()
+        existingStadium.apply {
+            dto.let {
+                this.name = it.name
+                this.location = it.location
+                this.capacity = it.capacity
+            }
+        }
+        val updatedStadium: Stadium = stadiumRepository.save(existingStadium)
+        return modelMapper.map(updatedStadium, StadiumDTO::class.java)
     }
 
     override fun delete(identifier: Long) {
