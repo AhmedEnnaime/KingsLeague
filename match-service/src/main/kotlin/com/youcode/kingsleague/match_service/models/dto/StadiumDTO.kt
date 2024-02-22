@@ -11,5 +11,5 @@ data class StadiumDTO (
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){
-    constructor() : this(null, "", "", 0.00, emptyList(), null, null)
+    constructor() : this(null, "", "", 0.00, null, null, null)
 }

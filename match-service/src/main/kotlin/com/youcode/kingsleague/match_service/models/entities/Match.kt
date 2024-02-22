@@ -21,7 +21,7 @@ data class Match (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @Temporal(value = TemporalType.TIME) @Future var time: LocalTime,
     @Column(nullable = false) @Enumerated(EnumType.STRING) var status: MatchStatus = MatchStatus.SCHEDULED,
-    @ManyToOne @JoinColumn(name = "stadium_id") val stadium: Stadium,
+    @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "stadium_id") val stadium: Stadium,
     @OneToOne(mappedBy = "match") val result: Result,
     @Column(nullable = false, name = "teamA_id") @NotNull(message = "team A should not be null") var teamAId: Long,
     @Column(nullable = false, name = "teamB_id") @NotNull(message = "team B should not be null") var teamBId: Long,

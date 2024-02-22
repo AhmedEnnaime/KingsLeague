@@ -19,5 +19,5 @@ data class Stadium (
     @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
     @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 ) {
-    @OneToMany(mappedBy = "stadium") var matches: List<Match> = listOf()
+    @OneToMany(mappedBy = "stadium", fetch = FetchType.EAGER) var matches: List<Match>? = listOf()
 }
