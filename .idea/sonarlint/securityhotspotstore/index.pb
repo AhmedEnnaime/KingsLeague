@@ -247,8 +247,6 @@ ematch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositorie
 dmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/RefereeController.kt,b/6/b6d00c68e49d5dd68a0da8641d61508f1af579e4
 Ž
 ^match-service/src/main/kotlin/com/youcode/kingsleague/match_service/MatchServiceApplication.kt,1/4/144a7c0ef24a84161e7d9b0de58f9b79976003f0
-˜
-hmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/impl/MatchRefereeService.kt,6/8/6807683212703807d4c25d99427d7f568a48f4e1
 “
 cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/MatchRefereeService.kt,d/1/d1c5fc8e359847a09bf2d4624ff7421a98b6afb3
 œ
@@ -257,3 +255,7 @@ lmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/im
 \match-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/MatchService.kt,9/4/94cb334978fd5871e0d90d05b73f8cd527e9ae43
 •
 ematch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/impl/MatchServiceImpl.kt,5/a/5aedc0f75c5f564b1bab8616f88975a8d80c5fe5
+“
+cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/dto/RetrievalMatchDTO.kt,d/f/dfaf30a34f48cb64769b741b0353f0c6dfd36241
+˜
+hmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/client/TeamServiceClient.kt,7/6/76d0bb245164a6e576eb7cea19e4b8b0c3760d14
