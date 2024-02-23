@@ -7,6 +7,8 @@ import com.youcode.kingsleague.tournamentservice.models.dto.TournamentDTO
 import com.youcode.kingsleague.tournamentservice.models.entities.Cup
 import com.youcode.kingsleague.tournamentservice.models.entities.League
 import com.youcode.kingsleague.tournamentservice.models.entities.Tournament
+import com.youcode.kingsleague.tournamentservice.repositories.CupRepository
+import com.youcode.kingsleague.tournamentservice.repositories.LeagueRepository
 import com.youcode.kingsleague.tournamentservice.repositories.TournamentRepository
 import com.youcode.kingsleague.tournamentservice.services.TournamentService
 import jakarta.persistence.DiscriminatorValue
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class TournamentServiceImpl(private val tournamentRepository: TournamentRepository, private val modelMapper: ModelMapper): TournamentService {
+class TournamentServiceImpl(private val tournamentRepository: TournamentRepository, private val modelMapper: ModelMapper, private val leagueRepository: LeagueRepository, private  val cupRepository: CupRepository): TournamentService {
     override fun createLeague(leagueDTO: LeagueDTO): LeagueDTO {
         leagueDTO.createdAt = LocalDateTime.now()
         leagueDTO.updatedAt = LocalDateTime.now()
@@ -48,6 +50,20 @@ class TournamentServiceImpl(private val tournamentRepository: TournamentReposito
         val dto = modelMapper.map(tournament, TournamentDTO::class.java)
         dto.tournamentType = tournament.javaClass.getAnnotation(DiscriminatorValue::class.java)?.value // Set the tournamentType
         return dto
+    }
+
+    override fun findLeagueById(id: Long): LeagueDTO {
+        val league: League = leagueRepository.findById(id).orElseThrow {
+            ResourceNotFoundException("League with id $id not found")
+        }
+        return modelMapper.map(league, LeagueDTO::class.java)
+    }
+
+    override fun findCupById(id: Long): CupDTO {
+        val cup: Cup = cupRepository.findById(id).orElseThrow {
+            ResourceNotFoundException("Cup with id $id not found")
+        }
+        return modelMapper.map(cup, CupDTO::class.java)
     }
 
 

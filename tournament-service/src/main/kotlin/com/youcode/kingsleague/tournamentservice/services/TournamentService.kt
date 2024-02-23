@@ -10,6 +10,8 @@ interface TournamentService {
     fun createCup(cupDTO: CupDTO): CupDTO
     fun findAll(): List<TournamentDTO>
     fun findById(id: Long): TournamentDTO
+    fun findLeagueById(id: Long): LeagueDTO
+    fun findCupById(id: Long): CupDTO
     fun update(id: Long, tournamentDTO: TournamentDTO): TournamentDTO
     fun delete(id: Long)
     fun findLeagues(): List<LeagueDTO>
