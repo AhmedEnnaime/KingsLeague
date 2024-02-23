@@ -2,14 +2,16 @@ package com.youcode.kingsleague.matchday_service.models.dto
 
 import com.youcode.kingsleague.matchday_service.models.transients.League
 import com.youcode.kingsleague.matchday_service.models.transients.Match
-import lombok.Builder
 import java.time.LocalDate
+import java.time.LocalDateTime
 
-@Builder
 data class MatchDayDTO (
-    var id: Long,
+    var id: Long?,
     var date: LocalDate,
-    var league: League,
+    var league: League?,
+    var matches: List<Match>?,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
 ) {
-    var matches: List<Match> = listOf()
+    constructor(): this(null, LocalDate.now(), null, null, null, null)
 }
