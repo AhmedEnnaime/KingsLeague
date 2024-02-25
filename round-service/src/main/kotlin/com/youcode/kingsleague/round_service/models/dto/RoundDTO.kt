@@ -2,14 +2,16 @@ package com.youcode.kingsleague.round_service.models.dto
 
 import com.youcode.kingsleague.round_service.models.transients.Cup
 import com.youcode.kingsleague.round_service.models.transients.Match
-import lombok.Builder
 import java.time.LocalDate
+import java.time.LocalDateTime
 
-@Builder
 data class RoundDTO (
-    var id: Long,
+    var id: Long?,
     var date: LocalDate,
-    var cup: Cup
+    var cup: Cup?,
+    val matches: List<Match>?,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
 ) {
-    val matches: List<Match> = listOf()
+    constructor(): this(null, LocalDate.now(), null, null, null, null)
 }

@@ -8,19 +8,23 @@ import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.repositories.MatchRepository
 import com.youcode.kingsleague.match_service.services.MatchService
 import com.youcode.kingsleague.match_service.services.StadiumService
+import com.youcode.kingsleague.match_service.services.client.MatchDayServiceClient
 import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService): MatchService {
+class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService, private val matchDayServiceClient: MatchDayServiceClient): MatchService {
     override fun save(dto: MatchDTO): MatchDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
         teamServiceClient.findTeamById(dto.teamAId)
         teamServiceClient.findTeamById(dto.teamBId)
         stadiumService.findByID(dto.stadiumId)
+        if (dto.matchDayId != null) {
+            matchDayServiceClient.findMatchDayById(dto.matchDayId)
+        }
         val matchEntity: Match = modelMapper.map(dto, Match::class.java)
         val savedMatch: Match = matchRepository.save(matchEntity)
         return modelMapper.map(savedMatch, MatchDTO::class.java)
