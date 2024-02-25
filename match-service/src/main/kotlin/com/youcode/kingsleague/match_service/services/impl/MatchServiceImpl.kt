@@ -9,13 +9,14 @@ import com.youcode.kingsleague.match_service.repositories.MatchRepository
 import com.youcode.kingsleague.match_service.services.MatchService
 import com.youcode.kingsleague.match_service.services.StadiumService
 import com.youcode.kingsleague.match_service.services.client.MatchDayServiceClient
+import com.youcode.kingsleague.match_service.services.client.RoundServiceClient
 import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService, private val matchDayServiceClient: MatchDayServiceClient): MatchService {
+class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService, private val matchDayServiceClient: MatchDayServiceClient, private val roundServiceClient: RoundServiceClient): MatchService {
     override fun save(dto: MatchDTO): MatchDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
@@ -24,6 +25,8 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         stadiumService.findByID(dto.stadiumId)
         if (dto.matchDayId != null) {
             matchDayServiceClient.findMatchDayById(dto.matchDayId)
+        }else if (dto.roundId != null) {
+            roundServiceClient.findRoundById(dto.roundId)
         }
         val matchEntity: Match = modelMapper.map(dto, Match::class.java)
         val savedMatch: Match = matchRepository.save(matchEntity)
