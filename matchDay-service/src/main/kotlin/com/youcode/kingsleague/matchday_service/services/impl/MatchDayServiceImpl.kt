@@ -28,13 +28,12 @@ class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, pr
 
     override fun update(identifier: Long, dto: MatchDayDTO): MatchDayDTO {
         val existingMatchDay: MatchDay = matchDayRepository.findById(identifier)
-            .orElseThrow { ResourceNotFoundException("Stadium with id $identifier not found") }
-        dto.updatedAt = LocalDateTime.now()
+            .orElseThrow { ResourceNotFoundException("MatchDay with id $identifier not found") }
+        leagueServiceClient.findLeagueById(dto.league!!.id)
         existingMatchDay.apply {
-            dto.let {
-                this.date = it.date
-                this.leagueId = it.league!!.id
-            }
+            this.date = dto.date
+            this.leagueId = dto.league!!.id
+            this.updatedAt = LocalDateTime.now()
         }
         val updatedMatchDay: MatchDay = matchDayRepository.save(existingMatchDay)
         return modelMapper.map(updatedMatchDay, MatchDayDTO::class.java)

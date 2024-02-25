@@ -281,3 +281,5 @@ gmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/Match
 pmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/services/client/LeagueServiceClient.kt,8/8/8806e0c20f27e7e3acc5804f5358ece85ee81de7
 ›
 kmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/controllers/MatchDayController.kt,c/8/c8918f83509dcc788f8a471de2deebf3a5cdf99a
+œ
+lmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/client/MatchDayServiceClient.kt,7/6/76dc07b349b39bb58a3d1994c28cd7a56794f314
