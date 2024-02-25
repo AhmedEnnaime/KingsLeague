@@ -41,13 +41,13 @@ class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, pr
 
     override fun delete(identifier: Long) {
         if (!matchDayRepository.existsById(identifier))
-            throw ResourceNotFoundException("Stadium with id $identifier not found")
+            throw ResourceNotFoundException("MatchDay with id $identifier not found")
         matchDayRepository.deleteById(identifier)
     }
 
     override fun findByID(identifier: Long): MatchDayDTO? {
         val matchDay: MatchDay = matchDayRepository.findById(identifier).orElseThrow {
-            ResourceNotFoundException("Stadium with id $identifier not found")
+            ResourceNotFoundException("MatchDay with id $identifier not found")
         }
         return modelMapper.map(matchDay, MatchDayDTO::class.java)
     }
