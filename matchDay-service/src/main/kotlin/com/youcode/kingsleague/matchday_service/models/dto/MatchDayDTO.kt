@@ -9,9 +9,10 @@ data class MatchDayDTO (
     var id: Long?,
     var date: LocalDate,
     var league: League?,
+    var leagueId: Long,
     var matches: List<Match>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor(): this(null, LocalDate.now(), null, null, null, null)
+    constructor(): this(null, LocalDate.now(), null, 0, null, null, null)
 }
