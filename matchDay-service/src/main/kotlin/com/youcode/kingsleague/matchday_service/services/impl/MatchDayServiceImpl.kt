@@ -1,5 +1,6 @@
 package com.youcode.kingsleague.matchday_service.services.impl
 
+import com.youcode.kingsleague.common.exceptions.MatchDayAlreadyExistsException
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.matchday_service.models.dto.MatchDayDTO
 import com.youcode.kingsleague.matchday_service.models.entities.MatchDay
@@ -18,6 +19,9 @@ class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, pr
         dto.updatedAt = LocalDateTime.now()
         val league: League = leagueServiceClient.findLeagueById(dto.tournamentId)
         dto.league = league
+        if (matchDayRepository.findByDateAndTournamentId(dto.date, dto.tournamentId).isPresent) {
+            throw MatchDayAlreadyExistsException("MatchDay already exists in this tournament")
+        }
         val matchDayEntity: MatchDay = modelMapper.map(dto, MatchDay::class.java)
         val savedMatchDay: MatchDay = matchDayRepository.save(matchDayEntity)
         return modelMapper.map(savedMatchDay, MatchDayDTO::class.java)
@@ -37,6 +41,9 @@ class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, pr
         val existingMatchDay: MatchDay = matchDayRepository.findById(identifier)
             .orElseThrow { ResourceNotFoundException("MatchDay with id $identifier not found") }
         leagueServiceClient.findLeagueById(dto.tournamentId)
+        if (matchDayRepository.findByDateAndTournamentId(dto.date, dto.tournamentId).isPresent) {
+            throw MatchDayAlreadyExistsException("MatchDay already exists in this tournament")
+        }
         existingMatchDay.apply {
             this.date = dto.date
             this.tournamentId = dto.tournamentId

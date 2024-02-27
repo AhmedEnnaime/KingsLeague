@@ -1,8 +1,8 @@
 package com.youcode.kingsleague.common.config
 
+import com.youcode.kingsleague.common.exceptions.MatchDayAlreadyExistsException
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.common.models.ErrorMessage
-import com.youcode.kingsleague.matchday_service.exceptions.MatchDayAlreadyExistsException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice

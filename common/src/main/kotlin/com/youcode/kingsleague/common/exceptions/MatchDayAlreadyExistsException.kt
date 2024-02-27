@@ -1,4 +1,4 @@
-package com.youcode.kingsleague.matchday_service.exceptions
+package com.youcode.kingsleague.common.exceptions
 
 class MatchDayAlreadyExistsException(message: String): RuntimeException(message) {
 }
