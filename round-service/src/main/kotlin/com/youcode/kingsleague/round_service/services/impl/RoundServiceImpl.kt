@@ -1,6 +1,7 @@
 package com.youcode.kingsleague.round_service.services.impl
 
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
+import com.youcode.kingsleague.common.exceptions.RoundAlreadyExistsException
 import com.youcode.kingsleague.round_service.models.dto.RoundDTO
 import com.youcode.kingsleague.round_service.models.entities.Round
 import com.youcode.kingsleague.round_service.models.transients.Cup
@@ -18,6 +19,9 @@ class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRe
         dto.updatedAt = LocalDateTime.now()
         val cup: Cup = cupServiceClient.findCupById(dto.tournamentId)
         dto.cup = cup
+        if (roundRepository.findByDateAndTournamentId(dto.date, dto.tournamentId).isPresent) {
+            throw RoundAlreadyExistsException("Round already exists in this cup")
+        }
         val roundEntity: Round = modelMapper.map(dto, Round::class.java)
         val savedRound: Round = roundRepository.save(roundEntity)
         return modelMapper.map(savedRound, RoundDTO::class.java)
@@ -36,7 +40,10 @@ class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRe
     override fun update(identifier: Long, dto: RoundDTO): RoundDTO {
         val existingRound: Round = roundRepository.findById(identifier)
             .orElseThrow { ResourceNotFoundException("Round with id $identifier not found") }
-        cupServiceClient.findCupById(dto.cup!!.id)
+        cupServiceClient.findCupById(dto.tournamentId)
+        if (roundRepository.findByDateAndTournamentId(dto.date, dto.tournamentId).isPresent) {
+            throw RoundAlreadyExistsException("Round already exists in this cup")
+        }
         existingRound.apply {
             dto.let {
                 this.date = it.date

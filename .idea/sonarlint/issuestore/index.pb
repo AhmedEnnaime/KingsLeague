@@ -307,3 +307,5 @@ imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/cl
 vmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/exceptions/MatchDayAlreadyExistsException.kt,c/9/c9be9d13baa962e71ae1d9b52f8114aa257baaab
 í
 bcommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/MatchDayAlreadyExistsException.kt,0/3/030a8f09049dfee4656180e4213a160050b0bee5
+è
+_common/src/main/kotlin/com/youcode/kingsleague/common/exceptions/RoundAlreadyExistsException.kt,4/4/440ff5d5aaf739ca2ed29700f432e91db0180712
