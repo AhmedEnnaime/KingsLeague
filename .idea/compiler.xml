@@ -19,6 +19,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common" target="17" />
+      <module name="common.main" target="17" />
+      <module name="common.test" target="17" />
       <module name="common_service" target="17" />
       <module name="common_service.main" target="17" />
       <module name="common_service.test" target="17" />

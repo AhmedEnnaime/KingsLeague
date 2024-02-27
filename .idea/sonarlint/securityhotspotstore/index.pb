@@ -303,3 +303,5 @@ ground-service/src/main/kotlin/com/youcode/kingsleague/round_service/services/cl
 bround-service/src/main/kotlin/com/youcode/kingsleague/round_service/controllers/RoundController.kt,7/6/761c3ec47e8db10ebf9435b97db3ae997072a35f
 ™
 imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/client/RoundServiceClient.kt,f/7/f767b7fbb6f1ba5529d083f392dcb8d093124fb7
+¦
+vmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/exceptions/MatchDayAlreadyExistsException.kt,c/9/c9be9d13baa962e71ae1d9b52f8114aa257baaab

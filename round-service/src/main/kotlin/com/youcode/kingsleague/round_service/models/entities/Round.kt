@@ -5,7 +5,6 @@ import com.youcode.kingsleague.round_service.models.transients.Match
 import jakarta.persistence.*
 import jakarta.validation.constraints.Future
 import jakarta.validation.constraints.NotNull
-import lombok.Builder
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDate
@@ -13,7 +12,6 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "rounds")
-@Builder
 data class Round (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @Temporal(value = TemporalType.DATE) @Future var date: LocalDate,
