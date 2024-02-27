@@ -3,7 +3,9 @@ package com.youcode.kingsleague.match_service.services.impl
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.match_service.models.dto.MatchDTO
 import com.youcode.kingsleague.match_service.models.dto.RetrievalMatchDTO
+import com.youcode.kingsleague.match_service.models.dto.StadiumDTO
 import com.youcode.kingsleague.match_service.models.entities.Match
+import com.youcode.kingsleague.match_service.models.transients.MatchDay
 import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.repositories.MatchRepository
 import com.youcode.kingsleague.match_service.services.MatchService
@@ -35,7 +37,18 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
 
     override fun findAll(): List<RetrievalMatchDTO?>? {
         val matches: List<Match> = matchRepository.findAll()
-        return matches.map { match -> modelMapper.map(match, RetrievalMatchDTO::class.java) }
+        return matches.map { match ->
+            val teamA: Team = teamServiceClient.findTeamById(match.teamAId)
+            val teamB: Team = teamServiceClient.findTeamById(match.teamBId)
+            val matchDay: MatchDay? = match.matchDayId?.let { matchDayServiceClient.findMatchDayById(it) }
+//            val stadium: StadiumDTO = stadiumService.findByID(match.stadium.id)
+
+            val matchDTO: RetrievalMatchDTO = modelMapper.map(match, RetrievalMatchDTO::class.java)
+            matchDTO.matchDay = matchDay
+            matchDTO.teamA = teamA
+            matchDTO.teamB = teamB
+            matchDTO
+        }
     }
 
     override fun update(identifier: Long, dto: MatchDTO): MatchDTO {
@@ -68,6 +81,15 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         val match: Match = matchRepository.findById(identifier).orElseThrow {
             ResourceNotFoundException("Referee with id $identifier not found")
         }
-        return modelMapper.map(match, RetrievalMatchDTO::class.java)
+        val matchDTO: RetrievalMatchDTO = modelMapper.map(match, RetrievalMatchDTO::class.java)
+        matchDTO.teamA = teamServiceClient.findTeamById(match.teamAId)
+        matchDTO.teamB = teamServiceClient.findTeamById(match.teamBId)
+        if (matchDTO.matchDay !=null) {
+            matchDTO.matchDay = match.matchDayId?.let { matchDayServiceClient.findMatchDayById(it) }
+        }else {
+            matchDTO.round = match.roundId?.let { roundServiceClient.findRoundById(it) }
+        }
+//        matchDTO.stadium = stadiumService.findByID(match.s)
+        return matchDTO
     }
 }

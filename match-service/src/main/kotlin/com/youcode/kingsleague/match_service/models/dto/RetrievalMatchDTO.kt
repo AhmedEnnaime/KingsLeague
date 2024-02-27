@@ -15,10 +15,10 @@ class RetrievalMatchDTO(
     var matchType: MatchType,
     val stadium: StadiumDTO?,
     val result: ResultDTO?,
-    val teamA: Team?,
-    val teamB: Team?,
-    val matchDay: MatchDay?,
-    val round: Round?,
+    var teamA: Team?,
+    var teamB: Team?,
+    var matchDay: MatchDay?,
+    var round: Round?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {

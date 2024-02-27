@@ -1,0 +1,6 @@
+
+[kotlin:S6619"7Remove this useless non-null check, it always succeeds.(éöµ£ùÿÿÿÿ8¥‰×ØŞ1
+[kotlin:S6619X"<Remove this useless null-safe access ?., it always succeeds.(Á¸ƒõ8âîØŞ1
+`kotlin:S6619+"<Remove this useless null-safe access ?., it always succeeds.(œÉ“úÿÿÿÿ8¹ñƒÙŞ1
+=kotlin:S125,"Remove this commented out code.(±¿³á8§‰×ØŞ1
+>kotlin:S1128"Remove this unused import.(Åÿğÿÿÿÿÿ8¬‰×ØŞ1
