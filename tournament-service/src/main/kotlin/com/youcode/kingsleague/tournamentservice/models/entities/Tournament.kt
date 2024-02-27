@@ -19,6 +19,7 @@ open class Tournament(
     @Temporal(TemporalType.DATE) @Future @NotNull(message = "debut date can't be null") open var debutDate: LocalDate,
     @Temporal(TemporalType.DATE) @Future @NotNull(message = "end date can't be null") open var endDate: LocalDate,
     @NotNull(message = "location can't be null") open var location: String,
+    @NotNull(message = "maximum number of teams should not be null") open var teamsNum: Int,
     @Column(nullable = true) open var organizerId: Long,
     @Transient open val organizer: Organizer,
     @CreationTimestamp @Column(nullable = true, name = "created_at") open var createdAt: LocalDateTime?,

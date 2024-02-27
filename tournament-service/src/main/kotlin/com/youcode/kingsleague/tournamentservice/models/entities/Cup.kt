@@ -16,10 +16,11 @@ class Cup (
     debutDate: LocalDate,
     endDate: LocalDate,
     location: String,
+    teamsNum: Int,
     organizerId: Long,
     organizer: Organizer,
     createdAt: LocalDateTime,
     updatedAt: LocalDateTime
-): Tournament(id, name, debutDate, endDate, location, organizerId, organizer, createdAt, updatedAt) {
+): Tournament(id, name, debutDate, endDate, location, teamsNum, organizerId, organizer, createdAt, updatedAt) {
     @Transient val rounds: List<Round> = listOf()
 }
