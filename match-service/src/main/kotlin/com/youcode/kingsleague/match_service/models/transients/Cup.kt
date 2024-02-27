@@ -11,6 +11,7 @@ data class Cup (
     var debutDate: LocalDate,
     var endDate: LocalDate,
     var location: String,
+    var teamsNum: Int,
     var createdAt: LocalDateTime,
     var updatedAt: LocalDateTime,
 )

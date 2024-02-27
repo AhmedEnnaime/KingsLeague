@@ -309,3 +309,11 @@ bcommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/MatchDayAlread
 _common/src/main/kotlin/com/youcode/kingsleague/common/exceptions/RoundAlreadyExistsException.kt,4/4/440ff5d5aaf739ca2ed29700f432e91db0180712
 í
 bmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/MatchController.kt,8/0/8014ed396a35a77926c5f38e1cd11b26e7140c62
+å
+\round-service/src/main/kotlin/com/youcode/kingsleague/round_service/models/transients/Cup.kt,a/9/a9260847e397b131ccf54b21d8017aee6a4efe50
+è
+_match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/League.kt,5/1/51c75d62bad1f9b55930ad11e0c37aaa18a942db
+ë
+amatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/MatchDay.kt,3/1/313386ad3ebc81dafb2e1d6e218b410c4eaffc06
+å
+\match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Cup.kt,d/1/d10114501e787c50328c8e18d2cf8fe3ce53826b
