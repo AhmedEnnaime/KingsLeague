@@ -17,7 +17,7 @@ import java.time.LocalDateTime
 data class Round (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @Temporal(value = TemporalType.DATE) @Future var date: LocalDate,
-    @Column(nullable = false) @NotNull(message = "cup should not be null") var cupId: Long,
+    @Column(nullable = false) @NotNull(message = "cup id should not be null") var tournamentId: Long,
     @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
     @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
     @Transient val match: Match,

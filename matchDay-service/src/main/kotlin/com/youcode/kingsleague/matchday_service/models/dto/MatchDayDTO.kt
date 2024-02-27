@@ -9,7 +9,7 @@ data class MatchDayDTO (
     var id: Long?,
     var date: LocalDate,
     var league: League?,
-    var leagueId: Long,
+    var tournamentId: Long,
     var matches: List<Match>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?

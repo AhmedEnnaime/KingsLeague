@@ -9,9 +9,10 @@ data class RoundDTO (
     var id: Long?,
     var date: LocalDate,
     var cup: Cup?,
+    var tournamentId: Long,
     val matches: List<Match>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor(): this(null, LocalDate.now(), null, null, null, null)
+    constructor(): this(null, LocalDate.now(), null, 0, null, null, null)
 }

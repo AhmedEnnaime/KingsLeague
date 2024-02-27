@@ -15,7 +15,7 @@ class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRe
     override fun save(dto: RoundDTO): RoundDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
-        cupServiceClient.findCupById(dto.cup!!.id)
+        cupServiceClient.findCupById(dto.tournamentId)
         val roundEntity: Round = modelMapper.map(dto, Round::class.java)
         val savedRound: Round = roundRepository.save(roundEntity)
         return modelMapper.map(savedRound, RoundDTO::class.java)
@@ -33,7 +33,7 @@ class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRe
         existingRound.apply {
             dto.let {
                 this.date = it.date
-                this.cupId = it.cup!!.id
+                this.tournamentId = it.tournamentId
                 this.updatedAt = LocalDateTime.now()
             }
         }
