@@ -319,3 +319,7 @@ amatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/tran
 \match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Cup.kt,d/1/d10114501e787c50328c8e18d2cf8fe3ce53826b
 ô
 imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/MatchRefereeController.kt,c/f/cf2ae78be9a59133b9e2a5a83368affe519044cd
+ë
+acommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/RefereeAlreadyAssignedInMatch.kt,6/1/61d205ba874e8bed4318b4ea6a5694eac1761d2e
+è
+_match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/RefereeRole.kt,3/2/32694a1f66f5f5ee87e51ad0829d13830ae88d91

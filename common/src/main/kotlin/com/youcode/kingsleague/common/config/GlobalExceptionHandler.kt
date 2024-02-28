@@ -1,6 +1,7 @@
 package com.youcode.kingsleague.common.config
 
 import com.youcode.kingsleague.common.exceptions.MatchDayAlreadyExistsException
+import com.youcode.kingsleague.common.exceptions.RefereeAlreadyAssignedInMatch
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.common.models.ErrorMessage
 import org.springframework.http.HttpStatus
@@ -37,6 +38,17 @@ class GlobalExceptionHandler {
     @ExceptionHandler(MatchDayAlreadyExistsException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleMatchDayAlreadyExistsExistsException(ex: MatchDayAlreadyExistsException): ResponseEntity<ErrorMessage>
+    {
+        val errorMessage = ErrorMessage(
+            HttpStatus.BAD_REQUEST.value(),
+            ex.message
+        )
+        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(RefereeAlreadyAssignedInMatch::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleRefereeAlreadyAssignedException(ex: RefereeAlreadyAssignedInMatch): ResponseEntity<ErrorMessage>
     {
         val errorMessage = ErrorMessage(
             HttpStatus.BAD_REQUEST.value(),
