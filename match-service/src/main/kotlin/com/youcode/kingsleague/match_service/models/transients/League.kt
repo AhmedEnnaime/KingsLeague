@@ -1,10 +1,8 @@
 package com.youcode.kingsleague.match_service.models.transients
 
-import lombok.Builder
 import java.time.LocalDate
 import java.time.LocalDateTime
 
-@Builder
 data class League (
     var id: Long,
     var name: String,

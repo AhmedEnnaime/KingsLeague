@@ -77,6 +77,7 @@ class TournamentServiceImpl(private val tournamentRepository: TournamentReposito
                 this.location = it.location
                 this.debutDate = it.debutDate
                 this.endDate = it.endDate
+                this.teamsNum = it.teamsNum
             }
         }
         val updatedTournament: Tournament = tournamentRepository.save(existingTournament)
