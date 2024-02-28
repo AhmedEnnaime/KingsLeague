@@ -323,3 +323,5 @@ imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers
 acommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/RefereeAlreadyAssignedInMatch.kt,6/1/61d205ba874e8bed4318b4ea6a5694eac1761d2e
 è
 _match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/RefereeRole.kt,3/2/32694a1f66f5f5ee87e51ad0829d13830ae88d91
+ö
+jmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRefereeRepository.kt,a/e/aeb270e2c7e9bcf3557de68f5643af77fc1c4a08

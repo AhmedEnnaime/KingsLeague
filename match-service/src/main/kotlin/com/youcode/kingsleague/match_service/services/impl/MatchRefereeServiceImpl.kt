@@ -1,6 +1,7 @@
 package com.youcode.kingsleague.match_service.services.impl
 
 import com.youcode.kingsleague.common.exceptions.RefereeAlreadyAssignedInMatch
+import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.match_service.models.dto.MatchDTO
 import com.youcode.kingsleague.match_service.models.dto.MatchRefereeDTO
 import com.youcode.kingsleague.match_service.models.dto.RefereeDTO
@@ -32,11 +33,19 @@ class MatchRefereeServiceImpl(private val matchRefereeRepository: MatchRefereeRe
     }
 
     override fun findMatchReferees(matchId: Long): List<RefereeDTO> {
-        TODO("Not yet implemented")
+        if (matchService.findByID(matchId) == null) {
+            throw ResourceNotFoundException("Match with id $matchId not found")
+        }
+        val matchReferees = matchRefereeRepository.findByMatchId(matchId)
+        return matchReferees.map { modelMapper.map(it.referee, RefereeDTO::class.java) }
     }
 
     override fun findRefereeMatches(refereeId: Long): List<MatchDTO> {
-        TODO("Not yet implemented")
+        if (refereeService.findByID(refereeId) == null) {
+            throw ResourceNotFoundException("Referee with id $refereeId not found")
+        }
+        val matchReferees = matchRefereeRepository.findByRefereeId(refereeId)
+        return matchReferees.map { modelMapper.map(it.match, MatchDTO::class.java) }
     }
 
 }

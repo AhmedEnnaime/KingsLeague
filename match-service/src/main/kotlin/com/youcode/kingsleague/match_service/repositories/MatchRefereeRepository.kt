@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface MatchRefereeRepository: JpaRepository<MatchReferee, MatchRefereeKey> {
+    fun findByMatchId(matchId: Long): List<MatchReferee>
+    fun findByRefereeId(refereeId: Long): List<MatchReferee>
 }
