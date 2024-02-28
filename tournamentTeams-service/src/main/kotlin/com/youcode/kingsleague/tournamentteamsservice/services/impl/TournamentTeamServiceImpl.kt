@@ -1,6 +1,7 @@
 package com.youcode.kingsleague.tournamentteamsservice.services.impl
 
 import com.youcode.kingsleague.common.exceptions.MaxTeamsReachedException
+import com.youcode.kingsleague.common.exceptions.RegistrationTimeExpiredException
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.tournamentteamsservice.models.dto.TournamentTeamDTO
 import com.youcode.kingsleague.tournamentteamsservice.models.embeddables.TournamentTeamKey
@@ -13,6 +14,7 @@ import com.youcode.kingsleague.tournamentteamsservice.services.client.TeamServic
 import com.youcode.kingsleague.tournamentteamsservice.services.client.TournamentServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service
@@ -23,6 +25,9 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeamDTO.tournament?.id!!)
         val team: Team = teamServiceClient.findTeamById(tournamentTeamDTO.team?.id!!)
         tournamentTeamDTO.id = TournamentTeamKey(teamId = team.id!!, tournamentId = tournament.id!!)
+        if (tournament.debutDate >= LocalDate.now()) {
+            throw RegistrationTimeExpiredException("Registration date of this tournament has expired in this date ${tournament.debutDate}")
+        }
         if (tournament.teamsNum <= tournamentTeamRepository.findTeamIdsByTournamentId(tournament.id!!).size) {
             throw MaxTeamsReachedException("This tournament is already full and cannot surpass this number of registered teams: ${tournament.teamsNum}")
         }
