@@ -13,10 +13,13 @@ import com.youcode.kingsleague.tournamentteamsservice.services.client.TeamServic
 import com.youcode.kingsleague.tournamentteamsservice.services.client.TournamentServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class TournamentTeamServiceImpl(private val tournamentTeamRepository: TournamentTeamRepository, private val tournamentServiceClient: TournamentServiceClient, private val teamServiceClient: TeamServiceClient, private val modelMapper: ModelMapper): TournamentTeamService {
     override fun registerTeamInTournament(tournamentTeamDTO: TournamentTeamDTO): TournamentTeamDTO {
+        tournamentTeamDTO.createdAt = LocalDateTime.now()
+        tournamentTeamDTO.updatedAt = LocalDateTime.now()
         val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeamDTO.tournament?.id!!)
         val team: Team = teamServiceClient.findTeamById(tournamentTeamDTO.team?.id!!)
         tournamentTeamDTO.id = TournamentTeamKey(teamId = team.id!!, tournamentId = tournament.id!!)

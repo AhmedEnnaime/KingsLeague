@@ -3,15 +3,17 @@ package com.youcode.kingsleague.tournamentteamsservice.models.entities
 import com.youcode.kingsleague.tournamentteamsservice.models.embeddables.TournamentTeamKey
 import com.youcode.kingsleague.tournamentteamsservice.models.transients.Team
 import com.youcode.kingsleague.tournamentteamsservice.models.transients.Tournament
-import jakarta.persistence.EmbeddedId
-import jakarta.persistence.Entity
-import jakarta.persistence.Table
-import jakarta.persistence.Transient
+import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
+import org.hibernate.annotations.UpdateTimestamp
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "tournament_teams")
 data class TournamentTeam (
     @EmbeddedId var id: TournamentTeamKey?,
     @Transient val team: Team?,
-    @Transient val tournament: Tournament?
+    @Transient val tournament: Tournament?,
+    @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
+    @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 )
