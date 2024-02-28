@@ -9,9 +9,10 @@ data class Tournament (
     var debutDate: LocalDate,
     var endDate: LocalDate,
     var location: String,
+    var teamsNum: Int,
     var tournamentType: String?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "", "", null, null)
+    constructor() : this(null, "", LocalDate.now(), LocalDate.now(), "", 0, "", null, null)
 }
