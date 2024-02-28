@@ -329,3 +329,5 @@ jmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositorie
 Scommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/MaxTeamsReached.kt,6/3/634099b2baf6dd0d657b02d5d1e612bca64f20d6
 Œ
 \common/src/main/kotlin/com/youcode/kingsleague/common/exceptions/MaxTeamsReachedException.kt,9/6/96521bf302404cb721f3e855952ad96d14713789
+”
+dcommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/RegistrationTimeExpiredException.kt,c/b/cbd2699d80d1a56308efebd96f3c90e73be93cda

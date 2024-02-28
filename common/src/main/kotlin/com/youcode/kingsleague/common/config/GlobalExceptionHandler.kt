@@ -1,9 +1,6 @@
 package com.youcode.kingsleague.common.config
 
-import com.youcode.kingsleague.common.exceptions.MatchDayAlreadyExistsException
-import com.youcode.kingsleague.common.exceptions.MaxTeamsReachedException
-import com.youcode.kingsleague.common.exceptions.RefereeAlreadyAssignedInMatch
-import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
+import com.youcode.kingsleague.common.exceptions.*
 import com.youcode.kingsleague.common.models.ErrorMessage
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -61,6 +58,17 @@ class GlobalExceptionHandler {
     @ExceptionHandler(MaxTeamsReachedException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleMaxTeamsReachedException(ex: MaxTeamsReachedException): ResponseEntity<ErrorMessage>
+    {
+        val errorMessage = ErrorMessage(
+            HttpStatus.BAD_REQUEST.value(),
+            ex.message
+        )
+        return ResponseEntity(errorMessage, HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(RegistrationTimeExpiredException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleRegistrationTimeExpiredException(ex: RegistrationTimeExpiredException): ResponseEntity<ErrorMessage>
     {
         val errorMessage = ErrorMessage(
             HttpStatus.BAD_REQUEST.value(),
