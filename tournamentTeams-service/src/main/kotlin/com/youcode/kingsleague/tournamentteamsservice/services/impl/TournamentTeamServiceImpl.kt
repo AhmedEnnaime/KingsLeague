@@ -25,12 +25,14 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeamDTO.tournament?.id!!)
         val team: Team = teamServiceClient.findTeamById(tournamentTeamDTO.team?.id!!)
         tournamentTeamDTO.id = TournamentTeamKey(teamId = team.id!!, tournamentId = tournament.id!!)
-        if (tournament.debutDate >= LocalDate.now()) {
+        if (tournament.debutDate <= LocalDate.now()) {
             throw RegistrationTimeExpiredException("Registration date of this tournament has expired in this date ${tournament.debutDate}")
         }
         if (tournament.teamsNum <= tournamentTeamRepository.findTeamIdsByTournamentId(tournament.id!!).size) {
             throw MaxTeamsReachedException("This tournament is already full and cannot surpass this number of registered teams: ${tournament.teamsNum}")
         }
+        tournamentTeamDTO.team = team
+        tournamentTeamDTO.tournament = tournament
         val tournamentTeamEntity: TournamentTeam = modelMapper.map(tournamentTeamDTO, TournamentTeam::class.java)
         val savedTournamentTeam: TournamentTeam = tournamentTeamRepository.save(tournamentTeamEntity)
         return modelMapper.map(savedTournamentTeam, TournamentTeamDTO::class.java)
