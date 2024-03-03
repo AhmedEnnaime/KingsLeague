@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  tournament-service:
+    container_name: tournament-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://psql-db:5432/tournament_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    networks:
+      - kingsLeague
+    depends_on:
+      - tournament_db
+  tournament_db:
+    container_name: tournament_db
+    image: "postgres:15"
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "tournament_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    networks:
+      - kingsLeague
+
+networks:
+  kingsLeague:
+    name: kingsLeague
+    driver: bridge
+
+volumes:
+  postgres-db:
+    driver: local
