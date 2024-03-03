@@ -26,7 +26,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "admin"
     volumes:
-      - postgres-db:/var/lib/postgresql/data
+      - tournament-db:/var/lib/postgresql/data
     networks:
       - kingsLeague
 
@@ -36,5 +36,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres-db:
+  tournament-db:
     driver: local

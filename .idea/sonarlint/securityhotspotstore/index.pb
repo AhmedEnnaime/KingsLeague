@@ -333,3 +333,7 @@ M
 tournament-service/Dockerfile,3/0/309fb52bfbe277f0d7be3607f9e70bf23609c7e1
 U
 %tournament-service/docker-compose.yml,0/e/0e6c58b64ec85e3f9e9cb053f5d752b1f0fc00b9
+O
+tournament-service/dockerignore,a/e/ae48645be6ce0a6a1004ed216ff7ea6d8e56bff6
+P
+ tournament-service/.dockerignore,1/8/18ee0f2fd92f1cb59fedd17f71f073d24a7cbc5f
