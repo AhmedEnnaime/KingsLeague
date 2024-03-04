@@ -347,3 +347,7 @@ H
 eureka_server/Dockerfile,6/b/6b802871610cadd6dad777310b149ca8d8f69faa
 P
  eureka_server/docker-compose.yml,0/9/096ad6ba90ec001b792d3ee6612bbd28d7f7f443
+J
+gateway_service/Dockerfile,2/4/240738024810220ce360def1f3d33532a5fa6b40
+R
+"gateway_service/docker-compose.yml,d/6/d61aafb7183a6474118df684cc2c86e5110f9d39

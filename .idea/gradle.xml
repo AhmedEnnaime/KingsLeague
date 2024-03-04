@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/config_service" />
             <option value="$PROJECT_DIR$/eureka_server" />
+            <option value="$PROJECT_DIR$/gateway_service" />
             <option value="$PROJECT_DIR$/match-service" />
             <option value="$PROJECT_DIR$/matchDay-service" />
             <option value="$PROJECT_DIR$/matchStats-service" />

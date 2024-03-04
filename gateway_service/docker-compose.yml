@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  gateway_service:
+    container_name: gateway_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9999:9999"
+    networks:
+      - kingsLeague
+
+networks:
+  kingsLeague:
+    name: kingsLeague
+    driver: bridge
