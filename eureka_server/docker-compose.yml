@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  eureka_server:
+    container_name: eureka_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    networks:
+      - kingsLeague
+
+networks:
+  kingsLeague:
+    name: kingsLeague
+    driver: bridge

@@ -343,3 +343,7 @@ Q
 !config_service/docker-compose.yml,a/6/a6a546d42d07fe849a8a820ff94650c7cf4aa42c
 R
 "config_service/settings.gradle.kts,7/f/7f27cac56da9aef40252e46b36f9e2a37abd614c
+H
+eureka_server/Dockerfile,6/b/6b802871610cadd6dad777310b149ca8d8f69faa
+P
+ eureka_server/docker-compose.yml,0/9/096ad6ba90ec001b792d3ee6612bbd28d7f7f443
