@@ -7,10 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8761:8761"
-    networks:
-      - kingsLeague
+#    networks:
+#      - kingsLeague
 
 networks:
-  kingsLeague:
-    name: kingsLeague
-    driver: bridge
+  default:
+    external:
+      name: kingsLeague
