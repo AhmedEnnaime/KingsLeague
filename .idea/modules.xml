@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kings_League.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kings_League.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kings_League.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kings_League.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Kings_League.app.test.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Kings_League.app.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.iml" filepath="$PROJECT_DIR$/.idea/modules/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/common.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/commun_service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/commun_service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/commun_service.test.iml" filepath="$PROJECT_DIR$/.idea/modules/commun_service.test.iml" />
     </modules>

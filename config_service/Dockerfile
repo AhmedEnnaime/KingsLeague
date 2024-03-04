@@ -5,5 +5,5 @@ RUN java -Djarmode=layertools -jar app.jar extract
 FROM eclipse-temurin:17.0.5_8-jre-focal
 WORKDIR application
 COPY --from=builder /extracted/app.jar .
-EXPOSE 8082
+EXPOSE 8888
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
