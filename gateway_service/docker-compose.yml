@@ -7,10 +7,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9999:9999"
-#    networks:
-#      - kingsLeague
+    networks:
+      - kingsLeague
 
 networks:
-  default:
-    external:
-      name: kingsLeague
+  kingsLeague:
+    external: true

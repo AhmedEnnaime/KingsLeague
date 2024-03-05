@@ -7,10 +7,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8761:8761"
-#    networks:
-#      - kingsLeague
+    networks:
+      - kingsLeague
 
 networks:
-  default:
-    external:
-      name: kingsLeague
+  kingsLeague:
+    external: true

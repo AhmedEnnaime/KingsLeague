@@ -8,15 +8,16 @@ services:
     ports:
       - "8082:8082"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://psql-db:5432/tournament_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://tournament-db:5432/tournament_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - tournament-db
     networks:
       - kingsLeague
-    depends_on:
-      - tournament_db
-  tournament_db:
-    container_name: tournament_db
+
+  tournament-db:
+    container_name: tournament-db
     image: "postgres:15"
     restart: always
     ports:
@@ -32,8 +33,7 @@ services:
 
 networks:
   kingsLeague:
-    name: kingsLeague
-    driver: bridge
+    external: true
 
 volumes:
   tournament-db:

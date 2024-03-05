@@ -335,8 +335,6 @@ U
 %tournament-service/docker-compose.yml,0/e/0e6c58b64ec85e3f9e9cb053f5d752b1f0fc00b9
 P
  tournament-service/.dockerignore,1/8/18ee0f2fd92f1cb59fedd17f71f073d24a7cbc5f
-K
-tournament-service/test.txt,8/f/8f20ca1812bace2d851cfb6f18c964d514fb8593
 I
 config_service/Dockerfile,9/c/9cc22af770953d1b66523998334e44912b12a50b
 Q
