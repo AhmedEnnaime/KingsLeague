@@ -349,3 +349,7 @@ J
 gateway_service/Dockerfile,2/4/240738024810220ce360def1f3d33532a5fa6b40
 R
 "gateway_service/docker-compose.yml,d/6/d61aafb7183a6474118df684cc2c86e5110f9d39
+G
+team-service/Dockerfile,2/9/291927b020f116e86660d4d7acbe44bd039cde83
+O
+team-service/docker-compose.yml,2/5/256714edde86240dfde94554103221561dc84ab2
