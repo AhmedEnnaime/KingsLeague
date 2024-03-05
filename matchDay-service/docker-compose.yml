@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  matchday-service:
+    container_name: matchday-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8086:8086"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://matchday-db:5432/matchday_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - matchday-db
+    networks:
+      - kingsLeague
+
+  matchday-db:
+    container_name: matchday-db
+    image: "postgres:15"
+    restart: always
+    ports:
+      - "5435:5435"
+    environment:
+      POSTGRES_DB: "matchday_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - matchday-db:/var/lib/postgresql/data
+    networks:
+      - kingsLeague
+
+networks:
+  kingsLeague:
+    external: true
+
+volumes:
+  matchday-db:
+    driver: local

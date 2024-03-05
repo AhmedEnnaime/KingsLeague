@@ -2,25 +2,23 @@ spring:
   application:
     name: matchDay-service
   datasource:
-    url: "jdbc:postgresql://localhost:5432/matchday_db"
-    username: "postgres"
-    password: "3ea14367A4"
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
-  graphql:
-    graphiql:
-      enabled: true
 
 server:
   port: 8086
 eureka:
   client:
+    enabled: true
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URI:http://host.docker.internal:8761/eureka}
   instance:
     preferIpAddress: true
 
