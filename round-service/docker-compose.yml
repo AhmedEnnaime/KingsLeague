@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  round-service:
+    container_name: round-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://round-db:5432/round_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - round-db
+    networks:
+      - kingsLeague
+
+  round-db:
+    container_name: round-db
+    image: "postgres:15"
+    restart: always
+    ports:
+      - "5436:5436"
+    environment:
+      POSTGRES_DB: "round_db"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "admin"
+    volumes:
+      - round-db:/var/lib/postgresql/data
+    networks:
+      - kingsLeague
+
+networks:
+  kingsLeague:
+    external: true
+
+volumes:
+  round-db:
+    driver: local
