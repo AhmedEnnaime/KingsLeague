@@ -7,9 +7,10 @@ data class ResultDTO (
     var id: Long?,
     var score: String,
     val winner: Team?,
+    var teamId: Long?,
     val match: MatchDTO?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){
-    constructor() : this(null, "", null, null, null, null)
+    constructor() : this(null, "", null, null, null, null, null)
 }

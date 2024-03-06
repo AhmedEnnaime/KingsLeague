@@ -375,3 +375,11 @@ P
 ]match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Team.kt,7/0/70e9ca05f6e6c121094440ce599864bc39b7639c
 8
 Makefile,8/3/836efb6e25a091dcb4ff8e1dbb2f0be6a5cbf14c
+ç
+]match-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/ResultService.kt,8/3/83337bac1226fa6beb0929980a274cd9fcd69540
+ñ
+fmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/impl/ResultServiceImpl.kt,f/9/f90aca35abde7d4abe0f4a6cebb5a6dbe611f898
+î
+dmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/ResultRepository.kt,6/3/63deaf4a2289d41904c168028a90611aa5c33d7b
+ì
+cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/ResultController.kt,e/1/e1eaf67d5b7c59b6467e63e8fba24d3484ad9ce8
