@@ -425,3 +425,5 @@ T
 $front-service/src/interfaces/ICup.ts,1/e/1ec7540059814f2212eb668823deb54451e52b04
 ]
 -front-service/src/interfaces/IMatchReferee.ts,6/d/6df49b60ca80cf6ab505c67c700a5b7ad0775abd
+[
++front-service/src/interfaces/ITournament.ts,9/9/995d9aa1a94a33e11ecf334b21bf9f576ed4aa43
