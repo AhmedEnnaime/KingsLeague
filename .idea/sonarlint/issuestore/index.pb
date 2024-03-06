@@ -427,3 +427,9 @@ $front-service/src/interfaces/ICup.ts,1/e/1ec7540059814f2212eb668823deb54451e52
 -front-service/src/interfaces/IMatchReferee.ts,6/d/6df49b60ca80cf6ab505c67c700a5b7ad0775abd
 [
 +front-service/src/interfaces/ITournament.ts,9/9/995d9aa1a94a33e11ecf334b21bf9f576ed4aa43
+ô
+imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/embaddables/MatchRefereeKey.kt,7/5/7560b223e15d63415a4b650b1483340c75e5b5e5
+è
+_match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/MatchStatus.kt,7/9/793e56d6a10fd6ffb49be4ead023a7353a40636f
+ç
+]match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/MatchType.kt,b/a/ba95bd34f1de42c0cb2d3c9eb9369f62cfd9527a

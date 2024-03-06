@@ -6,7 +6,7 @@ interface ITeamPlayers {
     id?: TeamPlayerKey;
     player: IPlayer;
     team: ITeam;
-    joinedAt: Date;
+    joinedAt?: Date;
     updatedAt?: Date;
 }
 
