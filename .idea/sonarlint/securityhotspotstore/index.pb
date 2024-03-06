@@ -383,3 +383,17 @@ fmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/im
 dmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/ResultRepository.kt,6/3/63deaf4a2289d41904c168028a90611aa5c33d7b
 “
 cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/controllers/ResultController.kt,e/1/e1eaf67d5b7c59b6467e63e8fba24d3484ad9ce8
+K
+front-service/src/index.css,b/d/bd6ceb506b36c4ef3ab7b10c0f30a6878ab9eaf2
+H
+front-service/index.html,8/1/81018116af678b53ed1c5c3fe44913a8c00bfb73
+P
+ front-service/tailwind.config.js,1/0/10544e62a79fa4070fc890aeed8b5f56bfcddaae
+O
+front-service/postcss.config.js,e/6/e6487a61cf29b597dbc5226fe5ae198e83aae144
+I
+front-service/src/App.css,c/f/cf7bd0832d3153c4cd667b4294c102504c160c35
+I
+front-service/src/App.tsx,c/f/cf9c29296aa41a6c7ee78aafa7f7563bc7175a84
+J
+front-service/src/main.tsx,b/b/bb4c939e933ec669b1dcc114d5da0f9e4a5bc158
