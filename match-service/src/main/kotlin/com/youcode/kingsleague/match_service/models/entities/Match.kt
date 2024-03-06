@@ -19,7 +19,7 @@ import java.time.LocalTime
 @Builder
 data class Match (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
-    @Column(nullable = false) @Temporal(value = TemporalType.TIME) @Future var time: LocalTime,
+    @Column(nullable = false) @Temporal(value = TemporalType.TIMESTAMP) @Future var time: LocalTime,
     @Column(nullable = false) @Enumerated(EnumType.STRING) var status: MatchStatus = MatchStatus.SCHEDULED,
     @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "stadium_id") val stadium: Stadium,
     @OneToOne(mappedBy = "match") val result: Result,

@@ -1,33 +1,33 @@
 version: "3.9"
 services:
-  match_day-service:
-    container_name: match_day-service
+  match-service:
+    container_name: match-service
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8086:8086"
+      - "8084:8084"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://match_day-db:5432/match_day_db
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://match-db:5432/match_db
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=admin
     depends_on:
-      - match_day-db
+      - match-db
     networks:
       - kingsLeague
 
-  match_day-db:
-    container_name: match_day-db
+  match-db:
+    container_name: match-db
     image: "postgres:15"
     restart: always
     ports:
-      - "5435:5435"
+      - "5437:5437"
     environment:
-      POSTGRES_DB: "match_day_db"
+      POSTGRES_DB: "match_db"
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "admin"
     volumes:
-      - match_day-db:/var/lib/postgresql/data
+      - match-db:/var/lib/postgresql/data
     networks:
       - kingsLeague
 
@@ -36,5 +36,5 @@ networks:
     external: true
 
 volumes:
-  match_day-db:
+  match-db:
     driver: local
