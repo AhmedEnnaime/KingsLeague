@@ -11,6 +11,7 @@ interface TournamentTeamService {
     fun removeTeamFromTournament(teamId: Long, tournamentId: Long)
     fun findTournamentTeams(tournamentId: Long): List<Team>
     fun findTeamTournaments(teamId: Long): List<Tournament>
-    fun findTournamentTeamById(id: TournamentTeamKey): TournamentTeamDTO
-    fun updateTeamPointsInTournament(id: TournamentTeamKey, points: Int)
+    fun findTournamentTeamById(tournamentId: Long, teamId: Long): TournamentTeamDTO
+    fun updateTeamPointsInTournament(tournamentTeamDTO: TournamentTeamDTO)
+    fun findAllTournamentTeams(): List<TournamentTeamDTO>
 }

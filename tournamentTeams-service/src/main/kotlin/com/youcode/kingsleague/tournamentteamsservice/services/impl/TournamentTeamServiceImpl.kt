@@ -64,18 +64,31 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         return tournaments
     }
 
-    override fun findTournamentTeamById(id: TournamentTeamKey): TournamentTeamDTO {
-        val tournamentTeam: TournamentTeam= tournamentTeamRepository.findById(id)
-            .orElseThrow { ResourceNotFoundException("TournamentTeam with id $id not found") }
+    override fun findTournamentTeamById(tournamentId: Long, teamId: Long): TournamentTeamDTO {
+        val tournamentTeamKey = TournamentTeamKey(teamId, tournamentId)
+        val tournamentTeam: TournamentTeam = tournamentTeamRepository.findById(tournamentTeamKey)
+            .orElseThrow { ResourceNotFoundException("TournamentTeam with id $tournamentTeamKey not found") }
         val tournamentTeamDTO: TournamentTeamDTO = modelMapper.map(tournamentTeam, TournamentTeamDTO::class.java)
-        tournamentTeamDTO.team = teamServiceClient.findTeamById(tournamentTeam.team?.id!!)
-        tournamentTeamDTO.tournament = tournamentServiceClient.findTournamentById(tournamentTeam.tournament?.id!!)
+        tournamentTeamDTO.team = teamServiceClient.findTeamById(teamId)
+        tournamentTeamDTO.tournament = tournamentServiceClient.findTournamentById(tournamentId)
         return tournamentTeamDTO
     }
 
-    override fun updateTeamPointsInTournament(id: TournamentTeamKey, points: Int) {
-        val tournamentTeam: TournamentTeamDTO = findTournamentTeamById(id)
-        tournamentTeam.points = tournamentTeam.points?.plus(points)
+    override fun updateTeamPointsInTournament(tournamentTeamDTO: TournamentTeamDTO) {
+        val tournamentTeam: TournamentTeam = tournamentTeamRepository.findById(tournamentTeamDTO.id!!).get()
+        tournamentTeam.points = tournamentTeam.points?.plus(tournamentTeamDTO.points!!)
+    }
+
+    override fun findAllTournamentTeams(): List<TournamentTeamDTO> {
+        val tournamentTeams: List<TournamentTeam> = tournamentTeamRepository.findAll()
+        return tournamentTeams.map { tournamentTeam ->
+            val team: Team = teamServiceClient.findTeamById(tournamentTeam.team?.id!!)
+            val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeam.tournament?.id!!)
+            val tournamentTeamDTO: TournamentTeamDTO = modelMapper.map(tournamentTeam, TournamentTeamDTO::class.java)
+            tournamentTeamDTO.team = team
+            tournamentTeamDTO.tournament = tournament
+            tournamentTeamDTO
+        }
     }
 
 }

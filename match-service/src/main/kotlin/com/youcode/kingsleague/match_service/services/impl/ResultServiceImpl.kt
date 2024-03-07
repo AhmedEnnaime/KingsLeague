@@ -18,6 +18,7 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
     override fun save(dto: ResultDTO): ResultDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
+        println("I'M HERE")
         val resultEntity: Result = modelMapper.map(dto, Result::class.java)
         val tournamentTeamKey = TournamentTeamKey(tournamentId = dto.match?.matchDay?.league?.id!!, teamId = dto.teamId!!)
         val tournamentTeamAKey = TournamentTeamKey(tournamentId = dto.match.matchDay?.league?.id!!, teamId = dto.match.teamA?.id!!)

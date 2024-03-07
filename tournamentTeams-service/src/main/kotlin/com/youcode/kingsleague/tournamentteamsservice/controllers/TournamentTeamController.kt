@@ -52,18 +52,24 @@ class TournamentTeamController(private val tournamentTeamService: TournamentTeam
         return ResponseEntity(tournaments, HttpStatus.OK)
     }
 
-    @GetMapping("/{id}")
-    fun findTournamentTeamById(@PathVariable id: TournamentTeamKey): ResponseEntity<TournamentTeamDTO> {
-        val tournamentTeam: TournamentTeamDTO = tournamentTeamService.findTournamentTeamById(id)
+    @GetMapping("/tournamentId/{tournamentId}/teamId/{teamId}")
+    fun findTournamentTeamById(@PathVariable tournamentId: Long, @PathVariable teamId: Long): ResponseEntity<TournamentTeamDTO> {
+        val tournamentTeam: TournamentTeamDTO = tournamentTeamService.findTournamentTeamById(tournamentId, teamId)
         return ResponseEntity(tournamentTeam, HttpStatus.OK)
     }
 
-    @PatchMapping("/updatePoints/{id}/{points}")
-    fun updateTeamTournamentPoints(@PathVariable id: TournamentTeamKey, @PathVariable points: Int): ResponseEntity<Map<String, String>> {
-        tournamentTeamService.updateTeamPointsInTournament(id, points)
+    @PatchMapping("/updatePoints")
+    fun updateTeamTournamentPoints(@RequestBody @Valid tournamentTeam: TournamentTeamDTO): ResponseEntity<Map<String, String>> {
+        tournamentTeamService.updateTeamPointsInTournament(tournamentTeam)
         val response = mutableMapOf<String, String>()
-        response["message"] = "$points Added."
-        response["Team id"] = id.teamId.toString()
+        response["message"] = "${tournamentTeam.points} Added."
+        response["Team"] = tournamentTeam.team.toString()
         return ResponseEntity(response, HttpStatus.OK)
+    }
+
+    @GetMapping
+    fun getAllTournamentTeams(): ResponseEntity<List<TournamentTeamDTO>> {
+        val tournamentTeams: List<TournamentTeamDTO> = tournamentTeamService.findAllTournamentTeams()
+        return ResponseEntity(tournamentTeams, HttpStatus.OK)
     }
 }
