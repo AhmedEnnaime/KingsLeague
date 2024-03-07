@@ -10,4 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable
 interface TournamentTeamServiceClient {
     @GetMapping("/api/v1/tournamentTeams/{tournamentTeamId}")
     fun findTournamentTeamById(@PathVariable tournamentTeamId: TournamentTeamKey): TournamentTeam
+    @GetMapping("/api/v1/tournamentTeams/updatePoints/{tournamentTeamId}/{points}")
+    fun updateTeamTournamentPoints(@PathVariable tournamentTeamId: TournamentTeamKey, @PathVariable points: Int)
 }

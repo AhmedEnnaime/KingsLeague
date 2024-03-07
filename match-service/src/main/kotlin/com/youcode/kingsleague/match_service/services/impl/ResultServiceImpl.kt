@@ -2,6 +2,7 @@ package com.youcode.kingsleague.match_service.services.impl
 
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.match_service.models.dto.ResultDTO
+import com.youcode.kingsleague.match_service.models.embaddables.TournamentTeamKey
 import com.youcode.kingsleague.match_service.models.entities.Match
 import com.youcode.kingsleague.match_service.repositories.ResultRepository
 import com.youcode.kingsleague.match_service.services.ResultService
@@ -9,6 +10,7 @@ import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import com.youcode.kingsleague.match_service.models.entities.Result
+import com.youcode.kingsleague.match_service.models.transients.TournamentTeam
 import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
@@ -17,7 +19,19 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
         val resultEntity: Result = modelMapper.map(dto, Result::class.java)
+        val tournamentTeamKey = TournamentTeamKey(tournamentId = dto.match?.matchDay?.league?.id!!, teamId = dto.teamId!!)
+        val tournamentTeamAKey = TournamentTeamKey(tournamentId = dto.match.matchDay?.league?.id!!, teamId = dto.match.teamA?.id!!)
+        val tournamentTeamBKey = TournamentTeamKey(tournamentId = dto.match.matchDay?.league?.id!!, teamId = dto.match.teamB?.id!!)
+        tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamKey)
         val savedResult: Result = resultRepository.save(resultEntity)
+        if (dto.teamId != null) {
+            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamKey, 3)
+        }else {
+            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamAKey)
+            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamBKey)
+            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamAKey, 1)
+            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamBKey, 1)
+        }
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }
 
