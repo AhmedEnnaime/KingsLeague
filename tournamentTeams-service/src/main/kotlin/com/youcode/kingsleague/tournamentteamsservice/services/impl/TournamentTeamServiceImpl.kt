@@ -31,8 +31,11 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         if (tournament.teamsNum <= tournamentTeamRepository.findTeamIdsByTournamentId(tournament.id!!).size) {
             throw MaxTeamsReachedException("This tournament is already full and cannot surpass this number of registered teams: ${tournament.teamsNum}")
         }
-        if (tournament.tournamentType == "LEAGUE")
+        if (tournament.tournamentType == "LEAGUE") {
             tournamentTeamDTO.points = 0
+        }else {
+            tournamentTeamDTO.points = null
+        }
         tournamentTeamDTO.team = team
         tournamentTeamDTO.tournament = tournament
         val tournamentTeamEntity: TournamentTeam = modelMapper.map(tournamentTeamDTO, TournamentTeam::class.java)

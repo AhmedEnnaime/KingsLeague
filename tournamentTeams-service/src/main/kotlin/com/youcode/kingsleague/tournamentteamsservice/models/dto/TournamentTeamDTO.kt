@@ -13,5 +13,5 @@ data class TournamentTeamDTO (
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, null, null, 0, null, null)
+    constructor() : this(null, null, null, null, null, null)
 }

@@ -6,9 +6,9 @@ import java.time.LocalDateTime
 data class ResultDTO (
     var id: Long?,
     var score: String,
-    val winner: Team?,
+    var winner: Team?,
     var teamId: Long?,
-    val match: RetrievalMatchDTO?,
+    var matchId: Long?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){
