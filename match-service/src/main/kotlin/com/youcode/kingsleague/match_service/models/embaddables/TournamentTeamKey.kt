@@ -1,4 +1,4 @@
-package com.youcode.kingsleague.tournamentteamsservice.models.embeddables
+package com.youcode.kingsleague.match_service.models.embaddables
 
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable

@@ -9,9 +9,10 @@ import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import com.youcode.kingsleague.match_service.models.entities.Result
+import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
-class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository): ResultService {
+class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient): ResultService {
     override fun save(dto: ResultDTO): ResultDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()

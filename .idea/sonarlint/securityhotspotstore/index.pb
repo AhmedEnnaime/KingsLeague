@@ -427,3 +427,11 @@ imatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/emba
 _match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/MatchStatus.kt,7/9/793e56d6a10fd6ffb49be4ead023a7353a40636f
 ç
 ]match-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/enums/MatchType.kt,b/a/ba95bd34f1de42c0cb2d3c9eb9369f62cfd9527a
+¢
+rmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/services/client/TournamentTeamServiceClient.kt,2/8/280a871225f5c0924d04cd11156d262dda830aef
+ó
+gmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/TournamentTeam.kt,e/8/e850c6c9d21b62b659b2bcdfbcbac20becb61c6f
+õ
+kmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/embaddables/TournamentTeamKey.kt,1/0/10e8de8d8f0a15f45a412768b063f0e13b3bce2e
+ì
+cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Tournament.kt,2/a/2abdf35cab109ef5fbf3b235774c592bb09211ca
