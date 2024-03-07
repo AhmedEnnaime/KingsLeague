@@ -18,21 +18,20 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
     override fun save(dto: ResultDTO): ResultDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
-        println("I'M HERE")
         val resultEntity: Result = modelMapper.map(dto, Result::class.java)
         val tournamentTeamKey = TournamentTeamKey(tournamentId = dto.match?.matchDay?.league?.id!!, teamId = dto.teamId!!)
         val tournamentTeamAKey = TournamentTeamKey(tournamentId = dto.match.matchDay?.league?.id!!, teamId = dto.match.teamA?.id!!)
         val tournamentTeamBKey = TournamentTeamKey(tournamentId = dto.match.matchDay?.league?.id!!, teamId = dto.match.teamB?.id!!)
-        tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamKey)
+        tournamentTeamServiceClient.findTournamentTeamById(dto.match.matchDay!!.league.id, dto.teamId!!)
         val savedResult: Result = resultRepository.save(resultEntity)
-        if (dto.teamId != null) {
-            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamKey, 3)
-        }else {
-            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamAKey)
-            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamBKey)
-            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamAKey, 1)
-            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamBKey, 1)
-        }
+//        if (dto.teamId != null) {
+//            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamKey, 3)
+//        }else {
+//            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamAKey)
+//            tournamentTeamServiceClient.findTournamentTeamById(tournamentTeamBKey)
+//            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamAKey, 1)
+//            tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamBKey, 1)
+//        }
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }
 

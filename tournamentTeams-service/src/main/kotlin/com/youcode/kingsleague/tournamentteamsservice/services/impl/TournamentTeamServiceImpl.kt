@@ -82,8 +82,8 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
     override fun findAllTournamentTeams(): List<TournamentTeamDTO> {
         val tournamentTeams: List<TournamentTeam> = tournamentTeamRepository.findAll()
         return tournamentTeams.map { tournamentTeam ->
-            val team: Team = teamServiceClient.findTeamById(tournamentTeam.team?.id!!)
-            val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeam.tournament?.id!!)
+            val team: Team = teamServiceClient.findTeamById(tournamentTeam.id?.teamId!!)
+            val tournament: Tournament = tournamentServiceClient.findTournamentById(tournamentTeam.id?.tournamentId!!)
             val tournamentTeamDTO: TournamentTeamDTO = modelMapper.map(tournamentTeam, TournamentTeamDTO::class.java)
             tournamentTeamDTO.team = team
             tournamentTeamDTO.tournament = tournament
