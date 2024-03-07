@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -55,5 +56,14 @@ class TournamentTeamController(private val tournamentTeamService: TournamentTeam
     fun findTournamentTeamById(@PathVariable id: TournamentTeamKey): ResponseEntity<TournamentTeamDTO> {
         val tournamentTeam: TournamentTeamDTO = tournamentTeamService.findTournamentTeamById(id)
         return ResponseEntity(tournamentTeam, HttpStatus.OK)
+    }
+
+    @PatchMapping("/updatePoints/{id}/{points}")
+    fun updateTeamTournamentPoints(@PathVariable id: TournamentTeamKey, @PathVariable points: Int): ResponseEntity<Map<String, String>> {
+        tournamentTeamService.updateTeamPointsInTournament(id, points)
+        val response = mutableMapOf<String, String>()
+        response["message"] = "$points Added."
+        response["Team id"] = id.teamId.toString()
+        return ResponseEntity(response, HttpStatus.OK)
     }
 }
