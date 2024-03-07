@@ -9,8 +9,9 @@ data class TournamentTeamDTO (
     var id: TournamentTeamKey?,
     var team: Team?,
     var tournament: Tournament?,
+    var points: Int?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, null, null, null, null)
+    constructor() : this(null, null, null, 0, null, null)
 }

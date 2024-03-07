@@ -14,6 +14,7 @@ data class TournamentTeam (
     @EmbeddedId var id: TournamentTeamKey?,
     @Transient val team: Team?,
     @Transient val tournament: Tournament?,
+    @Column(nullable = true ,columnDefinition = "INT DEFAULT 0") var points: Int?,
     @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
     @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 )

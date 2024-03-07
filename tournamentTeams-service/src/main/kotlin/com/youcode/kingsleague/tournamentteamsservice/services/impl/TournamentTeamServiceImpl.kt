@@ -31,6 +31,8 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         if (tournament.teamsNum <= tournamentTeamRepository.findTeamIdsByTournamentId(tournament.id!!).size) {
             throw MaxTeamsReachedException("This tournament is already full and cannot surpass this number of registered teams: ${tournament.teamsNum}")
         }
+        if (tournament.tournamentType == "LEAGUE")
+            tournamentTeamDTO.points = 0
         tournamentTeamDTO.team = team
         tournamentTeamDTO.tournament = tournament
         val tournamentTeamEntity: TournamentTeam = modelMapper.map(tournamentTeamDTO, TournamentTeam::class.java)
@@ -60,6 +62,15 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
             tournamentServiceClient.findTournamentById(tournamentId)
         }
         return tournaments
+    }
+
+    override fun findTournamentTeamById(id: TournamentTeamKey): TournamentTeamDTO {
+        val tournamentTeam: TournamentTeam= tournamentTeamRepository.findById(id)
+            .orElseThrow { ResourceNotFoundException("TournamentTeam with id $id not found") }
+        val tournamentTeamDTO: TournamentTeamDTO = modelMapper.map(tournamentTeam, TournamentTeamDTO::class.java)
+        tournamentTeamDTO.team = teamServiceClient.findTeamById(tournamentTeam.team?.id!!)
+        tournamentTeamDTO.tournament = tournamentServiceClient.findTournamentById(tournamentTeam.tournament?.id!!)
+        return tournamentTeamDTO
     }
 
 }
