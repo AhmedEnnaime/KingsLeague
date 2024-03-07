@@ -73,4 +73,8 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         return tournamentTeamDTO
     }
 
+    override fun updateTeamPointsInTournament(id: TournamentTeamKey, points: Int) {
+        TODO("Not yet implemented")
+    }
+
 }

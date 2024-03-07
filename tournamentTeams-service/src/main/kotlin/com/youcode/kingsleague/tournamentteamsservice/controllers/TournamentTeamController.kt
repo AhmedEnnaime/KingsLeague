@@ -50,4 +50,10 @@ class TournamentTeamController(private val tournamentTeamService: TournamentTeam
         val tournaments: List<Tournament> = tournamentTeamService.findTeamTournaments(teamId)
         return ResponseEntity(tournaments, HttpStatus.OK)
     }
+
+    @GetMapping("/{id}")
+    fun findTournamentTeamById(@PathVariable id: TournamentTeamKey): ResponseEntity<TournamentTeamDTO> {
+        val tournamentTeam: TournamentTeamDTO = tournamentTeamService.findTournamentTeamById(id)
+        return ResponseEntity(tournamentTeam, HttpStatus.OK)
+    }
 }
