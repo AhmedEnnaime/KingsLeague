@@ -13,7 +13,7 @@ class RetrievalMatchDTO(
     var time: LocalTime,
     var status: MatchStatus = MatchStatus.SCHEDULED,
     var matchType: MatchType,
-    val stadium: StadiumDTO?,
+    var stadium: StadiumDTO?,
     val result: ResultDTO?,
     var teamA: Team?,
     var teamB: Team?,

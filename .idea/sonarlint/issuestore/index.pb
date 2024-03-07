@@ -397,14 +397,8 @@ I
 front-service/src/App.tsx,c/f/cf9c29296aa41a6c7ee78aafa7f7563bc7175a84
 J
 front-service/src/main.tsx,b/b/bb4c939e933ec669b1dcc114d5da0f9e4a5bc158
-Z
-*front-service/src/interfaces/Tournament.ts,2/2/225b86f70d2db791b8c2416660c1314a8ed2cb74
-T
-$front-service/src/interfaces/Team.ts,f/4/f4507212313eb37f4989dcd861cdbe6b919f1cf9
 `
 0front-service/src/interfaces/ITournamentTeams.ts,1/5/154fa48025081d2819c7d918b4c456b1e56dabc4
-W
-'front-service/src/interfaces/Stadium.ts,a/0/a0185465c8d2e58bace9f05d18365b485580ffc3
 X
 (front-service/src/interfaces/IReferee.ts,f/7/f7d1fcae59eb7d7257d313430971d7c156b64cab
 W

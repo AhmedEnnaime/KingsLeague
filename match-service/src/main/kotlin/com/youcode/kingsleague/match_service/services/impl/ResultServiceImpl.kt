@@ -33,6 +33,7 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             dto.let {
                 this.score = it.score
                 this.teamId = it.teamId!!
+                this.winner = it.winner!!
                 this.match = modelMapper.map(it.match, Match::class.java)
             }
         }

@@ -41,12 +41,13 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
             val teamA: Team = teamServiceClient.findTeamById(match.teamAId)
             val teamB: Team = teamServiceClient.findTeamById(match.teamBId)
             val matchDay: MatchDay? = match.matchDayId?.let { matchDayServiceClient.findMatchDayById(it) }
-//            val stadium: StadiumDTO = stadiumService.findByID(match.stadium.id)
+//            val stadium: StadiumDTO = stadiumService.findByID(match.stadium.id)!!
 
             val matchDTO: RetrievalMatchDTO = modelMapper.map(match, RetrievalMatchDTO::class.java)
             matchDTO.matchDay = matchDay
             matchDTO.teamA = teamA
             matchDTO.teamB = teamB
+//            matchDTO.stadium = stadium
             matchDTO
         }
     }
@@ -79,7 +80,7 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
 
     override fun findByID(identifier: Long): RetrievalMatchDTO? {
         val match: Match = matchRepository.findById(identifier).orElseThrow {
-            ResourceNotFoundException("Referee with id $identifier not found")
+            ResourceNotFoundException("Match with id $identifier not found")
         }
         val matchDTO: RetrievalMatchDTO = modelMapper.map(match, RetrievalMatchDTO::class.java)
         matchDTO.teamA = teamServiceClient.findTeamById(match.teamAId)
@@ -89,7 +90,7 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         }else {
             matchDTO.round = match.roundId?.let { roundServiceClient.findRoundById(it) }
         }
-//        matchDTO.stadium = stadiumService.findByID(match.s)
+//        matchDTO.stadium = stadiumService.findByID(match.stadium.id)
         return matchDTO
     }
 }

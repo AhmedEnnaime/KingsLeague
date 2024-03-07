@@ -8,7 +8,7 @@ data class ResultDTO (
     var score: String,
     val winner: Team?,
     var teamId: Long?,
-    val match: MatchDTO?,
+    val match: RetrievalMatchDTO?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){

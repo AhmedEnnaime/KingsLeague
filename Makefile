@@ -1,14 +1,14 @@
 run:
 	@./gradlew build -x test
-	@docker compose -f config_service/docker-compose.yml up --build -d; \
-	@docker compose -f eureka_server/docker-compose.yml up --build -d; \
-	@docker compose -f gateway_service/docker-compose.yml up --build -d; \
-	@docker compose -f tournament-service/docker-compose.yml up --build -d; \
-	@docker compose -f team-service/docker-compose.yml up --build -d; \
-	@docker compose -f tournamentTeams-service/docker-compose.yml up --build -d; \
-	@docker compose -f round-service/docker-compose.yml up --build -d; \
-	@docker compose -f matchDay-service/docker-compose.yml up --build -d; \
-	@docker compose -f match-service/docker-compose.yml up --build -d; \
+	docker compose -f config_service/docker-compose.yml up --build -d; \
+	docker compose -f eureka_server/docker-compose.yml up --build -d; \
+	docker compose -f gateway_service/docker-compose.yml up --build -d; \
+	docker compose -f tournament-service/docker-compose.yml up --build -d; \
+	docker compose -f team-service/docker-compose.yml up --build -d; \
+	docker compose -f tournamentTeams-service/docker-compose.yml up --build -d; \
+	docker compose -f round-service/docker-compose.yml up --build -d; \
+	docker compose -f matchDay-service/docker-compose.yml up --build -d; \
+	docker compose -f match-service/docker-compose.yml up --build -d; \
 
 run-eureka:
 	@docker compose -f eureka_server/docker-compose.yml up --build -d
