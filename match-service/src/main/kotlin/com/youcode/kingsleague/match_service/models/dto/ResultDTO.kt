@@ -8,9 +8,9 @@ data class ResultDTO (
     var score: String,
     var winner: Team?,
     var teamId: Long?,
-    var matchId: Long?,
+    var matchId: Long,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){
-    constructor() : this(null, "", null, null, null, null, null)
+    constructor() : this(null, "", null, null, 0, null, null)
 }

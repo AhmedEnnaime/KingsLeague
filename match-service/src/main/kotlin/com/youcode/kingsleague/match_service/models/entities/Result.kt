@@ -15,7 +15,7 @@ import java.time.LocalDateTime
 data class Result (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @NotBlank(message = "score should not be empty") var score: String,
-    @Column(nullable = false, name = "team_id") @NotNull(message = "you should set the winner team") var teamId: Long,
+    @Column(nullable = true, name = "team_id") var teamId: Long?,
     @OneToOne(fetch = FetchType.EAGER) @JoinColumn(name = "match_id", referencedColumnName = "id") var match: Match,
     @Transient var winner: Team?,
     @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,

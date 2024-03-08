@@ -6,7 +6,8 @@ interface IResult {
     score: string;
     winner?: ITeam;
     teamId: number;
-    match: IMatch;
+    matchId?: number;
+    match?: IMatch;
     createdAt?: Date;
     updatedAt?: Date;
 }
