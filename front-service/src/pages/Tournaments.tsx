@@ -1,18 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TournamentCard from "../components/TournamentCard";
 import Header from "../shared/Header";
 import TournamentType from "../enums/TournamentType";
 import Dropdown from "../shared/Dropdown";
+import API from "../utils/API";
+import ITournament from "../interfaces/ITournament";
+import not_found from "../assets/not_found.png";
 
 const Tournaments = () => {
-  const [selectedTournament, setSelectedTournament] = useState<TournamentType>(
-    TournamentType.LEAGUE
-  );
+  const [selectedTournament, setSelectedTournament] =
+    useState<TournamentType>();
+  const [tournaments, setTournaments] = useState<ITournament[]>();
 
   const handleTournamentSelect = (tournamentType: TournamentType) => {
     setSelectedTournament(tournamentType);
     console.log(selectedTournament);
   };
+
+  const fetchTournaments = async () => {
+    await API.get(`/TOURNAMENT-SERVICE/api/v1/tournaments`)
+      .then((res) => {
+        console.log(res.data);
+        setTournaments(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchTournaments();
+  }, []);
 
   return (
     <>
@@ -22,9 +40,19 @@ const Tournaments = () => {
         <Dropdown onSelect={handleTournamentSelect} />
       </div>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center pt-4 items-center">
-        <TournamentCard />
-        <TournamentCard />
-        <TournamentCard />
+        {tournaments ? (
+          tournaments.map((tournament) => (
+            <TournamentCard key={tournament.id} tournament={tournament} />
+          ))
+        ) : (
+          <div className="flex justify-center items-center lg:col-span-3">
+            <img
+              className="flex justify-center w-22 h-22"
+              src={not_found}
+              alt=""
+            />
+          </div>
+        )}
       </div>
     </>
   );

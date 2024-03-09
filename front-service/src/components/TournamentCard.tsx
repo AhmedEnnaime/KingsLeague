@@ -1,11 +1,12 @@
+import { TournamentCardProps } from "../propsTypes/TournamentCradProps";
 import Button from "../shared/Button";
 
-const TournamentCard = () => {
+const TournamentCard = ({ tournament }: TournamentCardProps) => {
   return (
     <div className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between bg-gray-300 w-full">
         <span className="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
-          La Liga
+          {tournament.name}
         </span>
         <span className="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900">
           LEAGUE

@@ -435,3 +435,9 @@ gmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/tran
 kmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/embaddables/TournamentTeamKey.kt,1/0/10e8de8d8f0a15f45a412768b063f0e13b3bce2e
 “
 cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Tournament.kt,2/a/2abdf35cab109ef5fbf3b235774c592bb09211ca
+‘
+atournament-service/src/main/kotlin/com/youcode/kingsleague/tournamentservice/config/CorsConfig.kt,2/3/239fb36775406abb9438d62735a66f6084c77873
+Œ
+\gateway_service/src/main/kotlin/com/youcode/kingsleague/gateway_service/config/CorsConfig.kt,7/0/70fef3f287d2ab258c6704fd44e2b47863af6cb7
+˜
+hgateway_service/src/main/kotlin/com/youcode/kingsleague/gateway_service/config/WebServerConfiguration.kt,4/8/489c494fbb26115ba462677acc0fc186b911ba70
