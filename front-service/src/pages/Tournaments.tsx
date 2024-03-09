@@ -49,7 +49,7 @@ const Tournaments = () => {
             <img
               className="flex justify-center w-22 h-22"
               src={not_found}
-              alt=""
+              alt="not found"
             />
           </div>
         )}

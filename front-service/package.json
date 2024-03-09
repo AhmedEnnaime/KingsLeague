@@ -14,7 +14,8 @@
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-toastify": "^10.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
