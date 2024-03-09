@@ -1,3 +1,4 @@
+import notFoundImg from "../assets/undraw_under_construction_-46-pa.svg";
 const NotFound = () => {
   return (
     <div className="h-screen bg-white flex items-center justify-center gap-6 flex-col-reverse md:flex-row md:justify-start">
@@ -12,11 +13,7 @@ const NotFound = () => {
         </p>
       </div>
       <div className="w-full md:w-2/3 ml-auto opacity-80 relative">
-        <img
-          src="../assets/undraw_under_construction_-46-pa.svg"
-          alt="not found img"
-          className="w-full block"
-        />
+        <img src={notFoundImg} alt="not found img" className="w-full block" />
       </div>
     </div>
   );

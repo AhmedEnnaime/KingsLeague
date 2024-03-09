@@ -1,6 +1,6 @@
 enum TournamentType {
-    LEAGUE,
-    CUP
+  LEAGUE = "LEAGUE",
+  CUP = "CUP",
 }
 
-export default TournamentType
+export default TournamentType;

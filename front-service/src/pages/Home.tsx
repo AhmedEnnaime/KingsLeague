@@ -1,8 +1,16 @@
 import Header from "../shared/Header";
+// import wallpaper from "../assets/home_wallpaper.jpg"
 
 const Home = () => {
   return (
-    <div className="bg-white">
+    <div
+      className="bg-white"
+      style={{
+        backgroundImage: `url("../assets/home_wallpaper.jpg")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <header className="absolute inset-x-0 top-0 z-50">
         <Header />
         <div className="lg:hidden" role="dialog" aria-modal="true">

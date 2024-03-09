@@ -5,8 +5,8 @@ const Header = () => {
       aria-label="Global"
     >
       <div className="flex lg:flex-1">
-        <a href="#" className="-m-1.5 p-1.5">
-          <span className="sr-only">Your Company</span>
+        <a href="/" className="-m-1.5 p-1.5">
+          <span className="sr-only">Kings League</span>
           <img
             className="h-8 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -37,16 +37,25 @@ const Header = () => {
         </button>
       </div>
       <div className="hidden lg:flex lg:gap-x-12">
-        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+        <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
           Home
         </a>
-        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+        <a
+          href="/fixtures"
+          className="text-sm font-semibold leading-6 text-gray-900"
+        >
           Fixtures
         </a>
-        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+        <a
+          href="/tournaments"
+          className="text-sm font-semibold leading-6 text-gray-900"
+        >
           Leagues & Cups
         </a>
-        <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+        <a
+          href="/stadiums"
+          className="text-sm font-semibold leading-6 text-gray-900"
+        >
           Stadiums
         </a>
       </div>
