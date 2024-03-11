@@ -14,10 +14,17 @@ const StadiumCard = () => {
           Camp Nou
         </h3>
 
-        <div className="flex items-center justify-center px-3 py-2 bg-gray-200 dark:bg-gray-700">
+        <div className="flex items-center justify-between px-3 py-2 bg-gray-200 dark:bg-gray-700">
           <span className="font-bold text-gray-800 dark:text-gray-200">
             Spain
           </span>
+
+          <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-blue-800 rounded hover:bg-blue-700 focus:outline-none">
+            Update
+          </button>
+          <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-red-800 rounded hover:bg-red-700 focus:outline-none">
+            Delete
+          </button>
         </div>
       </div>
     </div>

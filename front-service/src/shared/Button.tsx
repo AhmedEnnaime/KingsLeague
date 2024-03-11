@@ -2,7 +2,8 @@ import { ButtonProps } from "../propsTypes/ButtonProps";
 
 const Button = ({
   border = "border-transparent",
-  color = "bg-blue-500",
+  bgColor = "bg-blue-500",
+  color = "text-white",
   content,
   height = "h-auto",
   onClick,
@@ -12,7 +13,7 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2 ${border} ${color} ${radius} ${width} ${height}`}
+      className={`px-4 py-2 ${border} ${bgColor} ${color} ${radius} ${width} ${height}`}
     >
       {content}
     </button>
