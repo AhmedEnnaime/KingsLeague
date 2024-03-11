@@ -37,20 +37,20 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
       });
   };
 
-  //   const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
-  //     e.preventDefault();
+  const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
 
-  //     await API.put(`departments/${department?.id}`, inputs)
-  //       .then((res) => {
-  //         if (res.status === 200) {
-  //           toast.success("Department updated successfully");
-  //           setOpen(false);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+    await API.put(`/MATCH-SERVICE/api/v1/stadiums/${stadium?.id}`, inputs)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Stadium updated successfully");
+          setOpen(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -173,7 +173,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                     <button
                       type="submit"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                      //   onClick={handleUpdateSubmit}
+                      onClick={handleUpdateSubmit}
                     >
                       Update
                     </button>
