@@ -39,7 +39,7 @@ const Tournaments = () => {
         <h1 className="text-2xl font-semibold">Tournaments</h1>
         <Dropdown onSelect={handleTournamentSelect} />
       </div>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center pt-4 items-center">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center p-4 items-center">
         {tournaments ? (
           tournaments.map((tournament) => (
             <TournamentCard key={tournament.id} tournament={tournament} />

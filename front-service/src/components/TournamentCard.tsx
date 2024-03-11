@@ -9,7 +9,7 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
           {tournament.name}
         </span>
         <span className="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900">
-          LEAGUE
+          {tournament.tournamentType}
         </span>
       </div>
 
@@ -18,7 +18,7 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
           Debut date
         </h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          2024-10-10
+          {tournament.debutDate}
         </p>
       </div>
       <div className="flex justify-between p-2">
@@ -26,21 +26,25 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
           End date
         </h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          2024-10-10
+          {tournament.endDate}
         </p>
       </div>
       <div className="flex justify-between p-2">
         <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
           Registered teams
         </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">32</p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {tournament.teamsNum}
+        </p>
       </div>
 
       <div className="flex justify-between p-2">
         <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
           Location
         </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">Spain</p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {tournament.location}
+        </p>
       </div>
 
       <div>
