@@ -50,7 +50,7 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
       <div>
         <div className="flex justify-between items-center mt-2">
           <Button content="Edit" />
-          <Button color="bg-red-500" content="Delete" />
+          <Button bgColor="bg-red-500" content="Delete" />
         </div>
       </div>
     </div>

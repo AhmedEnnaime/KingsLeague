@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { StadiumCardProps } from "../propsTypes/StadiumCardProps";
 import StadiumModal from "./StadiumModal";
+import DeleteModal from "../shared/DeleteModal";
 
 const StadiumCard = ({ stadium }: StadiumCardProps) => {
-  const [open, setOpen] = useState(false);
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto p-6">
@@ -26,18 +28,34 @@ const StadiumCard = ({ stadium }: StadiumCardProps) => {
           </span>
 
           <button
-            onClick={() => setOpen(true)}
+            onClick={() => setOpenUpdate(true)}
             className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-blue-800 rounded hover:bg-blue-700 focus:outline-none"
           >
             Update
           </button>
-          <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-red-800 rounded hover:bg-red-700 focus:outline-none">
+          <button
+            onClick={() => setOpenDelete(true)}
+            className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-300 transform bg-red-800 rounded hover:bg-red-700 focus:outline-none"
+          >
             Delete
           </button>
         </div>
       </div>
-      {open ? (
-        <StadiumModal open={open} setOpen={setOpen} stadium={stadium} />
+      {openUpdate ? (
+        <StadiumModal
+          open={openUpdate}
+          setOpen={setOpenUpdate}
+          stadium={stadium}
+        />
+      ) : (
+        ""
+      )}
+      {openDelete ? (
+        <DeleteModal
+          open={openUpdate}
+          setOpen={setOpenUpdate}
+          element={stadium}
+        />
       ) : (
         ""
       )}
