@@ -2,6 +2,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import IStadium from "../interfaces/IStadium";
 import { StadiumModalProps } from "../propsTypes/StadiumModalProps";
+import API from "../utils/API";
+import { toast } from "react-toastify";
+
 const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
   const cancelButtonRef = useRef(null);
   const [inputs, setInputs] = useState<IStadium>({
@@ -20,20 +23,19 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
     }));
   };
 
-  //   const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
-  //     e.preventDefault();
-
-  //     await API.post(`departments`, inputs)
-  //       .then((res) => {
-  //         if (res.status === 201) {
-  //           toast.success("Department created successfully");
-  //           setOpen(false);
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
+  const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    await API.post(`/MATCH-SERVICE/api/v1/stadiums`, inputs)
+      .then((res) => {
+        if (res.status === 201) {
+          toast.success("Stadium created successfully");
+          setOpen(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //   const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
   //     e.preventDefault();
@@ -163,7 +165,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                     <button
                       type="submit"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
-                      //   onClick={handleAddSubmit}
+                      onClick={handleAddSubmit}
                     >
                       Add
                     </button>

@@ -5,11 +5,14 @@ import Home from "./pages/Home";
 import NotFound from "./components/NotFound";
 import Tournaments from "./pages/Tournaments";
 import Stadiums from "./pages/Stadiums";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ToastContainer />
         <Routes>
           <Route path="/" element={<Layout />} />
           <Route index element={<Home />} />

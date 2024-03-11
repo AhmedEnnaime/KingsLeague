@@ -14,7 +14,6 @@ const Stadiums = () => {
   const fetchStadiums = async () => {
     await API.get(`/MATCH-SERVICE/api/v1/stadiums`)
       .then((res) => {
-        console.log(res.data);
         setStadiums(res.data);
       })
       .catch((err) => {
@@ -24,7 +23,7 @@ const Stadiums = () => {
 
   useEffect(() => {
     fetchStadiums();
-  }, []);
+  }, [open]);
   return (
     <>
       <Header />
