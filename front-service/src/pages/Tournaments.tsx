@@ -20,7 +20,6 @@ const Tournaments = () => {
   const fetchTournaments = async () => {
     await API.get(`/TOURNAMENT-SERVICE/api/v1/tournaments`)
       .then((res) => {
-        console.log(res.data);
         setTournaments(res.data);
       })
       .catch((err) => {
