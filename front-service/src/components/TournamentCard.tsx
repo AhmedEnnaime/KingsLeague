@@ -3,7 +3,7 @@ import Button from "../shared/Button";
 
 const TournamentCard = ({ tournament }: TournamentCardProps) => {
   return (
-    <div className="w-full max-w-sm px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
+    <div className="w-full px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between bg-gray-300 w-full">
         <span className="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
           {tournament.name}
