@@ -2,9 +2,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
 import IStadium from "../interfaces/IStadium";
 import { StadiumModalProps } from "../propsTypes/StadiumModalProps";
-import API from "../utils/API";
 import { toast } from "react-toastify";
-import { createStadium } from "../redux/stadiums/stadiumActions";
+import { createStadium, updateStadium } from "../redux/stadiums/stadiumActions";
 import { useAppDispatch } from "../redux/store";
 
 const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
@@ -41,18 +40,20 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
 
   const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-
-    await API.put(`/MATCH-SERVICE/api/v1/stadiums/${stadium?.id}`, inputs)
-      .then((res) => {
-        if (res.status === 200) {
-          toast.success("Stadium updated successfully");
-          setOpen(false);
-        }
+    const { id } = stadium as IStadium;
+    const updatedStadiumData = inputs;
+    const stadiumID = id as number;
+    dispatch(updateStadium({ id: stadiumID, stadiumData: updatedStadiumData }))
+      .then(() => {
+        toast.success("Stadium updated successfully");
+        setOpen(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Failed to update stadium:", err);
+        toast.error("Failed to update stadium");
       });
   };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog

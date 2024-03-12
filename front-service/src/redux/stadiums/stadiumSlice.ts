@@ -4,6 +4,7 @@ import {
   createStadium,
   deleteStadium,
   fetchAllStadiums,
+  updateStadium,
 } from "./stadiumActions";
 
 interface StadiumState {
@@ -42,6 +43,20 @@ const stadiumSlice = createSlice({
         state.stadiums = state.stadiums.filter(
           (stadium) => stadium.id !== action.meta.arg
         );
+      })
+      .addCase(updateStadium.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateStadium.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedStadiumId = action.meta.arg.id;
+        const updatedStadium = action.payload;
+        const existingStadium = state.stadiums.find(
+          (stadium) => stadium.id === updatedStadiumId
+        );
+        if (existingStadium) {
+          Object.assign(existingStadium, updatedStadium);
+        }
       });
   },
   reducers: {},

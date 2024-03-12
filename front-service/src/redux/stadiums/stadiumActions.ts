@@ -28,3 +28,14 @@ export const deleteStadium = createAsyncThunk<Map<string, string>, number>(
     return response.data;
   }
 );
+
+export const updateStadium = createAsyncThunk<
+  IStadium,
+  { id: number; stadiumData: Partial<IStadium> }
+>("stadium/update", async ({ id, stadiumData }) => {
+  const { data } = await API.put(
+    `/MATCH-SERVICE/api/v1/stadiums/${id}`,
+    stadiumData
+  );
+  return data;
+});
