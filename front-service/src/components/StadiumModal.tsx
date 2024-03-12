@@ -4,9 +4,12 @@ import IStadium from "../interfaces/IStadium";
 import { StadiumModalProps } from "../propsTypes/StadiumModalProps";
 import API from "../utils/API";
 import { toast } from "react-toastify";
+import { createStadium } from "../redux/stadiums/stadiumActions";
+import { useAppDispatch } from "../redux/store";
 
 const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
   const cancelButtonRef = useRef(null);
+  const dispatch = useAppDispatch();
   const [inputs, setInputs] = useState<IStadium>({
     name: stadium?.name ?? "",
     location: stadium?.location ?? "",
@@ -25,15 +28,14 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
 
   const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    await API.post(`/MATCH-SERVICE/api/v1/stadiums`, inputs)
-      .then((res) => {
-        if (res.status === 201) {
-          toast.success("Stadium created successfully");
-          setOpen(false);
-        }
+    dispatch(createStadium(inputs))
+      .then(() => {
+        toast.success("Stadium created successfully");
+        setOpen(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error("Failed to create stadium:", err);
+        toast.error("Failed to create stadium");
       });
   };
 
