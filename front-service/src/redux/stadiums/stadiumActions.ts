@@ -9,3 +9,11 @@ export const fetchAllStadiums = createAsyncThunk<IStadium[]>(
     return data;
   }
 );
+
+export const createStadium = createAsyncThunk<IStadium, Partial<IStadium>>(
+  "stadium/create",
+  async (stadium) => {
+    const { data } = await API.post(`/MATCH-SERVICE/api/v1/stadiums`, stadium);
+    return data;
+  }
+);
