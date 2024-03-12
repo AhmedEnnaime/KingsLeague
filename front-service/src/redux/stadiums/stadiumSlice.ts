@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import IStadium from "../../interfaces/IStadium";
+import { fetchAllStadiums } from "./stadiumActions";
 
 interface StadiumState {
   stadiums: IStadium[];
@@ -16,6 +17,11 @@ const initialState: StadiumState = {
 const stadiumSlice = createSlice({
   name: "stadium",
   initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchAllStadiums.fulfilled, (state, action) => {
+      state.stadiums = action.payload;
+    });
+  },
   reducers: {},
 });
 
