@@ -3,20 +3,26 @@ import { Fragment, useRef } from "react";
 import { DeleteModalProps } from "../propsTypes/DeleteModalProps";
 import API from "../utils/API";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "../redux/store";
+import { deleteStadium } from "../redux/stadiums/stadiumActions";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
+  const dispatch = useAppDispatch();
+
   const deleteElement = async () => {
+    console.log("YOOOO");
     if ("capacity" in element) {
-      await API.delete(`/MATCH-SERVICE/api/v1/stadiums/${element.id}`)
-        .then((res) => {
-          if (res.status == 200) {
-            toast.success("Stadium deleted successfully");
-            setOpen(false);
-          }
+      console.log("HERE");
+
+      dispatch(deleteStadium(element.id as number))
+        .then(() => {
+          toast.success("Stadium deleted successfully");
+          setOpen(false);
         })
         .catch((err) => {
-          console.log(err);
+          console.error("Failed to create stadium:", err);
+          toast.error("Failed to delete stadium");
         });
     } else if ("tournamentType" in element) {
       await API.delete(`/TOURNAMENT-SERVICE/api/v1/tournaments/${element.id}`)

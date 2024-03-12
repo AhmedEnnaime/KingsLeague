@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import IStadium from "../../interfaces/IStadium";
-import { createStadium, fetchAllStadiums } from "./stadiumActions";
+import {
+  createStadium,
+  deleteStadium,
+  fetchAllStadiums,
+} from "./stadiumActions";
 
 interface StadiumState {
   stadiums: IStadium[];
@@ -32,6 +36,12 @@ const stadiumSlice = createSlice({
       .addCase(createStadium.fulfilled, (state, action) => {
         state.loading = false;
         state.stadiums.push(action.payload);
+      })
+      .addCase(deleteStadium.pending, (state, action) => {
+        state.loading = true;
+        state.stadiums = state.stadiums.filter(
+          (stadium) => stadium.id !== action.meta.arg
+        );
       });
   },
   reducers: {},
