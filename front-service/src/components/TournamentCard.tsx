@@ -3,12 +3,17 @@ import { TournamentCardProps } from "../propsTypes/TournamentCradProps";
 import Button from "../shared/Button";
 import DeleteModal from "../shared/DeleteModal";
 import TournamentModal from "./TournamentModal";
+import { useNavigate } from "react-router-dom";
 
 const TournamentCard = ({ tournament }: TournamentCardProps) => {
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
+  const navigate = useNavigate();
   return (
-    <div className="w-full px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
+    <div
+      className="w-full px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800"
+      onClick={() => navigate(`/tournament/${tournament.id}`)}
+    >
       <div className="flex items-center justify-between bg-gray-300 w-full">
         <span className="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
           {tournament.name}

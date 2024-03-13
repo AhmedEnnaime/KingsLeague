@@ -7,6 +7,7 @@ import Tournaments from "./pages/Tournaments";
 import Stadiums from "./pages/Stadiums";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TournamentFixtures from "./pages/TournamentFixtures";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/tournaments" element={<Tournaments />} />
           <Route path="/stadiums" element={<Stadiums />} />
+          <Route path="/tournament/:id" element={<TournamentFixtures />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
