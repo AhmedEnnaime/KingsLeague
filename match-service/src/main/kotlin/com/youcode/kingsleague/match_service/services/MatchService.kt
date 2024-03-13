@@ -9,5 +9,7 @@ interface MatchService {
     fun findByID(identifier: Long): RetrievalMatchDTO?
     fun delete(identifier: Long)
     fun update(identifier: Long, dto: MatchDTO): MatchDTO
+    fun findByMatchDayId(matchDayId: Long): List<MatchDTO>
+    fun findByRoundId(roundId: Long): List<MatchDTO>
 
 }

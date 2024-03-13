@@ -72,6 +72,30 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         return modelMapper.map(updatedMatch, MatchDTO::class.java)
     }
 
+    override fun findByMatchDayId(matchDayId: Long): List<MatchDTO> {
+        val matches: List<Match> = matchRepository.findByMatchDayId(matchDayId)
+        return matches.map { match ->
+            val teamA: Team = teamServiceClient.findTeamById(match.teamAId)
+            val teamB: Team = teamServiceClient.findTeamById(match.teamBId)
+            val matchDTO: MatchDTO = modelMapper.map(match, MatchDTO::class.java)
+            matchDTO.teamA = teamA
+            matchDTO.teamB = teamB
+            matchDTO
+        }
+    }
+
+    override fun findByRoundId(roundId: Long): List<MatchDTO> {
+        val matches: List<Match> = matchRepository.findByRoundId(roundId)
+        return matches.map { match ->
+            val teamA: Team = teamServiceClient.findTeamById(match.teamAId)
+            val teamB: Team = teamServiceClient.findTeamById(match.teamBId)
+            val matchDTO: MatchDTO = modelMapper.map(match, MatchDTO::class.java)
+            matchDTO.teamA = teamA
+            matchDTO.teamB = teamB
+            matchDTO
+        }
+    }
+
     override fun delete(identifier: Long) {
         if (!matchRepository.existsById(identifier))
             throw ResourceNotFoundException("Stadium with id $identifier not found")

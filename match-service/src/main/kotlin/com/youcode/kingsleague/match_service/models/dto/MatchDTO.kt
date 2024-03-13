@@ -18,9 +18,11 @@ data class MatchDTO (
     val teamAId: Long,
     val teamBId: Long,
     val matchDayId: Long?,
+    var teamA: Team?,
+    var teamB: Team?,
     val roundId: Long?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, LocalTime.now(), MatchStatus.SCHEDULED,MatchType.LEAGUE, 0, null, 0, 0, null, null, null, null)
+    constructor() : this(null, LocalTime.now(), MatchStatus.SCHEDULED,MatchType.LEAGUE, 0, null, 0, 0, 0, null, null, null, null, null)
 }

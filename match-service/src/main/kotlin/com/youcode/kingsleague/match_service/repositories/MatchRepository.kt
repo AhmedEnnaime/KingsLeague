@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface MatchRepository: JpaRepository<Match, Long> {
+    fun findByMatchDayId(matchDayId: Long): List<Match>
+    fun findByRoundId(roundId: Long): List<Match>
 }

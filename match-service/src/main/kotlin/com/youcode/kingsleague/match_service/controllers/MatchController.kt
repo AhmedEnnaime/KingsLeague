@@ -1,6 +1,5 @@
 package com.youcode.kingsleague.match_service.controllers
 
-import GlobalController
 import com.youcode.kingsleague.match_service.models.dto.MatchDTO
 import com.youcode.kingsleague.match_service.models.dto.RetrievalMatchDTO
 import com.youcode.kingsleague.match_service.services.MatchService
@@ -54,5 +53,17 @@ class MatchController(private val matchService: MatchService) {
         response["message"] = "Match deleted successfully."
         response["deletedElementIdentifier"] = id.toString()
         return ResponseEntity(response, HttpStatus.OK)
+    }
+
+    @GetMapping("/matchDay/{matchDayId}")
+    fun findMatchesByMatchDayId(@PathVariable matchDayId: Long): ResponseEntity<List<MatchDTO>> {
+        val matches: List<MatchDTO> = matchService.findByMatchDayId(matchDayId)
+        return ResponseEntity(matches, HttpStatus.OK)
+    }
+
+    @GetMapping("/round/{roundId}")
+    fun findMatchesByRoundId(@PathVariable roundId: Long): ResponseEntity<List<MatchDTO>> {
+        val matches: List<MatchDTO> = matchService.findByRoundId(roundId)
+        return ResponseEntity(matches, HttpStatus.OK)
     }
 }
