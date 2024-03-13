@@ -4,4 +4,5 @@ import com.youcode.kingsleague.common.services.GlobalService
 import com.youcode.kingsleague.round_service.models.dto.RoundDTO
 
 interface RoundService: GlobalService<RoundDTO, Long> {
+    fun findRoundsByTournamentId(tournamentId: Long): List<RoundDTO>
 }

@@ -9,4 +9,5 @@ import java.util.Optional
 @Repository
 interface RoundRepository: JpaRepository<Round, Long> {
     fun findByDateAndTournamentId(date: LocalDate, tournamentId: Long): Optional<Round>
+    fun findByTournamentId(tournamentId: Long): List<Round>
 }

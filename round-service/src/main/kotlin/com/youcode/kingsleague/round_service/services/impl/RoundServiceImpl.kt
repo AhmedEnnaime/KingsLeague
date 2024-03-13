@@ -14,6 +14,16 @@ import java.time.LocalDateTime
 
 @Service
 class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRepository: RoundRepository, private val cupServiceClient: CupServiceClient): RoundService {
+    override fun findRoundsByTournamentId(tournamentId: Long): List<RoundDTO> {
+        val rounds: List<Round> = roundRepository.findByTournamentId(tournamentId)
+        return rounds.map { round ->
+            val cup: Cup = cupServiceClient.findCupById(round.tournamentId)
+            val roundDTO: RoundDTO = modelMapper.map(round, RoundDTO::class.java)
+            roundDTO.cup = cup
+            roundDTO
+        }
+    }
+
     override fun save(dto: RoundDTO): RoundDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
