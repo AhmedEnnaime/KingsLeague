@@ -9,13 +9,11 @@ import {
 
 interface StadiumState {
   stadiums: IStadium[];
-  selectedStadiumID: number | null;
   loading: boolean;
 }
 
 const initialState: StadiumState = {
   stadiums: [],
-  selectedStadiumID: null,
   loading: false,
 };
 

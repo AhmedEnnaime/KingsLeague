@@ -3,32 +3,26 @@ import TournamentCard from "../components/TournamentCard";
 import Header from "../shared/Header";
 import TournamentType from "../enums/TournamentType";
 import Dropdown from "../shared/Dropdown";
-import API from "../utils/API";
-import ITournament from "../interfaces/ITournament";
 import not_found from "../assets/not_found.png";
+import { RootState, useAppDispatch } from "../redux/store";
+import { useSelector } from "react-redux";
+import { fetchAllTournaments } from "../redux/tournaments/tournamentActions";
 
 const Tournaments = () => {
   const [selectedTournament, setSelectedTournament] =
     useState<TournamentType>();
-  const [tournaments, setTournaments] = useState<ITournament[]>();
+  const tournaments = useSelector(
+    (state: RootState) => state.tournament.tournaments
+  );
+  const dispatch = useAppDispatch();
 
   const handleTournamentSelect = (tournamentType: TournamentType) => {
     setSelectedTournament(tournamentType);
     console.log(selectedTournament);
   };
 
-  const fetchTournaments = async () => {
-    await API.get(`/TOURNAMENT-SERVICE/api/v1/tournaments`)
-      .then((res) => {
-        setTournaments(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
-    fetchTournaments();
+    dispatch(fetchAllTournaments());
   }, []);
 
   return (
