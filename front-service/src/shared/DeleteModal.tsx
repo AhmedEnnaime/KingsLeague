@@ -1,10 +1,10 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef } from "react";
 import { DeleteModalProps } from "../propsTypes/DeleteModalProps";
-import API from "../utils/API";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../redux/store";
 import { deleteStadium } from "../redux/stadiums/stadiumActions";
+import { deleteTournament } from "../redux/tournaments/tournamentActions";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
@@ -22,15 +22,14 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
           toast.error("Failed to delete stadium");
         });
     } else if ("tournamentType" in element) {
-      await API.delete(`/TOURNAMENT-SERVICE/api/v1/tournaments/${element.id}`)
-        .then((res) => {
-          if (res.status == 200) {
-            toast.success("Tournament deleted successfully");
-            setOpen(false);
-          }
+      dispatch(deleteTournament(element.id as number))
+        .then(() => {
+          toast.success("Tournament deleted successfully");
+          setOpen(false);
         })
         .catch((err) => {
-          console.log(err);
+          console.error("Failed to create tournament:", err);
+          toast.error("Failed to delete tournament");
         });
     }
   };
@@ -67,9 +66,9 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
                     <i
-                      className="p-1 fa-sharp fa-solid fa-dungeon h-6 w-6 text-green-600"
+                      className="p-1 fa-sharp fa-solid fa-dungeon h-6 w-6 text-red-600"
                       aria-hidden="true"
                     ></i>
                   </div>

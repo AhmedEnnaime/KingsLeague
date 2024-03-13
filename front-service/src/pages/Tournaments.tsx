@@ -1,36 +1,35 @@
 import { useEffect, useState } from "react";
 import TournamentCard from "../components/TournamentCard";
 import Header from "../shared/Header";
-import TournamentType from "../enums/TournamentType";
-import Dropdown from "../shared/Dropdown";
 import not_found from "../assets/not_found.png";
 import { RootState, useAppDispatch } from "../redux/store";
 import { useSelector } from "react-redux";
 import { fetchAllTournaments } from "../redux/tournaments/tournamentActions";
+import TournamentModal from "../components/TournamentModal";
+import Button from "../shared/Button";
 
 const Tournaments = () => {
-  const [selectedTournament, setSelectedTournament] =
-    useState<TournamentType>();
+  const [open, setOpen] = useState(false);
   const tournaments = useSelector(
     (state: RootState) => state.tournament.tournaments
   );
   const dispatch = useAppDispatch();
 
-  const handleTournamentSelect = (tournamentType: TournamentType) => {
-    setSelectedTournament(tournamentType);
-    console.log(selectedTournament);
-  };
-
   useEffect(() => {
     dispatch(fetchAllTournaments());
-  }, []);
+  }, [open]);
 
   return (
     <>
       <Header />
       <div className="flex justify-between p-4">
         <h1 className="text-2xl font-semibold">Tournaments</h1>
-        <Dropdown onSelect={handleTournamentSelect} />
+        <Button
+          onClick={() => {
+            setOpen(true);
+          }}
+          content="Create Tournament"
+        />
       </div>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center p-4 items-center">
         {tournaments ? (
@@ -47,6 +46,7 @@ const Tournaments = () => {
           </div>
         )}
       </div>
+      {open ? <TournamentModal open={open} setOpen={setOpen} /> : ""}
     </>
   );
 };

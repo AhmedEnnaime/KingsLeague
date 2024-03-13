@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { TournamentCardProps } from "../propsTypes/TournamentCradProps";
 import Button from "../shared/Button";
+import DeleteModal from "../shared/DeleteModal";
+import TournamentModal from "./TournamentModal";
 
 const TournamentCard = ({ tournament }: TournamentCardProps) => {
+  const [openUpdate, setOpenUpdate] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   return (
     <div className="w-full px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
       <div className="flex items-center justify-between bg-gray-300 w-full">
@@ -49,10 +54,32 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
 
       <div>
         <div className="flex justify-between items-center mt-2">
-          <Button content="Edit" />
-          <Button bgColor="bg-red-500" content="Delete" />
+          <Button onClick={() => setOpenUpdate(true)} content="Edit" />
+          <Button
+            onClick={() => setOpenDelete(true)}
+            bgColor="bg-red-500"
+            content="Delete"
+          />
         </div>
       </div>
+      {openUpdate ? (
+        <TournamentModal
+          open={openUpdate}
+          setOpen={setOpenUpdate}
+          tournament={tournament}
+        />
+      ) : (
+        ""
+      )}
+      {openDelete ? (
+        <DeleteModal
+          open={openDelete}
+          setOpen={setOpenDelete}
+          element={tournament}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

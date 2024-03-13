@@ -36,8 +36,11 @@ const tournamentSlice = createSlice({
         state.loading = false;
         state.tournaments.push(action.payload);
       })
-      .addCase(deleteTournament.pending, (state, action) => {
+      .addCase(deleteTournament.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(deleteTournament.fulfilled, (state, action) => {
+        state.loading = false;
         state.tournaments = state.tournaments.filter(
           (tournament) => tournament.id !== action.meta.arg
         );
