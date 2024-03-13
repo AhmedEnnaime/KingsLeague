@@ -52,8 +52,8 @@ const StadiumCard = ({ stadium }: StadiumCardProps) => {
       )}
       {openDelete ? (
         <DeleteModal
-          open={openUpdate}
-          setOpen={setOpenUpdate}
+          open={openDelete}
+          setOpen={setOpenDelete}
           element={stadium}
         />
       ) : (

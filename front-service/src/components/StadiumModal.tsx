@@ -14,7 +14,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
     location: stadium?.location ?? "",
     capacity: stadium?.capacity ?? 0,
   });
-  const handleAddChange = (
+  const handleChange = (
     e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
@@ -114,7 +114,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                             type="text"
                             name="name"
                             value={inputs?.name}
-                            onChange={handleAddChange}
+                            onChange={handleChange}
                             id="name"
                             className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             placeholder="Enter stadium's name"
@@ -134,7 +134,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                             type="text"
                             name="location"
                             value={inputs?.location}
-                            onChange={handleAddChange}
+                            onChange={handleChange}
                             id="location"
                             className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             placeholder="Enter stadium's location"
@@ -154,7 +154,7 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                             type="number"
                             name="capacity"
                             value={inputs?.capacity}
-                            onChange={handleAddChange}
+                            onChange={handleChange}
                             id="capacity"
                             className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />

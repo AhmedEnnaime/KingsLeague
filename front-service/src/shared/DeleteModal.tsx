@@ -11,10 +11,7 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const dispatch = useAppDispatch();
 
   const deleteElement = async () => {
-    console.log("YOOOO");
     if ("capacity" in element) {
-      console.log("HERE");
-
       dispatch(deleteStadium(element.id as number))
         .then(() => {
           toast.success("Stadium deleted successfully");
