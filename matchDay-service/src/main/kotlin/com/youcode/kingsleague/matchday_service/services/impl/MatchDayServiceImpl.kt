@@ -14,6 +14,16 @@ import java.time.LocalDateTime
 
 @Service
 class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, private val modelMapper: ModelMapper, private val leagueServiceClient: LeagueServiceClient): MatchDayService {
+    override fun findByTournamentId(tournamentId: Long): List<MatchDayDTO> {
+        val matchDays: List<MatchDay> = matchDayRepository.findByTournamentId(tournamentId)
+        return matchDays.map { matchDay ->
+            val league: League = leagueServiceClient.findLeagueById(tournamentId)
+            val matchDayDTO: MatchDayDTO = modelMapper.map(matchDay, MatchDayDTO::class.java)
+            matchDayDTO.league = league
+            matchDayDTO
+        }
+    }
+
     override fun save(dto: MatchDayDTO): MatchDayDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()

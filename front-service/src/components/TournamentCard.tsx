@@ -11,7 +11,7 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
   const navigate = useNavigate();
   return (
     <div
-      className="w-full px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800"
+      className="w-full px-4 py-3 cursor-pointer bg-white rounded-md shadow-md"
       onClick={() => navigate(`/tournament/${tournament.id}`)}
     >
       <div className="flex items-center justify-between bg-gray-300 w-full">
