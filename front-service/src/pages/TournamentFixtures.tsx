@@ -7,14 +7,26 @@ import { useEffect } from "react";
 import { fetchMatchDaysByTournamentId } from "../redux/matchDays/matchDayActions";
 import { useParams } from "react-router-dom";
 import not_found from "../assets/not_found.png";
+import { fetchTournamentById } from "../redux/tournaments/tournamentActions";
+// import TournamentType from "../enums/TournamentType";
 
 const TournamentFixtures = () => {
   const matchDays = useSelector((state: RootState) => state.matchDay.matchDays);
+  // const tournament = useSelector(
+  //   (state: RootState) => state.tournament.selectedTournament
+  // );
   const dispatch = useAppDispatch();
   const routeParams = useParams();
 
   useEffect(() => {
+    console.log(Number(routeParams.id as string));
+
+    dispatch(fetchTournamentById(Number(routeParams.id as string)));
     dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
+
+    // if (tournament?.tournamentType == TournamentType.LEAGUE) {
+    //   dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
+    // }
   }, []);
   return (
     <>
