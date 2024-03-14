@@ -7,7 +7,7 @@ export const fetchMatchDaysByTournamentId = createAsyncThunk<
   number
 >("matchDay/all", async (id) => {
   const { data } = await API.get(
-    `/ROUND-SERVICE/api/v1/matchDays/tournament/${id}`
+    `/MATCHDAY-SERVICE/api/v1/matchDays/tournament/${id}`
   );
   return data;
 });

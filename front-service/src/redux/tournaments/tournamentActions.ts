@@ -11,6 +11,16 @@ export const fetchAllTournaments = createAsyncThunk<ITournament[]>(
   }
 );
 
+export const fetchTournamentById = createAsyncThunk<ITournament, number>(
+  "tournament/single",
+  async (id) => {
+    const { data } = await API.get(
+      `/TOURNAMENT-SERVICE/api/v1/tournaments/${id}`
+    );
+    return data;
+  }
+);
+
 export const createTournament = createAsyncThunk<
   ITournament,
   Partial<ITournament>

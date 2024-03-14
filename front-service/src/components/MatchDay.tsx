@@ -11,6 +11,7 @@ const MatchDay = () => {
             <>
               <Disclosure.Button className="flex w-full justify-between rounded-lg bg-blue-100 px-4 py-8 text-left text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring focus-visible:ring-blue-500/75">
                 <span className="text-xl font-bold">MatchDay 1</span>
+                <p>2024-04-19</p>
                 <ChevronUpIcon
                   className={`${
                     open ? "rotate-180 transform" : ""

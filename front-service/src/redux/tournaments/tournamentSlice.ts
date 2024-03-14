@@ -4,16 +4,19 @@ import {
   createTournament,
   deleteTournament,
   fetchAllTournaments,
+  fetchTournamentById,
   updateTournament,
 } from "./tournamentActions";
 
 interface TournamentState {
   tournaments: ITournament[];
+  selectedTournament: ITournament | null;
   loading: boolean;
 }
 
 const initialState: TournamentState = {
   tournaments: [],
+  selectedTournament: null,
   loading: false,
 };
 
@@ -28,6 +31,13 @@ const tournamentSlice = createSlice({
       .addCase(fetchAllTournaments.fulfilled, (state, action) => {
         state.loading = false;
         state.tournaments = action.payload;
+      })
+      .addCase(fetchTournamentById.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchTournamentById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedTournament = action.payload;
       })
       .addCase(createTournament.pending, (state) => {
         state.loading = true;
