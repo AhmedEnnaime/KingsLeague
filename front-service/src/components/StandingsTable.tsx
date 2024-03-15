@@ -1,7 +1,13 @@
+import { useParams } from "react-router-dom";
 import logo from "../assets/team_logo.png";
 import { StandingsTableProps } from "../propsTypes/StandingsTableProps";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
+  const routeParams = useParams();
+  const registeredTeams = tournamentTeams.filter(
+    (tournamentTeam) =>
+      tournamentTeam.id?.tournamentId === Number(routeParams.id)
+  );
   return (
     <section className="container px-4 mx-auto">
       <div className="flex items-center gap-x-3">
@@ -51,8 +57,8 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                  {tournamentTeams
-                    ? tournamentTeams.map((tournamentTeam) => (
+                  {registeredTeams
+                    ? registeredTeams.map((tournamentTeam) => (
                         <tr key={tournamentTeam.id?.teamId}>
                           <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                             <div className="inline-flex items-center gap-x-3">
