@@ -12,6 +12,7 @@ import ITournament from "../../interfaces/ITournament";
 interface TournamentTeamState {
   tournamentTeams: ITournamentTeams[];
   teams: ITeam[];
+  status: number;
   tournaments: ITournament[];
   loading: boolean;
 }
@@ -19,6 +20,7 @@ interface TournamentTeamState {
 const initialState: TournamentTeamState = {
   tournamentTeams: [],
   teams: [],
+  status: 200,
   tournaments: [],
   loading: false,
 };
@@ -33,6 +35,7 @@ const tournamentTeamSlice = createSlice({
       })
       .addCase(fetchAllTournamentTeams.fulfilled, (state, action) => {
         state.loading = false;
+        state.status = 200;
         state.tournamentTeams = action.payload;
       })
       .addCase(fetchTournamentTeamsByTournamentId.pending, (state) => {
@@ -48,8 +51,13 @@ const tournamentTeamSlice = createSlice({
       .addCase(registerTeamInTournament.pending, (state) => {
         state.loading = true;
       })
+      .addCase(registerTeamInTournament.rejected, (state) => {
+        state.loading = true;
+        state.status = 500;
+      })
       .addCase(registerTeamInTournament.fulfilled, (state, action) => {
         state.tournamentTeams.push(action.payload);
+        state.status = 201;
       })
       .addCase(removeTeamFromTournament.pending, (state) => {
         state.loading = true;
