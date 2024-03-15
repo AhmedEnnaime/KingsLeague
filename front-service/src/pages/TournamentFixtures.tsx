@@ -17,17 +17,19 @@ const TournamentFixtures = () => {
     (state: RootState) => state.tournamentTeam.tournamentTeams
   );
   // const rounds = useSelector((state: RootState) => state.round.rounds);
-  // const tournament = useSelector(
-  //   (state: RootState) => state.tournament.selectedTournament
-  // );
+  const tournament = useSelector(
+    (state: RootState) => state.tournament.selectedTournament
+  );
   const dispatch = useAppDispatch();
   const routeParams = useParams();
 
   useEffect(() => {
-    dispatch(fetchTournamentById(Number(routeParams.id as string)));
+    dispatch(fetchTournamentById(Number(routeParams.id)));
     dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
     // dispatch(fetchRoundsByTournamentId(Number(routeParams.id as string)));
     dispatch(fetchAllTournamentTeams());
+    console.log(tournament);
+
     // if (tournament?.tournamentType == TournamentType.LEAGUE) {
     //   dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
     // }
@@ -38,8 +40,8 @@ const TournamentFixtures = () => {
       <div className="flex justify-between p-4 w-full pt-8">
         <div className="flex flex-col w-full">
           {matchDays ? (
-            matchDays.map((matchDay) => (
-              <Fixture matchDay={matchDay} key={matchDay.id} />
+            matchDays.map((matchDay, index) => (
+              <Fixture index={index} matchDay={matchDay} key={matchDay.id} />
             ))
           ) : (
             <div className="flex justify-center items-center lg:col-span-3">

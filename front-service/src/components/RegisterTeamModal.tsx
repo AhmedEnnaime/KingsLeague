@@ -122,6 +122,7 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
                           name="team"
                           id="team"
                         >
+                          <option value="">Select Team</option>
                           {teams ? (
                             teams.map((team) => (
                               <option key={team.id} value={team.id}>
