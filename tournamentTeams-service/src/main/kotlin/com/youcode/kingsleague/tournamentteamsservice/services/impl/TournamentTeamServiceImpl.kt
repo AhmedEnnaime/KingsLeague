@@ -3,6 +3,7 @@ package com.youcode.kingsleague.tournamentteamsservice.services.impl
 import com.youcode.kingsleague.common.exceptions.MaxTeamsReachedException
 import com.youcode.kingsleague.common.exceptions.RegistrationTimeExpiredException
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
+import com.youcode.kingsleague.common.exceptions.TeamAlreadyRegistered
 import com.youcode.kingsleague.tournamentteamsservice.models.dto.TournamentTeamDTO
 import com.youcode.kingsleague.tournamentteamsservice.models.embeddables.TournamentTeamKey
 import com.youcode.kingsleague.tournamentteamsservice.models.entities.TournamentTeam
@@ -27,6 +28,9 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
         tournamentTeamDTO.id = TournamentTeamKey(teamId = team.id!!, tournamentId = tournament.id!!)
         if (tournament.debutDate <= LocalDate.now()) {
             throw RegistrationTimeExpiredException("Registration date of this tournament has expired in this date ${tournament.debutDate}")
+        }
+        if (tournamentTeamRepository.existsById(TournamentTeamKey(teamId = team.id!!, tournamentId = tournament.id!!))) {
+            throw TeamAlreadyRegistered("Team with ID ${team.id} is already registered in tournament with ID ${tournament.id}")
         }
         if (tournament.teamsNum <= tournamentTeamRepository.findTeamIdsByTournamentId(tournament.id!!).size) {
             throw MaxTeamsReachedException("This tournament is already full and cannot surpass this number of registered teams: ${tournament.teamsNum}")

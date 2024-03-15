@@ -10,14 +10,17 @@ import { RegisterModalProps } from "../propsTypes/RegisterTeamModalProps";
 import { registerTeamInTournament } from "../redux/tournamentTeams/tournamentTeamsActions";
 import { toast } from "react-toastify";
 import ITournament from "../interfaces/ITournament";
+import { fetchAllTeams, fetchSelectedTeam } from "../redux/teams/teamActions";
 
 const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
   const cancelButtonRef = useRef(null);
   const tournament = useSelector(
     (state: RootState) => state.tournament.selectedTournament
   );
+
   const dispatch = useAppDispatch();
   const routeParams = useParams();
+  const teams = useSelector((state: RootState) => state.team.teams);
   const [inputs, setInputs] = useState<ITournamentTeams>({
     tournament: tournament as ITournament,
     team: undefined,
@@ -29,14 +32,20 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLSelectElement>
   ) => {
+    const selectedTeamId = e.target.value;
+    const selectedTeam = teams.find(
+      (team) => team.id === Number(selectedTeamId)
+    );
     setInputs((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      team: selectedTeam,
     }));
+    dispatch(fetchSelectedTeam(Number(selectedTeamId)));
   };
 
   const handleSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    console.log(inputs);
     dispatch(registerTeamInTournament(inputs))
       .then(() => {
         toast.success("Team registered successfully");
@@ -49,6 +58,7 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
   };
   useEffect(() => {
     dispatch(fetchTournamentById(Number(routeParams.id as string)));
+    dispatch(fetchAllTeams());
   }, []);
 
   return (
@@ -95,7 +105,7 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Select which team you wanna register
+                      {tournament?.tournamentType}
                     </Dialog.Title>
 
                     <form className="flex flex-col items-center mt-4">
@@ -112,8 +122,15 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
                           name="team"
                           id="team"
                         >
-                          <option value="">League</option>
-                          <option value="">Cup</option>
+                          {teams ? (
+                            teams.map((team) => (
+                              <option key={team.id} value={team.id}>
+                                {team.name}
+                              </option>
+                            ))
+                          ) : (
+                            <option value=""></option>
+                          )}
                         </select>
                       </div>
                     </form>
