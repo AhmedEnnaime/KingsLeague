@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ITournamentTeams from "../../interfaces/ITournamentTeams";
-import { fetchTournamentTeamsByTournamentId } from "./tournamentTeamsActions";
+import {
+  fetchAllTournamentTeams,
+  fetchTournamentTeamsByTournamentId,
+} from "./tournamentTeamsActions";
 import ITeam from "../../interfaces/ITeam";
 import ITournament from "../../interfaces/ITournament";
 
@@ -23,6 +26,13 @@ const tournamentTeamSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
+      .addCase(fetchAllTournamentTeams.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchAllTournamentTeams.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tournamentTeams = action.payload;
+      })
       .addCase(fetchTournamentTeamsByTournamentId.pending, (state) => {
         state.loading = true;
       })

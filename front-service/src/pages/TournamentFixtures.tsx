@@ -8,11 +8,14 @@ import { fetchMatchDaysByTournamentId } from "../redux/matchDays/matchDayActions
 import { useParams } from "react-router-dom";
 import not_found from "../assets/not_found.png";
 import { fetchTournamentById } from "../redux/tournaments/tournamentActions";
-import { fetchRoundsByTournamentId } from "../redux/rounds/roundActions";
+import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
 // import TournamentType from "../enums/TournamentType";
 
 const TournamentFixtures = () => {
   const matchDays = useSelector((state: RootState) => state.matchDay.matchDays);
+  const tournamentTeams = useSelector(
+    (state: RootState) => state.tournamentTeam.tournamentTeams
+  );
   // const rounds = useSelector((state: RootState) => state.round.rounds);
   // const tournament = useSelector(
   //   (state: RootState) => state.tournament.selectedTournament
@@ -21,12 +24,10 @@ const TournamentFixtures = () => {
   const routeParams = useParams();
 
   useEffect(() => {
-    console.log(Number(routeParams.id as string));
-
     dispatch(fetchTournamentById(Number(routeParams.id as string)));
     dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
-    dispatch(fetchRoundsByTournamentId(Number(routeParams.id as string)));
-
+    // dispatch(fetchRoundsByTournamentId(Number(routeParams.id as string)));
+    dispatch(fetchAllTournamentTeams());
     // if (tournament?.tournamentType == TournamentType.LEAGUE) {
     //   dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
     // }
@@ -51,7 +52,7 @@ const TournamentFixtures = () => {
           )}
         </div>
         <div className="w-3/5">
-          <StandingsTable />
+          <StandingsTable tournamentTeams={tournamentTeams} />
         </div>
       </div>
     </>
