@@ -3,6 +3,7 @@ import ITournamentTeams from "../../interfaces/ITournamentTeams";
 import {
   fetchAllTournamentTeams,
   fetchTournamentTeamsByTournamentId,
+  registerTeamInTournament,
   removeTeamFromTournament,
 } from "./tournamentTeamsActions";
 import ITeam from "../../interfaces/ITeam";
@@ -44,6 +45,12 @@ const tournamentTeamSlice = createSlice({
           state.teams = action.payload;
         }
       )
+      .addCase(registerTeamInTournament.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(registerTeamInTournament.fulfilled, (state, action) => {
+        state.tournamentTeams.push(action.payload);
+      })
       .addCase(removeTeamFromTournament.pending, (state) => {
         state.loading = true;
       })

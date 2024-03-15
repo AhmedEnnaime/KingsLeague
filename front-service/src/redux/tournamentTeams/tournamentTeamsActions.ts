@@ -25,6 +25,17 @@ export const fetchTournamentTeamsByTournamentId = createAsyncThunk<
   return data;
 });
 
+export const registerTeamInTournament = createAsyncThunk<
+  ITournamentTeams,
+  Partial<ITournamentTeams>
+>("tournamentTeam/register", async (tournamentTeam) => {
+  const { data } = await API.post(
+    `/TOURNAMENTTEAMS-SERVICE/api/v1/tournamentTeams`,
+    tournamentTeam
+  );
+  return data;
+});
+
 export const removeTeamFromTournament = createAsyncThunk<
   Map<string, string>,
   TournamentTeamKey
