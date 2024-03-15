@@ -4,8 +4,8 @@ import ITournament from "./ITournament";
 
 interface ITournamentTeams {
   id?: TournamentTeamKey;
-  team: ITeam;
-  tournament: ITournament;
+  team?: ITeam;
+  tournament?: ITournament;
   points?: number;
   createdAt?: Date;
   updatedAt?: Date;

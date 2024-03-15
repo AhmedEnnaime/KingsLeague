@@ -2,13 +2,22 @@ import { useParams } from "react-router-dom";
 import logo from "../assets/team_logo.png";
 import { StandingsTableProps } from "../propsTypes/StandingsTableProps";
 import Button from "../shared/Button";
+import { useEffect, useState } from "react";
+import { useAppDispatch } from "../redux/store";
+import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
+import RegisterTeamModal from "./RegisterTeamModal";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
+  const [open, setOpen] = useState(false);
   const routeParams = useParams();
   const registeredTeams = tournamentTeams.filter(
     (tournamentTeam) =>
       tournamentTeam.id?.tournamentId === Number(routeParams.id)
   );
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchAllTournamentTeams());
+  }, [open]);
   return (
     <section className="container px-4 mx-auto">
       <div className="flex justify-between items-center">
@@ -21,7 +30,7 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
           </span>
         </div>
 
-        <Button content="Register a team" />
+        <Button onClick={() => setOpen(true)} content="Register a team" />
       </div>
       <div className="flex flex-col mt-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -77,7 +86,7 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
                             </div>
                           </td>
                           <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                            {tournamentTeam.team.name}
+                            {tournamentTeam?.team?.name}
                           </td>
                           <td className="px-2 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                             {tournamentTeam.points}
@@ -112,6 +121,7 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
           </div>
         </div>
       </div>
+      {open ? <RegisterTeamModal open={open} setOpen={setOpen} /> : ""}
     </section>
   );
 };
