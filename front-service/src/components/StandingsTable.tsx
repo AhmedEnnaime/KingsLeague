@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "../redux/store";
 import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
 import RegisterTeamModal from "./RegisterTeamModal";
+import DeleteModal from "../shared/DeleteModal";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const [open, setOpen] = useState(false);
+  const [openRemove, setOpenRemove] = useState(false);
   const routeParams = useParams();
   const registeredTeams = tournamentTeams.filter(
     (tournamentTeam) =>
@@ -102,9 +104,21 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
                         </td>
                       )}
 
+                      {openRemove ? (
+                        <DeleteModal
+                          open={openRemove}
+                          setOpen={setOpenRemove}
+                          element={tournamentTeam}
+                        />
+                      ) : (
+                        ""
+                      )}
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex justify-center items-center gap-x-6">
-                          <button className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                          <button
+                            onClick={() => setOpenRemove(true)}
+                            className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"

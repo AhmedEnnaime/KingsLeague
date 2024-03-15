@@ -47,6 +47,8 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
   const handleSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     console.log(inputs);
+    console.log(status);
+
     dispatch(registerTeamInTournament(inputs))
       .then(() => {
         if (status == 201) {

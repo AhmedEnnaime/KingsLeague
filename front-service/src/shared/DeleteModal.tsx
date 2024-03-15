@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { useAppDispatch } from "../redux/store";
 import { deleteStadium } from "../redux/stadiums/stadiumActions";
 import { deleteTournament } from "../redux/tournaments/tournamentActions";
+import { removeTeamFromTournament } from "../redux/tournamentTeams/tournamentTeamsActions";
+import { TournamentTeamKey } from "../embddables/TournamentTeamKey";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
@@ -30,6 +32,20 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
         .catch((err) => {
           console.error("Failed to create tournament:", err);
           toast.error("Failed to delete tournament");
+        });
+    } else if ("points" in element) {
+      const tournamentTeamKey: TournamentTeamKey = {
+        teamId: element.team?.id as number,
+        tournamentId: element.tournament?.id as number,
+      };
+      dispatch(removeTeamFromTournament(tournamentTeamKey))
+        .then(() => {
+          toast.success("Team removed successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to remove team:", err);
+          toast.error("Failed to remove team from tournament");
         });
     }
   };
