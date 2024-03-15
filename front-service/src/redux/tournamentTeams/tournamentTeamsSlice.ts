@@ -3,6 +3,7 @@ import ITournamentTeams from "../../interfaces/ITournamentTeams";
 import {
   fetchAllTournamentTeams,
   fetchTournamentTeamsByTournamentId,
+  removeTeamFromTournament,
 } from "./tournamentTeamsActions";
 import ITeam from "../../interfaces/ITeam";
 import ITournament from "../../interfaces/ITournament";
@@ -42,7 +43,16 @@ const tournamentTeamSlice = createSlice({
           state.loading = false;
           state.teams = action.payload;
         }
-      );
+      )
+      .addCase(removeTeamFromTournament.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(removeTeamFromTournament.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tournamentTeams = state.tournamentTeams.filter(
+          (tournamentTeam) => tournamentTeam.id !== action.meta.arg
+        );
+      });
   },
   reducers: {},
 });

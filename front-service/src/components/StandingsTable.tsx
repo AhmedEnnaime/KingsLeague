@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import logo from "../assets/team_logo.png";
 import { StandingsTableProps } from "../propsTypes/StandingsTableProps";
+import Button from "../shared/Button";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const routeParams = useParams();
@@ -10,13 +11,17 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   );
   return (
     <section className="container px-4 mx-auto">
-      <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 dark:text-white">
-          Teams
-        </h2>
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
-          100
-        </span>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-x-3">
+          <h2 className="text-lg font-medium text-gray-800 dark:text-white">
+            Teams
+          </h2>
+          <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full dark:bg-gray-800 dark:text-blue-400">
+            {registeredTeams.length}
+          </span>
+        </div>
+
+        <Button content="Register a team" />
       </div>
       <div className="flex flex-col mt-6">
         <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
