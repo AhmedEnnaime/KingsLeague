@@ -12,7 +12,6 @@ import ITournament from "../../interfaces/ITournament";
 interface TournamentTeamState {
   tournamentTeams: ITournamentTeams[];
   teams: ITeam[];
-  status: number | null;
   tournaments: ITournament[];
   loading: boolean;
 }
@@ -20,7 +19,6 @@ interface TournamentTeamState {
 const initialState: TournamentTeamState = {
   tournamentTeams: [],
   teams: [],
-  status: null,
   tournaments: [],
   loading: false,
 };
@@ -52,10 +50,8 @@ const tournamentTeamSlice = createSlice({
       })
       .addCase(registerTeamInTournament.rejected, (state) => {
         state.loading = true;
-        state.status = 500;
       })
       .addCase(registerTeamInTournament.fulfilled, (state, action) => {
-        state.status = 201;
         state.tournamentTeams.push(action.payload);
       })
       .addCase(removeTeamFromTournament.pending, (state) => {
@@ -64,7 +60,9 @@ const tournamentTeamSlice = createSlice({
       .addCase(removeTeamFromTournament.fulfilled, (state, action) => {
         state.loading = false;
         state.tournamentTeams = state.tournamentTeams.filter(
-          (tournamentTeam) => tournamentTeam.id !== action.meta.arg
+          (tournamentTeam) =>
+            JSON.stringify(tournamentTeam.id) !==
+            JSON.stringify(action.meta.arg)
         );
       });
   },

@@ -7,10 +7,13 @@ import { useAppDispatch } from "../redux/store";
 import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
 import RegisterTeamModal from "./RegisterTeamModal";
 import DeleteModal from "../shared/DeleteModal";
+import ITournamentTeams from "../interfaces/ITournamentTeams";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const [open, setOpen] = useState(false);
   const [openRemove, setOpenRemove] = useState(false);
+  const [selectedTournamentTeam, setSelectedTournamentTeam] =
+    useState<ITournamentTeams>();
   const routeParams = useParams();
   const registeredTeams = tournamentTeams.filter(
     (tournamentTeam) =>
@@ -104,19 +107,13 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
                         </td>
                       )}
 
-                      {openRemove ? (
-                        <DeleteModal
-                          open={openRemove}
-                          setOpen={setOpenRemove}
-                          element={tournamentTeam}
-                        />
-                      ) : (
-                        ""
-                      )}
                       <td className="px-4 py-4 text-sm whitespace-nowrap">
                         <div className="flex justify-center items-center gap-x-6">
                           <button
-                            onClick={() => setOpenRemove(true)}
+                            onClick={() => {
+                              setSelectedTournamentTeam(tournamentTeam);
+                              setOpenRemove(true);
+                            }}
                             className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none"
                           >
                             <svg
@@ -145,6 +142,15 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
         </div>
       </div>
       {open && <RegisterTeamModal open={open} setOpen={setOpen} />}
+      {openRemove ? (
+        <DeleteModal
+          open={openRemove}
+          setOpen={setOpenRemove}
+          element={selectedTournamentTeam as ITournamentTeams}
+        />
+      ) : (
+        ""
+      )}
     </section>
   );
 };

@@ -18,7 +18,6 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
     (state: RootState) => state.tournament.selectedTournament
   );
 
-  const { status } = useSelector((state: RootState) => state.tournamentTeam);
   const dispatch = useAppDispatch();
   const routeParams = useParams();
   const teams = useSelector((state: RootState) => state.team.teams);
@@ -51,15 +50,12 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
 
     dispatch(registerTeamInTournament(inputs))
       .then(() => {
-        if (status == 201) {
-          toast.success("Team registered successfully");
-          setOpen(false);
-        } else {
-          toast.error("Failed to register team");
-        }
+        setOpen(false);
+        toast.success("Team registered successfully");
       })
       .catch((err) => {
         console.error("Failed to register team:", err);
+        toast.error("Failed to register team");
       });
   };
   useEffect(() => {
