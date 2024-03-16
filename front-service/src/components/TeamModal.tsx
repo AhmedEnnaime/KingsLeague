@@ -1,9 +1,53 @@
 import { TeamModalProps } from "../propsTypes/TeamModalProps";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
+import { useAppDispatch } from "../redux/store";
+import ITeam from "../interfaces/ITeam";
+import { createTeam, updateTeam } from "../redux/teams/teamActions";
+import { toast } from "react-toastify";
 
 const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
   const cancelButtonRef = useRef(null);
+  const dispatch = useAppDispatch();
+  const [inputs, setInputs] = useState<ITeam>({
+    name: team?.name ?? "",
+    country: team?.country ?? "",
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    dispatch(createTeam(inputs))
+      .then(() => {
+        toast.success("Team created successfully");
+        setOpen(false);
+      })
+      .catch((err) => {
+        console.error("Failed to create team:", err);
+        toast.error("Failed to create team");
+      });
+  };
+
+  const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    const { id } = team as ITeam;
+    const updatedTeamData = inputs;
+    const teamID = id as number;
+    dispatch(updateTeam({ id: teamID, teamData: updatedTeamData }))
+      .then(() => {
+        toast.success("Team updated successfully");
+        setOpen(false);
+      })
+      .catch((err) => {
+        console.error("Failed to update team:", err);
+        toast.error("Failed to update team");
+      });
+  };
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -48,7 +92,7 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Fill stadium's information
+                      Fill team's information
                     </Dialog.Title>
 
                     <form className="flex flex-col items-center mt-4">
@@ -74,39 +118,20 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
 
                       <div className="text-left w-full">
                         <label
-                          htmlFor="location"
+                          htmlFor="country"
                           className="block text-sm font-medium text-gray-700"
                         >
-                          Location
+                          Country
                         </label>
                         <div className="mt-1">
                           <input
                             type="text"
-                            name="location"
-                            value={inputs?.location}
+                            name="country"
+                            value={inputs?.country}
                             onChange={handleChange}
-                            id="location"
+                            id="country"
                             className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                             placeholder="Enter stadium's location"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="text-left w-full">
-                        <label
-                          htmlFor="capacity"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          Capacity
-                        </label>
-                        <div className="mt-1">
-                          <input
-                            type="number"
-                            name="capacity"
-                            value={inputs?.capacity}
-                            onChange={handleChange}
-                            id="capacity"
-                            className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
                       </div>
@@ -114,7 +139,7 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
                   </div>
                 </div>
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
-                  {!stadium?.id ? (
+                  {!team?.id ? (
                     <button
                       type="submit"
                       className="inline-flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:col-start-2 sm:text-sm"
