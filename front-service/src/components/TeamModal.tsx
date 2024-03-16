@@ -1,19 +1,42 @@
 import { TeamModalProps } from "../propsTypes/TeamModalProps";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useAppDispatch } from "../redux/store";
 import ITeam from "../interfaces/ITeam";
 import { createTeam, updateTeam } from "../redux/teams/teamActions";
 import { toast } from "react-toastify";
+import axios from "axios";
+import ICountry from "../interfaces/ICountry";
 
 const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
   const cancelButtonRef = useRef(null);
   const dispatch = useAppDispatch();
+  const [countries, setCountries] = useState<string[]>([]);
+
+  const fetchCountries = async () => {
+    try {
+      const response = await axios.get<ICountry[]>(
+        `https://restcountries.com/v3.1/all`
+      );
+      const countriesData = response.data;
+      const countryNames = countriesData.map(
+        (country: ICountry) => country.name.common
+      );
+      setCountries(countryNames);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const [inputs, setInputs] = useState<ITeam>({
     name: team?.name ?? "",
     country: team?.country ?? "",
   });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -48,6 +71,10 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
         toast.error("Failed to update team");
       });
   };
+
+  useEffect(() => {
+    fetchCountries();
+  }, []);
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -124,15 +151,21 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
                           Country
                         </label>
                         <div className="mt-1">
-                          <input
-                            type="text"
-                            name="country"
-                            value={inputs?.country}
+                          <select
                             onChange={handleChange}
+                            value={inputs.country}
+                            name="country"
                             id="country"
-                            className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                            placeholder="Enter stadium's location"
-                          />
+                            className="w-full rounded-md"
+                          >
+                            <option value="">Select a country</option>
+                            {countries &&
+                              countries.map((country, index) => (
+                                <option value={country} key={index}>
+                                  {country}
+                                </option>
+                              ))}
+                          </select>
                         </div>
                       </div>
                     </form>
