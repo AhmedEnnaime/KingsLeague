@@ -6,6 +6,7 @@ import { RootState, useAppDispatch } from "../redux/store";
 import { fetchAllTeams } from "../redux/teams/teamActions";
 import TeamCard from "../components/TeamCard";
 import not_found from "../assets/not_found.png";
+import TeamModal from "../components/TeamModal";
 
 const Teams = () => {
   const [open, setOpen] = useState(false);
@@ -40,6 +41,7 @@ const Teams = () => {
           </div>
         )}
       </div>
+      {open ? <TeamModal open={open} setOpen={setOpen} /> : ""}
     </>
   );
 };

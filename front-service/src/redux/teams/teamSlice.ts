@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ITeam from "../../interfaces/ITeam";
-import { fetchAllTeams, fetchSelectedTeam } from "./teamActions";
+import {
+  createTeam,
+  deleteTeam,
+  fetchAllTeams,
+  fetchSelectedTeam,
+  updateTeam,
+} from "./teamActions";
 
 interface TeamState {
   teams: ITeam[];
@@ -32,6 +38,31 @@ const teamSlice = createSlice({
       .addCase(fetchSelectedTeam.fulfilled, (state, action) => {
         state.loading = false;
         state.selectedTeam = action.payload;
+      })
+      .addCase(createTeam.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createTeam.fulfilled, (state, action) => {
+        state.loading = false;
+        state.teams.push(action.payload);
+      })
+      .addCase(deleteTeam.pending, (state, action) => {
+        state.loading = true;
+        state.teams = state.teams.filter((team) => team.id !== action.meta.arg);
+      })
+      .addCase(updateTeam.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateTeam.fulfilled, (state, action) => {
+        state.loading = false;
+        const updatedTeamId = action.meta.arg.id;
+        const updatedTeam = action.payload;
+        const existingTeam = state.teams.find(
+          (team) => team.id === updatedTeamId
+        );
+        if (existingTeam) {
+          Object.assign(existingTeam, updatedTeam);
+        }
       });
   },
   reducers: {},
