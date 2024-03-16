@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import ITournamentTeams from "../../interfaces/ITournamentTeams";
 import { AxiosResponse } from "axios";
 import { TournamentTeamKey } from "../../embddables/TournamentTeamKey";
+import ITournament from "../../interfaces/ITournament";
 
 export const fetchAllTournamentTeams = createAsyncThunk<ITournamentTeams[]>(
   "tournamentTeam/all",
@@ -44,4 +45,14 @@ export const removeTeamFromTournament = createAsyncThunk<
     `/TOURNAMENTTEAMS-SERVICE/api/v1/tournamentTeams/${id.teamId}/tournament/${id.tournamentId}`
   );
   return response.data;
+});
+
+export const fetchTournamentTeamsByTeamId = createAsyncThunk<
+  ITournament[],
+  number
+>("tournament/tournaments", async (teamId) => {
+  const { data } = await API.get(
+    `/TOURNAMENTTEAMS-SERVICE/api/v1/tournamentTeams/tournaments/${teamId}`
+  );
+  return data;
 });

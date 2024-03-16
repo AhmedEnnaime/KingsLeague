@@ -151,21 +151,44 @@ const TeamModal = ({ open, setOpen, team }: TeamModalProps) => {
                           Country
                         </label>
                         <div className="mt-1">
-                          <select
-                            onChange={handleChange}
-                            value={inputs.country}
-                            name="country"
-                            id="country"
-                            className="w-full rounded-md"
-                          >
-                            <option value="">Select a country</option>
-                            {countries &&
-                              countries.map((country, index) => (
-                                <option value={country} key={index}>
-                                  {country}
-                                </option>
-                              ))}
-                          </select>
+                          {!team?.id ? (
+                            <select
+                              onChange={handleChange}
+                              value={inputs.country}
+                              name="country"
+                              id="country"
+                              className="w-full rounded-md"
+                            >
+                              <option value="">Select a country</option>
+                              {countries &&
+                                countries.sort().map((country, index) => (
+                                  <option value={country} key={index}>
+                                    {country}
+                                  </option>
+                                ))}
+                            </select>
+                          ) : (
+                            <select
+                              onChange={handleChange}
+                              value={inputs.country}
+                              name="country"
+                              id="country"
+                              className="w-full rounded-md"
+                            >
+                              <option
+                                defaultValue={team.country}
+                                value={team.country}
+                              >
+                                {team.country}
+                              </option>
+                              {countries &&
+                                countries.sort().map((country, index) => (
+                                  <option value={country} key={index}>
+                                    {country}
+                                  </option>
+                                ))}
+                            </select>
+                          )}
                         </div>
                       </div>
                     </form>

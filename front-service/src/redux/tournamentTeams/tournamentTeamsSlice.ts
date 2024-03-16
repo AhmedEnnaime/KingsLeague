@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import ITournamentTeams from "../../interfaces/ITournamentTeams";
 import {
   fetchAllTournamentTeams,
+  fetchTournamentTeamsByTeamId,
   fetchTournamentTeamsByTournamentId,
   registerTeamInTournament,
   removeTeamFromTournament,
@@ -45,6 +46,13 @@ const tournamentTeamSlice = createSlice({
           state.teams = action.payload;
         }
       )
+      .addCase(fetchTournamentTeamsByTeamId.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchTournamentTeamsByTeamId.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tournaments = action.payload;
+      })
       .addCase(registerTeamInTournament.pending, (state) => {
         state.loading = true;
       })
