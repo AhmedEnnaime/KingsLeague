@@ -7,6 +7,7 @@ import { deleteStadium } from "../redux/stadiums/stadiumActions";
 import { deleteTournament } from "../redux/tournaments/tournamentActions";
 import { removeTeamFromTournament } from "../redux/tournamentTeams/tournamentTeamsActions";
 import { TournamentTeamKey } from "../embddables/TournamentTeamKey";
+import { deleteTeam } from "../redux/teams/teamActions";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
@@ -46,6 +47,16 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
         .catch((err) => {
           console.error("Failed to remove team:", err);
           toast.error("Failed to remove team from tournament");
+        });
+    } else if ("country" in element) {
+      dispatch(deleteTeam(element.id as number))
+        .then(() => {
+          toast.success("Team deleted successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create team:", err);
+          toast.error("Failed to delete team");
         });
     }
   };
