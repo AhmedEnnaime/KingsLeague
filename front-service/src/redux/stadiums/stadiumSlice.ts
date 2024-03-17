@@ -36,8 +36,11 @@ const stadiumSlice = createSlice({
         state.loading = false;
         state.stadiums.push(action.payload);
       })
-      .addCase(deleteStadium.pending, (state, action) => {
+      .addCase(deleteStadium.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(deleteStadium.fulfilled, (state, action) => {
+        state.loading = false;
         state.stadiums = state.stadiums.filter(
           (stadium) => stadium.id !== action.meta.arg
         );
