@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface ResultRepository: JpaRepository<Result, Long> {
+    fun findByMatchId(matchId: Long): List<Result>
 }

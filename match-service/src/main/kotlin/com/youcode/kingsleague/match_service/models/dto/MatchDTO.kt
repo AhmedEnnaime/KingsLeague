@@ -13,10 +13,10 @@ data class MatchDTO (
     var status: MatchStatus = MatchStatus.SCHEDULED,
     var matchType: MatchType,
 //    val stadium: StadiumDTO?,
-    val stadiumId: Long,
+    val stadiumId: Long?,
     val result: ResultDTO?,
-    val teamAId: Long,
-    val teamBId: Long,
+    val opponentAId: Long,
+    val opponentBId: Long,
     val matchDayId: Long?,
     var teamA: Team?,
     var teamB: Team?,
@@ -24,5 +24,5 @@ data class MatchDTO (
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, LocalTime.now(), MatchStatus.SCHEDULED,MatchType.LEAGUE, 0, null, 0, 0, 0, null, null, null, null, null)
+    constructor() : this(null, LocalTime.now(), MatchStatus.SCHEDULED,MatchType.LEAGUE, null, null, 0, 0, 0, null, null, null, null, null)
 }

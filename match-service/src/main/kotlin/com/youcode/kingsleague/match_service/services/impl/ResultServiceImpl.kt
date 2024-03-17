@@ -1,8 +1,10 @@
 package com.youcode.kingsleague.match_service.services.impl
 
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
+import com.youcode.kingsleague.match_service.models.dto.MatchDTO
 import com.youcode.kingsleague.match_service.models.dto.ResultDTO
 import com.youcode.kingsleague.match_service.models.dto.RetrievalMatchDTO
+import com.youcode.kingsleague.match_service.models.entities.Match
 import com.youcode.kingsleague.match_service.repositories.ResultRepository
 import com.youcode.kingsleague.match_service.services.ResultService
 import org.modelmapper.ModelMapper
@@ -13,13 +15,20 @@ import com.youcode.kingsleague.match_service.models.enums.MatchStatus
 import com.youcode.kingsleague.match_service.models.enums.MatchType
 import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.models.transients.TournamentTeam
+import com.youcode.kingsleague.match_service.repositories.MatchRepository
 import com.youcode.kingsleague.match_service.services.MatchService
 import com.youcode.kingsleague.match_service.services.client.MatchDayServiceClient
 import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
-class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient, private val matchDayServiceClient: MatchDayServiceClient): ResultService {
+class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient): ResultService {
+    override fun findResultByMatchId(matchId: Long): List<ResultDTO> {
+        matchService.findByID(matchId)
+        val results: List<Result> = resultRepository.findByMatchId(matchId)
+        return results.map { result -> modelMapper.map(result, ResultDTO::class.java) }
+    }
+
     override fun save(dto: ResultDTO): ResultDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
@@ -30,6 +39,7 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             tournamentTeam.points = tournamentTeam.points?.plus(3)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeam)
         }else if (match.matchType == MatchType.LEAGUE && dto.teamId == null) {
+            println("HERE IN IF")
             val tournamentTeamA: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamA?.id!!)
             val tournamentTeamB: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamB?.id!!)
             tournamentTeamA.points = tournamentTeamA.points?.plus(1)
@@ -38,6 +48,7 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamB)
         }
         match.status = MatchStatus.PLAYED
+        matchService.save(modelMapper.map(match, MatchDTO::class.java))
         val savedResult: Result = resultRepository.save(resultEntity)
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }
