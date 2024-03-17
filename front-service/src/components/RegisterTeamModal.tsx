@@ -6,7 +6,7 @@ import { RootState, useAppDispatch } from "../redux/store";
 import { useParams } from "react-router-dom";
 import ITournamentTeams from "../interfaces/ITournamentTeams";
 import { fetchTournamentById } from "../redux/tournaments/tournamentActions";
-import { RegisterModalProps } from "../propsTypes/RegisterTeamModalProps";
+import { RegisterModalProps } from "../propsTypes/RegisterModalProps";
 import { registerTeamInTournament } from "../redux/tournamentTeams/tournamentTeamsActions";
 import { toast } from "react-toastify";
 import ITournament from "../interfaces/ITournament";
@@ -45,9 +45,6 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    console.log(inputs);
-    console.log(status);
-
     dispatch(registerTeamInTournament(inputs))
       .then(() => {
         setOpen(false);

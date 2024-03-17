@@ -8,9 +8,12 @@ import { useEffect, useState } from "react";
 import { fetchAllTeamPlayers } from "../redux/teamPlayers/teamPlayersActions";
 import DeleteModal from "../shared/DeleteModal";
 import ITeamPlayers from "../interfaces/ITeamPlayers";
+import Button from "../shared/Button";
+import RegisterPlayerModal from "../components/RegisterPlayerModal";
 
 const TeamPlayers = () => {
   const [openDelete, setOpenDelete] = useState(false);
+  const [open, setOpen] = useState(false);
   const [selectedTeamPlayer, setSelectedTeamPlayer] = useState<ITeamPlayers>();
   const dispatch = useAppDispatch();
   const routeParams = useParams();
@@ -25,6 +28,12 @@ const TeamPlayers = () => {
   return (
     <>
       <Header />
+      <div className="flex justify-between m-4">
+        <h2 className="text-xl font-semibold p-4">
+          {teamPlayers.length > 0 ? teamPlayers[0].team.name : ""} Players
+        </h2>
+        <Button onClick={() => setOpen(true)} content="Register Player" />
+      </div>
       <div className="overflow-x-auto pt-8 px-8">
         <Table hoverable>
           <Table.Head>
@@ -78,6 +87,7 @@ const TeamPlayers = () => {
           </Table.Body>
         </Table>
       </div>
+      {open && <RegisterPlayerModal open={open} setOpen={setOpen} />}
       {openDelete ? (
         <DeleteModal
           open={openDelete}
