@@ -52,15 +52,15 @@ const TeamPlayers = () => {
             {players.length > 0 ? (
               players.map((player) => (
                 <Table.Row
-                  key={player.player.id}
+                  key={player.player?.id}
                   className="bg-white none:border-gray-700 none:bg-gray-800"
                 >
-                  <Table.Cell>{player.player.firstName}</Table.Cell>
-                  <Table.Cell>{player.player.lastName}</Table.Cell>
-                  <Table.Cell>{player.player.weight}</Table.Cell>
-                  <Table.Cell>{player.player.height}</Table.Cell>
-                  <Table.Cell>{player.player.birthday}</Table.Cell>
-                  <Table.Cell>{player.player.nationality}</Table.Cell>
+                  <Table.Cell>{player.player?.firstName}</Table.Cell>
+                  <Table.Cell>{player.player?.lastName}</Table.Cell>
+                  <Table.Cell>{player.player?.weight}</Table.Cell>
+                  <Table.Cell>{player.player?.height}</Table.Cell>
+                  <Table.Cell>{player.player?.birthday}</Table.Cell>
+                  <Table.Cell>{player.player?.nationality}</Table.Cell>
                   <Table.Cell>{player.joinedAt?.split("T")[0]}</Table.Cell>
                   <Table.Cell>
                     <span

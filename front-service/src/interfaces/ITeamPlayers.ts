@@ -4,7 +4,7 @@ import ITeam from "./ITeam";
 
 interface ITeamPlayers {
   id?: TeamPlayerKey;
-  player: IPlayer;
+  player?: IPlayer;
   team: ITeam;
   joinedAt?: string;
   updatedAt?: Date;

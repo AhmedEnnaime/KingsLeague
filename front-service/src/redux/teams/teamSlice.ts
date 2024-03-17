@@ -46,8 +46,11 @@ const teamSlice = createSlice({
         state.loading = false;
         state.teams.push(action.payload);
       })
-      .addCase(deleteTeam.pending, (state, action) => {
+      .addCase(deleteTeam.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(deleteTeam.fulfilled, (state, action) => {
+        state.loading = false;
         state.teams = state.teams.filter((team) => team.id !== action.meta.arg);
       })
       .addCase(updateTeam.pending, (state) => {

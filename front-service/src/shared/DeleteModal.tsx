@@ -64,7 +64,7 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
     } else if ("joinedAt" in element) {
       const teamPlayerKey: TeamPlayerKey = {
         teamId: element.team.id as number,
-        playerId: element.player.id as number,
+        playerId: element?.player?.id as number,
       };
       dispatch(removePlayerFromTeam(teamPlayerKey))
         .then(() => {

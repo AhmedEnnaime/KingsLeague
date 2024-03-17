@@ -29,6 +29,14 @@ export const deletePlayer = createAsyncThunk<Map<string, string>, number>(
   }
 );
 
+export const fetchSelectedPlayer = createAsyncThunk<IPlayer, number>(
+  "player/single",
+  async (id) => {
+    const { data } = await API.get(`/TEAM-SERVICE/api/v1/players/${id}`);
+    return data;
+  }
+);
+
 export const updatePlayer = createAsyncThunk<
   IPlayer,
   { id: number; playerData: Partial<IPlayer> }

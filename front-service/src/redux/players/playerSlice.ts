@@ -4,16 +4,19 @@ import {
   createPlayer,
   deletePlayer,
   fetchAllPlayers,
+  fetchSelectedPlayer,
   updatePlayer,
 } from "./playerActions";
 
 interface PlayerState {
   players: IPlayer[];
+  selectedPlayer: IPlayer | null;
   loading: boolean;
 }
 
 const initialState: PlayerState = {
   players: [],
+  selectedPlayer: null,
   loading: false,
 };
 
@@ -35,6 +38,13 @@ const playerSlice = createSlice({
       .addCase(createPlayer.fulfilled, (state, action) => {
         state.loading = false;
         state.players.push(action.payload);
+      })
+      .addCase(fetchSelectedPlayer.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchSelectedPlayer.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedPlayer = action.payload;
       })
       .addCase(deletePlayer.pending, (state) => {
         state.loading = true;
