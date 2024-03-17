@@ -437,5 +437,3 @@ kmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/emba
 cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/models/transients/Tournament.kt,2/a/2abdf35cab109ef5fbf3b235774c592bb09211ca
 “
 cmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/repositories/MatchRepository.kt,a/9/a9e9cf3300509d1b8396372c0cd069784f66d939
-ˆ
-Xcommon/src/main/kotlin/com/youcode/kingsleague/common/exceptions/TeamAlreadyRegistred.kt,3/9/396f6c12d3bb39b67fcbedc379dc72f7c97c8bff

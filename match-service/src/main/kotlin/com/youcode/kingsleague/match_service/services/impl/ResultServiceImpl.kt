@@ -9,41 +9,35 @@ import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import com.youcode.kingsleague.match_service.models.entities.Result
+import com.youcode.kingsleague.match_service.models.enums.MatchStatus
 import com.youcode.kingsleague.match_service.models.enums.MatchType
 import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.models.transients.TournamentTeam
 import com.youcode.kingsleague.match_service.services.MatchService
+import com.youcode.kingsleague.match_service.services.client.MatchDayServiceClient
 import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
-class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient): ResultService {
+class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient, private val matchDayServiceClient: MatchDayServiceClient): ResultService {
     override fun save(dto: ResultDTO): ResultDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
         val resultEntity: Result = modelMapper.map(dto, Result::class.java)
         val match: RetrievalMatchDTO = matchService.findByID(dto.matchId)!!
-        println("Match type is ${match.matchType}")
-        println("Match team id is ${dto.teamId}")
-        println("Match team A id is ${match.teamA?.id}")
-        println("Match team B id is ${match.teamB?.id}")
         if (match.matchType == MatchType.LEAGUE && dto.teamId != null) {
             val tournamentTeam: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, dto.teamId!!)
             tournamentTeam.points = tournamentTeam.points?.plus(3)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeam)
         }else if (match.matchType == MatchType.LEAGUE && dto.teamId == null) {
-            println("INSIDE IF")
-            println("MatchDay is $match")
-            println("League is ${match.matchDay?.league}")
             val tournamentTeamA: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamA?.id!!)
             val tournamentTeamB: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamB?.id!!)
-            println("Tournament Team A points ${tournamentTeamA.points}")
-            println("Tournament Team B points ${tournamentTeamA.points}")
             tournamentTeamA.points = tournamentTeamA.points?.plus(1)
             tournamentTeamB.points = tournamentTeamB.points?.plus(1)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamA)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamB)
         }
+        match.status = MatchStatus.PLAYED
         val savedResult: Result = resultRepository.save(resultEntity)
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }

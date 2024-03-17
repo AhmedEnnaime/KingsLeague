@@ -84,6 +84,7 @@ class TournamentTeamServiceImpl(private val tournamentTeamRepository: Tournament
     override fun updateTeamPointsInTournament(tournamentTeamDTO: TournamentTeamDTO) {
         val tournamentTeam: TournamentTeam = tournamentTeamRepository.findById(tournamentTeamDTO.id!!).get()
         tournamentTeam.points = tournamentTeam.points?.plus(tournamentTeamDTO.points!!)
+        tournamentTeamRepository.save(tournamentTeam)
     }
 
     override fun findAllTournamentTeams(): List<TournamentTeamDTO> {

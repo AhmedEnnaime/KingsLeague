@@ -5,6 +5,7 @@ import com.youcode.kingsleague.match_service.models.dto.MatchDTO
 import com.youcode.kingsleague.match_service.models.dto.RetrievalMatchDTO
 import com.youcode.kingsleague.match_service.models.dto.StadiumDTO
 import com.youcode.kingsleague.match_service.models.entities.Match
+import com.youcode.kingsleague.match_service.models.enums.MatchType
 import com.youcode.kingsleague.match_service.models.transients.MatchDay
 import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.repositories.MatchRepository
@@ -109,8 +110,10 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         val matchDTO: RetrievalMatchDTO = modelMapper.map(match, RetrievalMatchDTO::class.java)
         matchDTO.teamA = teamServiceClient.findTeamById(match.teamAId)
         matchDTO.teamB = teamServiceClient.findTeamById(match.teamBId)
-        if (matchDTO.matchDay !=null) {
-            matchDTO.matchDay = match.matchDayId?.let { matchDayServiceClient.findMatchDayById(it) }
+        if (matchDTO.matchType == MatchType.LEAGUE) {
+            println("HERE IN MATCHDAY BLOCK")
+            matchDTO.matchDay =  matchDayServiceClient.findMatchDayById(matchDayId = match.matchDayId!!)
+            println("MATCHDAY VALUE IS ${matchDayServiceClient.findMatchDayById(matchDayId = match.matchDayId!!)}")
         }else {
             matchDTO.round = match.roundId?.let { roundServiceClient.findRoundById(it) }
         }

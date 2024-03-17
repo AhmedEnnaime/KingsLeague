@@ -58,7 +58,7 @@ class TournamentTeamController(private val tournamentTeamService: TournamentTeam
         return ResponseEntity(tournamentTeam, HttpStatus.OK)
     }
 
-    @PatchMapping("/updatePoints")
+    @PostMapping("/updatePoints")
     fun updateTeamTournamentPoints(@RequestBody @Valid tournamentTeam: TournamentTeamDTO): ResponseEntity<Map<String, String>> {
         tournamentTeamService.updateTeamPointsInTournament(tournamentTeam)
         val response = mutableMapOf<String, String>()
