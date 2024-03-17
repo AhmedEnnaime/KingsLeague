@@ -22,7 +22,7 @@ import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
-class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient): ResultService {
+class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient, private val matchRepository: MatchRepository): ResultService {
     override fun findResultByMatchId(matchId: Long): List<ResultDTO> {
         matchService.findByID(matchId)
         val results: List<Result> = resultRepository.findByMatchId(matchId)
@@ -39,7 +39,6 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             tournamentTeam.points = tournamentTeam.points?.plus(3)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeam)
         }else if (match.matchType == MatchType.LEAGUE && dto.teamId == null) {
-            println("HERE IN IF")
             val tournamentTeamA: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamA?.id!!)
             val tournamentTeamB: TournamentTeam = tournamentTeamServiceClient.findTournamentTeamById(match.matchDay?.league?.id!!, match.teamB?.id!!)
             tournamentTeamA.points = tournamentTeamA.points?.plus(1)
@@ -48,7 +47,7 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamB)
         }
         match.status = MatchStatus.PLAYED
-        matchService.save(modelMapper.map(match, MatchDTO::class.java))
+        matchRepository.save(modelMapper.map(match, Match::class.java))
         val savedResult: Result = resultRepository.save(resultEntity)
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }

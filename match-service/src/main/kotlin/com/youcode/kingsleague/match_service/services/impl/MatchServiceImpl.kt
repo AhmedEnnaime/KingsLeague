@@ -40,7 +40,9 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
 
     override fun findAll(): List<RetrievalMatchDTO?>? {
         val matches: List<Match> = matchRepository.findAll()
+        println("MATCHES LIST $matches")
         return matches.map { match ->
+            println("OPPONENT ID ${match.opponentAId}")
             val teamA: Team = teamServiceClient.findTeamById(match.opponentAId)
             val teamB: Team = teamServiceClient.findTeamById(match.opponentBId)
             val matchDay: MatchDay? = match.matchDayId?.let { matchDayServiceClient.findMatchDayById(it) }
