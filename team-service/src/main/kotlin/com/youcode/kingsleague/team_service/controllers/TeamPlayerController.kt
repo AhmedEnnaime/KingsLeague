@@ -3,11 +3,13 @@ package com.youcode.kingsleague.team_service.controllers
 import com.youcode.kingsleague.team_service.models.dto.PlayerDTO
 import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.dto.TeamPlayerDTO
+import com.youcode.kingsleague.team_service.models.embeddables.TeamPlayerKey
 import com.youcode.kingsleague.team_service.services.TeamPlayerService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -42,6 +44,16 @@ class TeamPlayerController(private val teamPlayerService: TeamPlayerService) {
     fun getTeamsByPlayer(@PathVariable("playerId") playerId: Long): ResponseEntity<List<TeamDTO>> {
         val foundTeams = teamPlayerService.findTeamsByPlayer(playerId)
         return ResponseEntity(foundTeams, HttpStatus.OK)
+    }
+
+    @DeleteMapping("/team/{teamId}/player/{playerId}")
+    fun removePlayerFromTeam(@PathVariable teamId: Long, @PathVariable playerId: Long): ResponseEntity<Map<String, String>> {
+        teamPlayerService.removePlayerFromTeam(teamId, playerId)
+        val response = mutableMapOf<String, String>()
+        val teamPlayerKey = TeamPlayerKey(teamId, playerId)
+        response["message"] = "Player removed from Team successfully."
+        response["deletedElementIdentifier"] = teamPlayerKey.toString()
+        return ResponseEntity(response, HttpStatus.OK)
     }
 
 }

@@ -12,4 +12,5 @@ interface TeamPlayerService {
     fun findAll(): List<TeamPlayerDTO?>?
     fun findPlayersByTeam(teamId: Long): List<PlayerDTO>
     fun findTeamsByPlayer(playerId: Long): List<TeamDTO>
+    fun removePlayerFromTeam(teamId: Long, playerId: Long)
 }

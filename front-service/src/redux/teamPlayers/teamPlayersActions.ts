@@ -50,7 +50,7 @@ export const removePlayerFromTeam = createAsyncThunk<
   TeamPlayerKey
 >("teamPlayer/remove", async (id) => {
   const response: AxiosResponse = await API.delete(
-    `/TEAM-SERVICE/api/v1/teamPlayer/${id.teamId}/player/${id.playerId}`
+    `/TEAM-SERVICE/api/v1/teamPlayer/team/${id.teamId}/player/${id.playerId}`
   );
   return response.data;
 });

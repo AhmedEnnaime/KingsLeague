@@ -56,4 +56,12 @@ class TeamPlayerServiceImpl(private val teamPlayerRepository: TeamPlayerReposito
         val teamPlayers = teamPlayerRepository.findByPlayerId(playerId)
         return teamPlayers.map { modelMapper.map(it.team, TeamDTO::class.java) }
     }
+
+    override fun removePlayerFromTeam(teamId: Long, playerId: Long) {
+        teamService.findByID(teamId)
+        playerService.findByID(playerId)
+        val teamPlayerKey = TeamPlayerKey(teamId, playerId)
+        val teamPlayer: TeamPlayer = teamPlayerRepository.findById(teamPlayerKey).orElseThrow{ResourceNotFoundException("Team Player with id $teamPlayerKey not found")}
+        teamPlayerRepository.delete(teamPlayer)
+    }
 }
