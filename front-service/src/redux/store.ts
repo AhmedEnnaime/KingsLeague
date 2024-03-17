@@ -4,6 +4,7 @@ import tournamentReducer from "./tournaments/tournamentSlice";
 import matchDayReducer from "./matchDays/matchDaySlice";
 import roundReducer from "./rounds/roundSlice";
 import teamReducer from "./teams/teamSlice";
+import teamPlayerReducer from "./teamPlayers/teamPlayersSlice";
 import tournamentTeamReducer from "./tournamentTeams/tournamentTeamsSlice";
 import { useDispatch } from "react-redux";
 
@@ -15,6 +16,7 @@ export const store = configureStore({
     round: roundReducer,
     tournamentTeam: tournamentTeamReducer,
     team: teamReducer,
+    teamPlayer: teamPlayerReducer,
   },
 });
 

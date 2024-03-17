@@ -3,11 +3,11 @@ import IPlayer from "./IPlayer";
 import ITeam from "./ITeam";
 
 interface ITeamPlayers {
-    id?: TeamPlayerKey;
-    player: IPlayer;
-    team: ITeam;
-    joinedAt?: Date;
-    updatedAt?: Date;
+  id?: TeamPlayerKey;
+  player: IPlayer;
+  team: ITeam;
+  joinedAt?: string;
+  updatedAt?: Date;
 }
 
 export default ITeamPlayers;

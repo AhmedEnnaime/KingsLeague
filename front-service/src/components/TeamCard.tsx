@@ -5,11 +5,13 @@ import { Card, Dropdown } from "flowbite-react";
 import DeleteModal from "../shared/DeleteModal";
 import TeamModal from "./TeamModal";
 import TournamentsTeamModal from "./TournamentsTeamModal";
+import { useNavigate } from "react-router-dom";
 
 const TeamCard = ({ team }: TeamCardProps) => {
   const [openDelete, setOpenDelete] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openTournamentsModal, setOpenTournamentsModal] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <Card className="max-w-sm">
@@ -53,6 +55,13 @@ const TeamCard = ({ team }: TeamCardProps) => {
               className="inline-flex cursor-pointer items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
             >
               Tournaments
+            </span>
+
+            <span
+              onClick={() => navigate(`/team/${team.id}/players`)}
+              className="inline-flex cursor-pointer items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+            >
+              Players
             </span>
           </div>
         </div>

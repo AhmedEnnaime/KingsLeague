@@ -9,6 +9,8 @@ import { removeTeamFromTournament } from "../redux/tournamentTeams/tournamentTea
 import { TournamentTeamKey } from "../embddables/TournamentTeamKey";
 import { deleteTeam } from "../redux/teams/teamActions";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { removePlayerFromTeam } from "../redux/teamPlayers/teamPlayersActions";
+import { TeamPlayerKey } from "../embddables/TeamPlayerKey";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
@@ -58,6 +60,20 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
         .catch((err) => {
           console.error("Failed to create team:", err);
           toast.error("Failed to delete team");
+        });
+    } else if ("joinedAt" in element) {
+      const teamPlayerKey: TeamPlayerKey = {
+        teamId: element.team.id as number,
+        playerId: element.player.id as number,
+      };
+      dispatch(removePlayerFromTeam(teamPlayerKey))
+        .then(() => {
+          toast.success("Player removed from team successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to remove player:", err);
+          toast.error("Failed to remove player");
         });
     }
   };
