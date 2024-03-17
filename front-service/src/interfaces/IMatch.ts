@@ -6,22 +6,22 @@ import IRound from "./IRound";
 import ITeam from "./ITeam";
 
 interface IMatch {
-    id?: number
-    time: string;
-    status: MatchStatus;
-    matchType: MatchType;
-    stadiumId?: number;
-    result?: IResult;
-    teamAId?: number;
-    teamBId?: number;
-    teamA?: ITeam;
-    teamB?: ITeam;
-    matchDayId?: number;
-    roundId?: number;
-    matchDay?: IMatchDay;
-    round?: IRound;
-    createdAt?: Date;
-    updatedAt?: Date;
+  id?: number;
+  time: string;
+  status: MatchStatus;
+  matchType: MatchType;
+  stadiumId?: number;
+  result?: IResult;
+  opponentAId?: number;
+  opponentBId?: number;
+  teamA?: ITeam;
+  teamB?: ITeam;
+  matchDayId?: number;
+  roundId?: number;
+  matchDay?: IMatchDay;
+  round?: IRound;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export default IMatch;

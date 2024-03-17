@@ -39,6 +39,7 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
     }
 
     override fun findAll(): List<RetrievalMatchDTO?>? {
+        println("INSIDE FUNC")
         val matches: List<Match> = matchRepository.findAll()
         println("MATCHES LIST $matches")
         return matches.map { match ->
