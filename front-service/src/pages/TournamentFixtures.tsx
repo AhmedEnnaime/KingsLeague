@@ -3,16 +3,18 @@ import Fixture from "../components/Fixture";
 import StandingsTable from "../components/StandingsTable";
 import { RootState, useAppDispatch } from "../redux/store";
 import Header from "../shared/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchMatchDaysByTournamentId } from "../redux/matchDays/matchDayActions";
 import { useParams } from "react-router-dom";
 import not_found from "../assets/not_found.png";
 import { fetchTournamentById } from "../redux/tournaments/tournamentActions";
 import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
 import Button from "../shared/Button";
+import MatchDayModal from "../components/MatchDayModal";
 // import TournamentType from "../enums/TournamentType";
 
 const TournamentFixtures = () => {
+  const [openMatchDayModal, setOpenMatchDayModal] = useState(false);
   const matchDays = useSelector((state: RootState) => state.matchDay.matchDays);
   const tournamentTeams = useSelector(
     (state: RootState) => state.tournamentTeam.tournamentTeams
@@ -48,7 +50,10 @@ const TournamentFixtures = () => {
         <div className="flex flex-col w-full">
           <div className="flex justify-between p-4">
             <h2 className="text-xl font-semibold">MatchDays</h2>
-            <Button content="Create MatchDay" />
+            <Button
+              onClick={() => setOpenMatchDayModal(true)}
+              content="Create MatchDay"
+            />
           </div>
           {matchDays ? (
             sortedMatchDays.map((matchDay, index) => (
@@ -68,6 +73,14 @@ const TournamentFixtures = () => {
           <StandingsTable tournamentTeams={tournamentTeams} />
         </div>
       </div>
+      {openMatchDayModal ? (
+        <MatchDayModal
+          open={openMatchDayModal}
+          setOpen={setOpenMatchDayModal}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };
