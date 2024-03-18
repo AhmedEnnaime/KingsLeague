@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import not_found from "../assets/not_found.png";
 import { fetchTournamentById } from "../redux/tournaments/tournamentActions";
 import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeamsActions";
+import Button from "../shared/Button";
 // import TournamentType from "../enums/TournamentType";
 
 const TournamentFixtures = () => {
@@ -22,6 +23,12 @@ const TournamentFixtures = () => {
   );
   const dispatch = useAppDispatch();
   const routeParams = useParams();
+
+  const sortedMatchDays = matchDays.slice().sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateA - dateB;
+  });
 
   useEffect(() => {
     dispatch(fetchTournamentById(Number(routeParams.id)));
@@ -39,8 +46,12 @@ const TournamentFixtures = () => {
       <Header />
       <div className="flex justify-between p-4 w-full pt-8">
         <div className="flex flex-col w-full">
+          <div className="flex justify-between p-4">
+            <h2 className="text-xl font-semibold">MatchDays</h2>
+            <Button content="Create MatchDay" />
+          </div>
           {matchDays ? (
-            matchDays.map((matchDay, index) => (
+            sortedMatchDays.map((matchDay, index) => (
               <Fixture index={index} matchDay={matchDay} key={matchDay.id} />
             ))
           ) : (

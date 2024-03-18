@@ -15,10 +15,12 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const [selectedTournamentTeam, setSelectedTournamentTeam] =
     useState<ITournamentTeams>();
   const routeParams = useParams();
-  const registeredTeams = tournamentTeams.filter(
-    (tournamentTeam) =>
-      tournamentTeam.id?.tournamentId === Number(routeParams.id)
-  );
+  const registeredTeams = tournamentTeams
+    .filter(
+      (tournamentTeam) =>
+        tournamentTeam.id?.tournamentId === Number(routeParams.id)
+    )
+    .sort((a, b) => (b.points as number) - (a.points as number));
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchAllTournamentTeams());
