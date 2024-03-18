@@ -66,7 +66,7 @@ const TeamPlayerSlice = createSlice({
         state.loading = false;
         state.teamPlayers = state.teamPlayers.filter(
           (teamPlayer) =>
-            JSON.stringify(teamPlayer.id) != JSON.stringify(action.meta.arg)
+            JSON.stringify(teamPlayer.id) !== JSON.stringify(action.meta.arg)
         );
       });
   },

@@ -76,13 +76,15 @@ const TeamPlayers = () => {
                 </Table.Row>
               ))
             ) : (
-              <td className="flex justify-center items-center">
-                <img
-                  className="flex justify-center w-22 h-22"
-                  src={not_found}
-                  alt="not found"
-                />
-              </td>
+              <tr>
+                <td className="flex justify-center items-center">
+                  <img
+                    className="flex justify-center w-22 h-22"
+                    src={not_found}
+                    alt="not found"
+                  />
+                </td>
+              </tr>
             )}
           </Table.Body>
         </Table>
