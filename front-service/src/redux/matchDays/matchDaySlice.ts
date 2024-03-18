@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import IMatchDay from "../../interfaces/IMatchDay";
-import { fetchMatchDaysByTournamentId } from "./matchDayActions";
+import {
+  createMatchDay,
+  fetchMatchDaysByTournamentId,
+} from "./matchDayActions";
 
 interface MatchDayState {
   matchDays: IMatchDay[];
@@ -23,6 +26,13 @@ const matchDaySlice = createSlice({
       .addCase(fetchMatchDaysByTournamentId.fulfilled, (state, action) => {
         state.loading = false;
         state.matchDays = action.payload;
+      })
+      .addCase(createMatchDay.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createMatchDay.fulfilled, (state, action) => {
+        state.loading = false;
+        state.matchDays.push(action.payload);
       });
   },
   reducers: {},

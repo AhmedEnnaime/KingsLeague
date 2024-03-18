@@ -11,3 +11,14 @@ export const fetchMatchDaysByTournamentId = createAsyncThunk<
   );
   return data;
 });
+
+export const createMatchDay = createAsyncThunk<IMatchDay, Partial<IMatchDay>>(
+  "matchDay/create",
+  async (matchDay) => {
+    const { data } = await API.post(
+      `/MATCHDAY-SERVICE/api/v1/matchDays`,
+      matchDay
+    );
+    return data;
+  }
+);
