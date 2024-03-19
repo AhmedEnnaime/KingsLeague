@@ -6,7 +6,7 @@ interface ITournamentTeams {
   id?: TournamentTeamKey;
   team?: ITeam;
   tournament?: ITournament;
-  points?: number;
+  points?: number | null;
   createdAt?: Date;
   updatedAt?: Date;
 }

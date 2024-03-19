@@ -24,7 +24,6 @@ const RegisterTeamModal = ({ open, setOpen }: RegisterModalProps) => {
   const [inputs, setInputs] = useState<ITournamentTeams>({
     tournament: tournament as ITournament,
     team: undefined,
-    points: 0,
   });
 
   const handleChange = (

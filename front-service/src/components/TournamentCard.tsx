@@ -10,15 +10,15 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
   const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
   return (
-    <div
-      className="w-full px-4 py-3 cursor-pointer bg-white rounded-md shadow-md"
-      onClick={() => navigate(`/tournament/${tournament.id}`)}
-    >
+    <div className="w-full px-4 py-3 cursor-pointer bg-white rounded-md shadow-md">
       <div className="flex items-center justify-between bg-gray-300 w-full">
         <span className="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
           {tournament.name}
         </span>
-        <span className="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900">
+        <span
+          onClick={() => navigate(`/tournament/${tournament.id}`)}
+          className="px-3 py-1 text-xs text-blue-800 uppercase bg-blue-200 rounded-full dark:bg-blue-300 dark:text-blue-900"
+        >
           {tournament.tournamentType}
         </span>
       </div>

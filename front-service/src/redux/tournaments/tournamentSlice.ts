@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import ITournament from "../../interfaces/ITournament";
 import {
-  createTournament,
+  createCup,
+  createLeague,
   deleteTournament,
   fetchAllTournaments,
   fetchTournamentById,
@@ -39,10 +40,17 @@ const tournamentSlice = createSlice({
         state.loading = false;
         state.selectedTournament = action.payload;
       })
-      .addCase(createTournament.pending, (state) => {
+      .addCase(createLeague.pending, (state) => {
         state.loading = true;
       })
-      .addCase(createTournament.fulfilled, (state, action) => {
+      .addCase(createLeague.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tournaments.push(action.payload);
+      })
+      .addCase(createCup.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createCup.fulfilled, (state, action) => {
         state.loading = false;
         state.tournaments.push(action.payload);
       })

@@ -3,7 +3,8 @@ import { useAppDispatch } from "../redux/store";
 import ITournament from "../interfaces/ITournament";
 import { TournamentModalProps } from "../propsTypes/TournamentModalProps";
 import {
-  createTournament,
+  createCup,
+  createLeague,
   updateTournament,
 } from "../redux/tournaments/tournamentActions";
 import { toast } from "react-toastify";
@@ -39,15 +40,27 @@ const TournamentModal = ({
 
   const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    dispatch(createTournament(inputs))
-      .then(() => {
-        toast.success("Tournament created successfully");
-        setOpen(false);
-      })
-      .catch((err) => {
-        console.error("Failed to create tournament:", err);
-        toast.error("Failed to create tournament");
-      });
+    if (inputs.tournamentType == "LEAGUE") {
+      dispatch(createLeague(inputs))
+        .then(() => {
+          toast.success("League created successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create league:", err);
+          toast.error("Failed to create league");
+        });
+    } else {
+      dispatch(createCup(inputs))
+        .then(() => {
+          toast.success("Cup created successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create cup:", err);
+          toast.error("Failed to create cup");
+        });
+    }
   };
 
   const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {

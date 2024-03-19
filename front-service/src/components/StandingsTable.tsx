@@ -8,6 +8,7 @@ import { fetchAllTournamentTeams } from "../redux/tournamentTeams/tournamentTeam
 import RegisterTeamModal from "./RegisterTeamModal";
 import DeleteModal from "../shared/DeleteModal";
 import ITournamentTeams from "../interfaces/ITournamentTeams";
+import TournamentType from "../enums/TournamentType";
 
 const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ const StandingsTable = ({ tournamentTeams }: StandingsTableProps) => {
   const showPointsColumn =
     tournamentTeams &&
     tournamentTeams.length > 0 &&
-    tournamentTeams[0].tournament?.tournamentType === "LEAGUE";
+    tournamentTeams[0].tournament?.tournamentType === TournamentType.LEAGUE;
 
   return (
     <section className="container px-4 mx-auto">

@@ -21,16 +21,27 @@ export const fetchTournamentById = createAsyncThunk<ITournament, number>(
   }
 );
 
-export const createTournament = createAsyncThunk<
-  ITournament,
-  Partial<ITournament>
->("tournament/create", async (tournament) => {
-  const { data } = await API.post(
-    `/TOURNAMENT-SERVICE/api/v1/tournaments`,
-    tournament
-  );
-  return data;
-});
+export const createLeague = createAsyncThunk<ITournament, Partial<ITournament>>(
+  "league/create",
+  async (league) => {
+    const { data } = await API.post(
+      `/TOURNAMENT-SERVICE/api/v1/tournaments/leagues`,
+      league
+    );
+    return data;
+  }
+);
+
+export const createCup = createAsyncThunk<ITournament, Partial<ITournament>>(
+  "cup/create",
+  async (cup) => {
+    const { data } = await API.post(
+      `/TOURNAMENT-SERVICE/api/v1/tournaments/cups`,
+      cup
+    );
+    return data;
+  }
+);
 
 export const deleteTournament = createAsyncThunk<Map<string, string>, number>(
   "tournament/delete",
