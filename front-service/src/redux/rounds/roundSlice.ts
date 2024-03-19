@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import IRound from "../../interfaces/IRound";
-import { fetchRoundsByTournamentId } from "./roundActions";
+import { createRound, fetchRoundsByTournamentId } from "./roundActions";
 
 interface RoundState {
   rounds: IRound[];
@@ -23,6 +23,13 @@ const roundSlice = createSlice({
       .addCase(fetchRoundsByTournamentId.fulfilled, (state, action) => {
         state.loading = false;
         state.rounds = action.payload;
+      })
+      .addCase(createRound.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(createRound.fulfilled, (state, action) => {
+        state.loading = false;
+        state.rounds.push(action.payload);
       });
   },
   reducers: {},

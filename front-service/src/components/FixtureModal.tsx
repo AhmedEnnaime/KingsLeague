@@ -1,13 +1,15 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef, useState } from "react";
-import { RegisterModalProps } from "../propsTypes/RegisterModalProps";
 import IMatchDay from "../interfaces/IMatchDay";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "../redux/store";
 import { createMatchDay } from "../redux/matchDays/matchDayActions";
 import { toast } from "react-toastify";
+import { FixtureModalProps } from "../propsTypes/FxitureModalProps";
+import { createRound } from "../redux/rounds/roundActions";
+import TournamentType from "../enums/TournamentType";
 
-const MatchDayModal = ({ open, setOpen }: RegisterModalProps) => {
+const FixtureModal = ({ open, setOpen, tournament }: FixtureModalProps) => {
   const cancelButtonRef = useRef(null);
   const dispatch = useAppDispatch();
   const routeParams = useParams();
@@ -29,15 +31,27 @@ const MatchDayModal = ({ open, setOpen }: RegisterModalProps) => {
 
   const handleSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    dispatch(createMatchDay(inputs))
-      .then(() => {
-        toast.success("MatchDay created successfully");
-        setOpen(false);
-      })
-      .catch((err) => {
-        console.error("Failed to create matchDay:", err);
-        toast.error("Failed to create matchDay");
-      });
+    if (tournament?.tournamentType == TournamentType.LEAGUE) {
+      dispatch(createMatchDay(inputs))
+        .then(() => {
+          toast.success("MatchDay created successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create matchDay:", err);
+          toast.error("Failed to create matchDay");
+        });
+    } else {
+      dispatch(createRound(inputs))
+        .then(() => {
+          toast.success("Round created successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create round:", err);
+          toast.error("Failed to create round");
+        });
+    }
   };
 
   return (
@@ -84,7 +98,11 @@ const MatchDayModal = ({ open, setOpen }: RegisterModalProps) => {
                       as="h3"
                       className="text-lg font-medium leading-6 text-gray-900"
                     >
-                      Fill matchDay information
+                      Fill{" "}
+                      {tournament?.tournamentType == TournamentType.LEAGUE
+                        ? "MatchDay"
+                        : "Round"}{" "}
+                      information
                     </Dialog.Title>
 
                     <form className="flex flex-col items-center mt-4">
@@ -136,4 +154,4 @@ const MatchDayModal = ({ open, setOpen }: RegisterModalProps) => {
   );
 };
 
-export default MatchDayModal;
+export default FixtureModal;
