@@ -24,9 +24,7 @@ const TournamentFixtures = () => {
   const allTournamentTeams = useSelector(
     (state: RootState) => state.tournamentTeam.tournamentTeams
   );
-  // const tournamentTeams = allTournamentTeams.filter(
-  //   (tournamentTeam) => tournamentTeam.tournament?.id === Number(routeParams.id)
-  // );
+
   const rounds = useSelector((state: RootState) => state.round.rounds);
 
   const sortedMatchDays = matchDays.slice().sort((a, b) => {
@@ -45,7 +43,6 @@ const TournamentFixtures = () => {
     dispatch(fetchAllTournamentTeams());
     dispatch(fetchTournamentById(Number(routeParams.id))).then((res) => {
       setTournament(res.payload as ITournament);
-      console.log(res.payload);
     });
     dispatch(fetchMatchDaysByTournamentId(Number(routeParams.id as string)));
     dispatch(fetchRoundsByTournamentId(Number(routeParams.id as string)));
@@ -63,7 +60,6 @@ const TournamentFixtures = () => {
             </h2>
             <Button
               onClick={() => setOpenFixtureModal(true)}
-              // onClick={() => test}
               content={
                 tournament &&
                 tournament?.tournamentType == TournamentType.LEAGUE
