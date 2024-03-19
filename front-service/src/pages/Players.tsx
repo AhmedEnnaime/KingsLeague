@@ -6,6 +6,7 @@ import Header from "../shared/Header";
 import { useSelector } from "react-redux";
 import { fetchAllPlayers } from "../redux/players/playerActions";
 import not_found from "../assets/not_found.png";
+import AddPlayerModal from "../components/AddPlayerModal";
 
 const Players = () => {
   const dispatch = useAppDispatch();
@@ -72,6 +73,7 @@ const Players = () => {
           )}
         </div>
       )}
+      {open ? <AddPlayerModal open={open} setOpen={setOpen} /> : ""}
     </>
   );
 };
