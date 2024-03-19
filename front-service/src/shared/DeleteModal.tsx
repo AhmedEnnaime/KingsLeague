@@ -11,6 +11,7 @@ import { deleteTeam } from "../redux/teams/teamActions";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { removePlayerFromTeam } from "../redux/teamPlayers/teamPlayersActions";
 import { TeamPlayerKey } from "../embddables/TeamPlayerKey";
+import { deletePlayer } from "../redux/players/playerActions";
 
 const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
   const cancelButtonRef = useRef(null);
@@ -74,6 +75,16 @@ const DeleteModal = ({ open, setOpen, element }: DeleteModalProps) => {
         .catch((err) => {
           console.error("Failed to remove player:", err);
           toast.error("Failed to remove player");
+        });
+    } else if ("weight" in element) {
+      dispatch(deletePlayer(element.id as number))
+        .then(() => {
+          toast.success("Player deleted successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to delete player:", err);
+          toast.error("Failed to delete player");
         });
     }
   };

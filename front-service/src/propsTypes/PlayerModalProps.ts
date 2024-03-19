@@ -1,6 +1,6 @@
 import IPlayer from "../interfaces/IPlayer";
 
-export type AddPlayerModalProps = {
+export type PlayerModalProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   player?: IPlayer;

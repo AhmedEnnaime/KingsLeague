@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useAppDispatch } from "../redux/store";
-import { AddPlayerModalProps } from "../propsTypes/AddPlayerModalProps";
+import { PlayerModalProps } from "../propsTypes/PlayerModalProps";
 import IPlayer from "../interfaces/IPlayer";
 import { Dialog, Transition } from "@headlessui/react";
 import axios from "axios";
@@ -8,7 +8,7 @@ import ICountry from "../interfaces/ICountry";
 import { createPlayer, updatePlayer } from "../redux/players/playerActions";
 import { toast } from "react-toastify";
 
-const AddPlayerModal = ({ open, setOpen, player }: AddPlayerModalProps) => {
+const PlayerModal = ({ open, setOpen, player }: PlayerModalProps) => {
   const cancelButtonRef = useRef(null);
   const [countries, setCountries] = useState<string[]>([]);
   const dispatch = useAppDispatch();
@@ -310,4 +310,4 @@ const AddPlayerModal = ({ open, setOpen, player }: AddPlayerModalProps) => {
   );
 };
 
-export default AddPlayerModal;
+export default PlayerModal;
