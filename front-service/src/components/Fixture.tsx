@@ -2,30 +2,9 @@ import { Disclosure } from "@headlessui/react";
 import Matchup from "./Matchup";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { FixtureProps } from "../propsTypes/FixtureProps";
-import { RootState, useAppDispatch } from "../redux/store";
-import { useSelector } from "react-redux";
-import {
-  fetchMatchesByMatchDayId,
-  fetchMatchesByRoundId,
-} from "../redux/matches/matchActions";
-import { useEffect } from "react";
+import IMatch from "../interfaces/IMatch";
 
 const Fixture = ({ matchDay, round, index }: FixtureProps) => {
-  const dispatch = useAppDispatch();
-  const matches = useSelector((state: RootState) => state.match.matches);
-  const fetchMatches = () => {
-    if (matchDay != null) {
-      dispatch(fetchMatchesByMatchDayId(matchDay.id as number)).then((res) => {
-        console.log(res.payload);
-      });
-    } else {
-      dispatch(fetchMatchesByRoundId(round?.id as number));
-    }
-  };
-
-  useEffect(() => {
-    fetchMatches();
-  }, []);
   return (
     <>
       <div className="w-full px-4">
@@ -45,7 +24,7 @@ const Fixture = ({ matchDay, round, index }: FixtureProps) => {
                   />
                 </Disclosure.Button>
 
-                <Matchup matches={matches} />
+                <Matchup matches={matchDay?.matches as IMatch[]} />
               </>
             )}
           </Disclosure>

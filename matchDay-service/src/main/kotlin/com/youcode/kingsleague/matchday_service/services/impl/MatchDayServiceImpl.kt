@@ -5,21 +5,25 @@ import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.matchday_service.models.dto.MatchDayDTO
 import com.youcode.kingsleague.matchday_service.models.entities.MatchDay
 import com.youcode.kingsleague.matchday_service.models.transients.League
+import com.youcode.kingsleague.matchday_service.models.transients.Match
 import com.youcode.kingsleague.matchday_service.repositories.MatchDayRepository
 import com.youcode.kingsleague.matchday_service.services.MatchDayService
 import com.youcode.kingsleague.matchday_service.services.client.LeagueServiceClient
+import com.youcode.kingsleague.matchday_service.services.client.MatchServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, private val modelMapper: ModelMapper, private val leagueServiceClient: LeagueServiceClient): MatchDayService {
+class MatchDayServiceImpl(private val matchDayRepository: MatchDayRepository, private val modelMapper: ModelMapper, private val leagueServiceClient: LeagueServiceClient, private val matchServiceClient: MatchServiceClient): MatchDayService {
     override fun findByTournamentId(tournamentId: Long): List<MatchDayDTO> {
         val matchDays: List<MatchDay> = matchDayRepository.findByTournamentId(tournamentId)
         return matchDays.map { matchDay ->
             val league: League = leagueServiceClient.findLeagueById(tournamentId)
+            val matches: List<Match> = matchServiceClient.findMatchesByMatchDayId(matchDay.id)
             val matchDayDTO: MatchDayDTO = modelMapper.map(matchDay, MatchDayDTO::class.java)
             matchDayDTO.league = league
+            matchDayDTO.matches = matches
             matchDayDTO
         }
     }

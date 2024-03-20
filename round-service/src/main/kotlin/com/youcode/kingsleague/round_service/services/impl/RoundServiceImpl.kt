@@ -5,21 +5,25 @@ import com.youcode.kingsleague.common.exceptions.RoundAlreadyExistsException
 import com.youcode.kingsleague.round_service.models.dto.RoundDTO
 import com.youcode.kingsleague.round_service.models.entities.Round
 import com.youcode.kingsleague.round_service.models.transients.Cup
+import com.youcode.kingsleague.round_service.models.transients.Match
 import com.youcode.kingsleague.round_service.repositories.RoundRepository
 import com.youcode.kingsleague.round_service.services.RoundService
 import com.youcode.kingsleague.round_service.services.client.CupServiceClient
+import com.youcode.kingsleague.round_service.services.client.MatchServiceClient
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRepository: RoundRepository, private val cupServiceClient: CupServiceClient): RoundService {
+class RoundServiceImpl(private val modelMapper: ModelMapper, private val roundRepository: RoundRepository, private val cupServiceClient: CupServiceClient, private val matchServiceClient: MatchServiceClient): RoundService {
     override fun findRoundsByTournamentId(tournamentId: Long): List<RoundDTO> {
         val rounds: List<Round> = roundRepository.findByTournamentId(tournamentId)
         return rounds.map { round ->
             val cup: Cup = cupServiceClient.findCupById(round.tournamentId)
+            val matches: List<Match> = matchServiceClient.findMatchesByRoundId(round.id)
             val roundDTO: RoundDTO = modelMapper.map(round, RoundDTO::class.java)
             roundDTO.cup = cup
+            roundDTO.matches = matches
             roundDTO
         }
     }

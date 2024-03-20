@@ -10,7 +10,7 @@ data class RoundDTO (
     var date: LocalDate,
     var cup: Cup?,
     var tournamentId: Long,
-    val matches: List<Match>?,
+    var matches: List<Match>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
