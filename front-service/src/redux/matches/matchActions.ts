@@ -52,10 +52,10 @@ export const fetchMatchesByMatchDayId = createAsyncThunk<IMatch[], number>(
 );
 
 export const fetchMatchesByRoundId = createAsyncThunk<IMatch[], number>(
-  "match/matchDay",
-  async (matchDayId) => {
+  "match/round",
+  async (roundId) => {
     const { data } = await API.get(
-      `/MATCH-SERVICE/api/v1/matches/matchDay/${matchDayId}`
+      `/MATCH-SERVICE/api/v1/matches/round/${roundId}`
     );
     return data;
   }
