@@ -22,7 +22,7 @@ import com.youcode.kingsleague.match_service.services.client.TeamServiceClient
 import com.youcode.kingsleague.match_service.services.client.TournamentTeamServiceClient
 
 @Service
-class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient, private val matchRepository: MatchRepository): ResultService {
+class ResultServiceImpl(private val modelMapper: ModelMapper, private val resultRepository: ResultRepository, private val tournamentTeamServiceClient: TournamentTeamServiceClient, private val matchService: MatchService, private val teamServiceClient: TeamServiceClient): ResultService {
     override fun findResultByMatchId(matchId: Long): ResultDTO {
         matchService.findByID(matchId)
         val result: Result = resultRepository.findByMatchId(matchId)
@@ -46,8 +46,8 @@ class ResultServiceImpl(private val modelMapper: ModelMapper, private val result
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamA)
             tournamentTeamServiceClient.updateTeamTournamentPoints(tournamentTeamB)
         }
-        match.status = MatchStatus.PLAYED
-        matchRepository.save(modelMapper.map(match, Match::class.java))
+//        match.status = MatchStatus.PLAYED
+
         val savedResult: Result = resultRepository.save(resultEntity)
         return modelMapper.map(savedResult, ResultDTO::class.java)
     }

@@ -97,12 +97,15 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
 
     override fun findByRoundId(roundId: Long): List<MatchDTO> {
         val matches: List<Match> = matchRepository.findByRoundId(roundId)
+        println("MATCHES INDEX 0 ${matches.get(0).opponentAId}")
         return matches.map { match ->
             val teamA: Team = teamServiceClient.findTeamById(match.opponentAId)
             val teamB: Team = teamServiceClient.findTeamById(match.opponentBId)
+//            val result: Result = resultRepository.findByMatchId(match.id)
             val matchDTO: MatchDTO = modelMapper.map(match, MatchDTO::class.java)
             matchDTO.teamA = teamA
             matchDTO.teamB = teamB
+//            matchDTO.result = modelMapper.map(result, ResultDTO::class.java)
             matchDTO
         }
     }
