@@ -8,7 +8,6 @@ import com.youcode.kingsleague.match_service.models.transients.Team
 import jakarta.persistence.*
 import jakarta.validation.constraints.Future
 import jakarta.validation.constraints.NotNull
-import lombok.Builder
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
@@ -16,8 +15,7 @@ import java.time.LocalTime
 
 @Entity
 @Table(name = "matchs")
-@Builder
-data class Match (
+class Match (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Long,
     @Column(nullable = false) @Future var time: LocalTime,
     @Column(nullable = false) @Enumerated(EnumType.STRING) var status: MatchStatus = MatchStatus.SCHEDULED,

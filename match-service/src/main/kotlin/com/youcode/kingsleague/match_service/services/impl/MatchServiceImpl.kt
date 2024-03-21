@@ -86,11 +86,11 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         return matches.map { match ->
             val teamA: Team = teamServiceClient.findTeamById(match.opponentAId)
             val teamB: Team = teamServiceClient.findTeamById(match.opponentBId)
-            val result: Result = resultRepository.findByMatchId(match.id)
+//            val result: Result = resultRepository.findByMatchId(match.id)
             val matchDTO: MatchDTO = modelMapper.map(match, MatchDTO::class.java)
             matchDTO.teamA = teamA
             matchDTO.teamB = teamB
-            matchDTO.result = modelMapper.map(result, ResultDTO::class.java)
+//            matchDTO.result = modelMapper.map(result, ResultDTO::class.java)
             matchDTO
         }
     }

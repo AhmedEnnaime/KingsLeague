@@ -6,8 +6,11 @@ plugins {
 	kotlin("jvm") version "1.9.22"
 	kotlin("plugin.spring") version "1.9.22"
 	kotlin("plugin.jpa") version "1.9.22"
+	kotlin("plugin.allopen") version "1.5.21"
 }
-
+allOpen {
+	annotations("javax.persistence.Entity", "javax.persistence.MappedSuperclass", "javax.persistence.Embedabble")
+}
 group = "com.youcode.kingsleague"
 version = "0.0.1-SNAPSHOT"
 
