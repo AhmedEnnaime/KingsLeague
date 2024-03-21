@@ -6,6 +6,7 @@ import roundReducer from "./rounds/roundSlice";
 import teamReducer from "./teams/teamSlice";
 import playerReducer from "./players/playerSlice";
 import refereeReducer from "./referees/refereeSlice";
+import resultReducer from "./results/resultSlice";
 import matchReducer from "./matches/matchSlice";
 import teamPlayerReducer from "./teamPlayers/teamPlayersSlice";
 import tournamentTeamReducer from "./tournamentTeams/tournamentTeamsSlice";
@@ -23,6 +24,7 @@ export const store = configureStore({
     player: playerReducer,
     referee: refereeReducer,
     match: matchReducer,
+    result: resultReducer,
   },
 });
 

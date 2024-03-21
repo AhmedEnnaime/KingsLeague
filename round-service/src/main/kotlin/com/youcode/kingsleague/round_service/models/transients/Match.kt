@@ -19,4 +19,5 @@ data class Match (
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, LocalTime.now(), null,null, null, 0, 0, 0, null, null, null, null, null)
+    constructor() : this(null, LocalTime.now(), null, null, null, 0, 0, 0, null, null, null, null, null)
+}

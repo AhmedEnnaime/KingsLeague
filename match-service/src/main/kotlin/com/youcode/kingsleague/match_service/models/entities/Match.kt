@@ -22,7 +22,7 @@ data class Match (
     @Column(nullable = false) @Future var time: LocalTime,
     @Column(nullable = false) @Enumerated(EnumType.STRING) var status: MatchStatus = MatchStatus.SCHEDULED,
     @ManyToOne(fetch = FetchType.EAGER) @JoinColumn(name = "stadium_id") val stadium: Stadium,
-    @OneToOne(mappedBy = "match", fetch = FetchType.EAGER) val result: Result,
+    @OneToOne(mappedBy = "match", fetch = FetchType.EAGER) val result: Result?,
     @Column(nullable = false, name = "teamA_id") @NotNull(message = "team A should not be null") var opponentAId: Long,
     @Column(nullable = false, name = "teamB_id") @NotNull(message = "team B should not be null") var opponentBId: Long,
     @Column(nullable = true, name = "matchDay_id") var matchDayId: Long?,

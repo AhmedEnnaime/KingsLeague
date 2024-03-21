@@ -6,10 +6,12 @@ import com.youcode.kingsleague.match_service.models.dto.ResultDTO
 import com.youcode.kingsleague.match_service.models.dto.RetrievalMatchDTO
 import com.youcode.kingsleague.match_service.models.dto.StadiumDTO
 import com.youcode.kingsleague.match_service.models.entities.Match
+import com.youcode.kingsleague.match_service.models.entities.Result
 import com.youcode.kingsleague.match_service.models.enums.MatchType
 import com.youcode.kingsleague.match_service.models.transients.MatchDay
 import com.youcode.kingsleague.match_service.models.transients.Team
 import com.youcode.kingsleague.match_service.repositories.MatchRepository
+import com.youcode.kingsleague.match_service.repositories.ResultRepository
 import com.youcode.kingsleague.match_service.services.MatchService
 import com.youcode.kingsleague.match_service.services.ResultService
 import com.youcode.kingsleague.match_service.services.StadiumService
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService, private val matchDayServiceClient: MatchDayServiceClient, private val roundServiceClient: RoundServiceClient): MatchService {
+class MatchServiceImpl(private val matchRepository: MatchRepository, private val modelMapper: ModelMapper, private val teamServiceClient: TeamServiceClient, private val stadiumService: StadiumService, private val matchDayServiceClient: MatchDayServiceClient, private val roundServiceClient: RoundServiceClient, private val resultRepository: ResultRepository): MatchService {
     override fun save(dto: MatchDTO): MatchDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
@@ -84,9 +86,11 @@ class MatchServiceImpl(private val matchRepository: MatchRepository, private val
         return matches.map { match ->
             val teamA: Team = teamServiceClient.findTeamById(match.opponentAId)
             val teamB: Team = teamServiceClient.findTeamById(match.opponentBId)
+            val result: Result = resultRepository.findByMatchId(match.id)
             val matchDTO: MatchDTO = modelMapper.map(match, MatchDTO::class.java)
             matchDTO.teamA = teamA
             matchDTO.teamB = teamB
+            matchDTO.result = modelMapper.map(result, ResultDTO::class.java)
             matchDTO
         }
     }

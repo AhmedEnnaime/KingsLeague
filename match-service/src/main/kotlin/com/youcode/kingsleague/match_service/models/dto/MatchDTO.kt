@@ -14,7 +14,7 @@ data class MatchDTO (
     var matchType: MatchType,
 //    val stadium: StadiumDTO?,
     val stadiumId: Long?,
-    val result: ResultDTO?,
+    var result: ResultDTO?,
     val opponentAId: Long,
     val opponentBId: Long,
     val matchDayId: Long?,

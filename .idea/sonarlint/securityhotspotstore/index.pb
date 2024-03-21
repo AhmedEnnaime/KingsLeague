@@ -445,3 +445,5 @@ dmatchDay-service/src/main/kotlin/com/youcode/kingsleague/matchday_service/model
 iround-service/src/main/kotlin/com/youcode/kingsleague/round_service/services/client/MatchServiceClient.kt,6/a/6af60688ae655b18c07035a91df007a3ab655b41
 Ž
 ^round-service/src/main/kotlin/com/youcode/kingsleague/round_service/models/transients/Match.kt,3/e/3e670235b67e85721bd24e3050edb1b8241b355b
+”
+dmatch-service/src/main/kotlin/com/youcode/kingsleague/match_service/config/GlobalExceptionHandler.kt,6/8/68c7e5937665ee4cbfeb4d85c5d5589a1a0ba8b5

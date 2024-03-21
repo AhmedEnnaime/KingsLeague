@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController
 class ResultController(private val resultService: ResultService): GlobalController<ResultDTO, Long>() {
 
     @GetMapping("/match/{matchId}")
-    fun findResultsByMatchId(@PathVariable matchId: Long): ResponseEntity<List<ResultDTO>> {
-        val results: List<ResultDTO> = resultService.findResultByMatchId(matchId)
-        return ResponseEntity(results, HttpStatus.OK)
+    fun findResultsByMatchId(@PathVariable matchId: Long): ResponseEntity<ResultDTO> {
+        val result: ResultDTO = resultService.findResultByMatchId(matchId)
+        return ResponseEntity(result, HttpStatus.OK)
     }
 }
