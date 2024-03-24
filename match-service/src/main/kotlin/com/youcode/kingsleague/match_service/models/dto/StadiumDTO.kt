@@ -7,9 +7,10 @@ data class StadiumDTO (
     var name: String,
     var location: String,
     var capacity: Double,
+    var image: String,
     var matches: List<MatchDTO>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ){
-    constructor() : this(null, "", "", 0.00, null, null, null)
+    constructor() : this(null, "", "", 0.00, "", null, null, null)
 }

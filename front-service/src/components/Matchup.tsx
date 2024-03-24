@@ -22,7 +22,9 @@ const Matchup = ({ matches }: MatchupProps) => {
               <p className="text-xl font-bold">{match.teamA?.name}</p>
             </div>
 
-            <span className="text-xl font-bold">4 - 0</span>
+            <span className="text-xl font-bold">
+              {match.result != null ? match.result.score : match.time}
+            </span>
 
             <div className="flex items-center gap-4 p-2">
               <img

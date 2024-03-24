@@ -9,6 +9,7 @@ data class Match (
     var status: String?,
     var matchType: String?,
 //    val stadium: StadiumDTO?,
+    var result: Result?,
     val stadiumId: Long?,
     val opponentAId: Long,
     val opponentBId: Long,
@@ -19,5 +20,5 @@ data class Match (
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?
 ) {
-    constructor() : this(null, LocalTime.now(), null,null, null, 0, 0, 0, null, null, null, null, null)
+    constructor() : this(null, LocalTime.now(), null,null, null, null, 0, 0, 0, null, null, null, null, null)
 }

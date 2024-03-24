@@ -1,11 +1,15 @@
 package com.youcode.kingsleague.matchday_service.models.transients
 
-import lombok.Builder
+import java.time.LocalDateTime
 
-@Builder
 data class Result (
-    var id: Long,
+    var id: Long?,
     var score: String,
-    var winner: Team,
-    var match: Match
-)
+    var winner: Team?,
+    var teamId: Long?,
+    var matchId: Long,
+    var createdAt: LocalDateTime?,
+    var updatedAt: LocalDateTime?
+){
+    constructor() : this(null, "", null, null, 0, null, null)
+}

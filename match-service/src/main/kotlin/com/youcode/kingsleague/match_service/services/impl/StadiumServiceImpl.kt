@@ -4,13 +4,19 @@ import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.match_service.models.dto.StadiumDTO
 import com.youcode.kingsleague.match_service.models.entities.Stadium
 import com.youcode.kingsleague.match_service.repositories.StadiumRepository
+import com.youcode.kingsleague.match_service.services.FileStorageService
 import com.youcode.kingsleague.match_service.services.StadiumService
 import org.modelmapper.ModelMapper
 import org.springframework.stereotype.Service
+import org.springframework.web.multipart.MultipartFile
 import java.time.LocalDateTime
 
 @Service
-class StadiumServiceImpl(private val modelMapper: ModelMapper, private val stadiumRepository: StadiumRepository): StadiumService {
+class StadiumServiceImpl(private val modelMapper: ModelMapper, private val stadiumRepository: StadiumRepository, private val fileStorageService: FileStorageService): StadiumService {
+    override fun saveWithImage(dto: StadiumDTO, file: MultipartFile): StadiumDTO {
+        TODO("Not yet implemented")
+    }
+
     override fun save(dto: StadiumDTO): StadiumDTO {
         dto.createdAt = LocalDateTime.now()
         dto.updatedAt = LocalDateTime.now()
