@@ -1,7 +1,7 @@
 enum MatchStatus {
-    SCHEDULED,
-    POSTPONED,
-    PLAYED,
+  SCHEDULED = "SCHEDULED",
+  POSTPONED = "POSTPONED",
+  PLAYED = "PLAYED",
 }
 
 export default MatchStatus;

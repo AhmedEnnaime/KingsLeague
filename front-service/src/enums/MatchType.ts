@@ -1,6 +1,6 @@
 enum MatchType {
-    LEAGUE,
-    CUP
+  LEAGUE = "LEAGUE",
+  CUP = "CUP",
 }
 
 export default MatchType;

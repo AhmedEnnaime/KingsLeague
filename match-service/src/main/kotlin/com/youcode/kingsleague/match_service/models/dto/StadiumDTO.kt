@@ -7,7 +7,7 @@ data class StadiumDTO (
     var name: String,
     var location: String,
     var capacity: Double,
-    var image: String,
+    var image: String?,
     var matches: List<MatchDTO>?,
     var createdAt: LocalDateTime?,
     var updatedAt: LocalDateTime?

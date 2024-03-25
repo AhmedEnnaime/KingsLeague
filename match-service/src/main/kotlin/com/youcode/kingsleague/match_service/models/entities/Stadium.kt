@@ -16,7 +16,7 @@ data class Stadium (
     @Column(nullable = false) @NotNull(message = "name can't be null") var name: String,
     @Column(nullable = false) @NotNull(message = "location can't be null") var location: String,
     @Column(nullable = false) @Min(value = 500, message = "capacity of a stadium should not be less than 500") var capacity: Double,
-    @Column var image: String,
+    @Column var image: String?,
     @CreationTimestamp @Column(nullable = true, name = "created_at") var createdAt: LocalDateTime?,
     @UpdateTimestamp @Column(nullable = true, name = "updated_at") var updatedAt: LocalDateTime?,
 ) {

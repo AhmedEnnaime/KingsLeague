@@ -16,8 +16,8 @@ interface IMatch {
   opponentBId?: number;
   teamA?: ITeam;
   teamB?: ITeam;
-  matchDayId?: number;
-  roundId?: number;
+  matchDayId?: number | null;
+  roundId?: number | null;
   matchDay?: IMatchDay;
   round?: IRound;
   createdAt?: Date;
