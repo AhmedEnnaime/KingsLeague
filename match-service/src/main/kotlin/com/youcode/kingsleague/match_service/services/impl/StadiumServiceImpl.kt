@@ -39,6 +39,7 @@ class StadiumServiceImpl(private val modelMapper: ModelMapper, private val stadi
                 this.name = it.name
                 this.location = it.location
                 this.capacity = it.capacity
+                this.image = it.image
             }
         }
         val updatedStadium: Stadium = stadiumRepository.save(existingStadium)

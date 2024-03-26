@@ -10,8 +10,8 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
   const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className="w-full px-4 py-3 cursor-pointer bg-white rounded-md shadow-md">
-      <div className="flex items-center justify-between bg-gray-300 w-full">
+    <div className="w-full cursor-pointer bg-white rounded-md shadow-md">
+      <div className="flex items-center justify-between bg-gray-300 px-4 py-3 w-full">
         <span className="mt-2 text-2xl font-bold text-gray-800 dark:text-white">
           {tournament.name}
         </span>
@@ -23,48 +23,50 @@ const TournamentCard = ({ tournament }: TournamentCardProps) => {
         </span>
       </div>
 
-      <div className="flex justify-between p-2">
-        <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
-          Debut date
-        </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          {tournament.debutDate}
-        </p>
-      </div>
-      <div className="flex justify-between p-2">
-        <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
-          End date
-        </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          {tournament.endDate}
-        </p>
-      </div>
-      <div className="flex justify-between p-2">
-        <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
-          Registered teams
-        </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          {tournament.teamsNum}
-        </p>
-      </div>
+      <div className="card-wrapper px-4 py-3">
+        <div className="flex justify-between p-2">
+          <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+            Debut date
+          </h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            {tournament.debutDate}
+          </p>
+        </div>
+        <div className="flex justify-between p-2">
+          <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+            End date
+          </h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            {tournament.endDate}
+          </p>
+        </div>
+        <div className="flex justify-between p-2">
+          <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+            Registered teams
+          </h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            {tournament.teamsNum}
+          </p>
+        </div>
 
-      <div className="flex justify-between p-2">
-        <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
-          Location
-        </h1>
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-          {tournament.location}
-        </p>
-      </div>
+        <div className="flex justify-between p-2">
+          <h1 className="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+            Location
+          </h1>
+          <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+            {tournament.location}
+          </p>
+        </div>
 
-      <div>
-        <div className="flex justify-between items-center mt-2">
-          <Button onClick={() => setOpenUpdate(true)} content="Edit" />
-          <Button
-            onClick={() => setOpenDelete(true)}
-            bgColor="bg-red-500"
-            content="Delete"
-          />
+        <div>
+          <div className="flex justify-between items-center mt-2">
+            <Button onClick={() => setOpenUpdate(true)} content="Edit" />
+            <Button
+              onClick={() => setOpenDelete(true)}
+              bgColor="bg-red-500"
+              content="Delete"
+            />
+          </div>
         </div>
       </div>
       {openUpdate ? (

@@ -5,37 +5,63 @@ import { StadiumModalProps } from "../propsTypes/StadiumModalProps";
 import { toast } from "react-toastify";
 import { createStadium, updateStadium } from "../redux/stadiums/stadiumActions";
 import { useAppDispatch } from "../redux/store";
+import { uploadImage } from "../redux/file/fileActions";
 
 const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
   const cancelButtonRef = useRef(null);
+  const [image, setImage] = useState<File | null>(null);
   const dispatch = useAppDispatch();
   const [inputs, setInputs] = useState<IStadium>({
     name: stadium?.name ?? "",
     location: stadium?.location ?? "",
     capacity: stadium?.capacity ?? 0,
+    image: stadium?.image ?? "",
   });
-  const handleChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
 
+  const handleImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.files);
+
+    if (e.target.files && e.target.files.length > 0) {
+      setImage(e.target.files && e.target.files[0]);
+    }
+  };
+
+  const uploadFile = async () => {
+    try {
+      const response = await dispatch(uploadImage(image as File)).unwrap();
+      console.log(response);
+      setInputs((prevState) => ({
+        ...prevState,
+        image: response.url,
+      }));
+    } catch (error) {
+      console.error("Failed to upload image:", error);
+      toast.error("Failed to upload image");
+    }
+  };
+
   const handleAddSubmit = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    dispatch(createStadium(inputs))
-      .then(() => {
-        toast.success("Stadium created successfully");
-        setOpen(false);
-      })
-      .catch((err) => {
-        console.error("Failed to create stadium:", err);
-        toast.error("Failed to create stadium");
-      });
+    console.log(image);
+    console.log(inputs);
+
+    uploadFile().then(() => {
+      dispatch(createStadium(inputs))
+        .then(() => {
+          toast.success("Stadium created successfully");
+          setOpen(false);
+        })
+        .catch((err) => {
+          console.error("Failed to create stadium:", err);
+          toast.error("Failed to create stadium");
+        });
+    });
   };
 
   const handleUpdateSubmit = async (e: React.FormEvent<EventTarget>) => {
@@ -156,6 +182,24 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
                             value={inputs?.capacity}
                             onChange={handleChange}
                             id="capacity"
+                            className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="text-left w-full">
+                        <label
+                          htmlFor="image"
+                          className="block text-sm font-medium text-gray-700"
+                        >
+                          Image
+                        </label>
+                        <div className="mt-1">
+                          <input
+                            type="file"
+                            name="image"
+                            onChange={handleImage}
+                            id="image"
                             className="block px-4 w-full h-8 rounded-md border-2 border-gray-400 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                           />
                         </div>
