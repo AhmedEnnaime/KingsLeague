@@ -17,24 +17,35 @@ import java.util.*
 
 
 class TeamServiceImplTest {
-    val teamRepository: TeamRepository = mockk()
-    val modelMapper: ModelMapper = mockk()
-    val teamServiceImpl = TeamServiceImpl(teamRepository, modelMapper)
-    val team = Team(
-        id = 1,
+    private val teamRepository: TeamRepository = mockk()
+    private val modelMapper: ModelMapper = mockk()
+    private val teamServiceImpl = TeamServiceImpl(teamRepository, modelMapper)
+    private val team = Team(
+        id = 1L,
         name = "Team Name",
         country = "Country Name",
         createdAt = LocalDateTime.now(),
         updatedAt = LocalDateTime.now(),
         matches = listOf()
     )
-    val teamDTO = TeamDTO(
-        id = 1,
+    private val teamDTO = TeamDTO(
+        id = 1L,
         name = "Team Name",
         country = "Country Name",
         createdAt = LocalDateTime.now(),
         updatedAt = LocalDateTime.now()
     )
+
+    @Test
+    @DisplayName("Test create method in a success scenario")
+    fun testSuccessCreate() {
+        every { modelMapper.map(teamDTO, Team::class.java) } returns team
+        every { modelMapper.map(team, TeamDTO::class.java) } returns teamDTO
+        every { teamRepository.save(team) } returns team
+        val savedTeam: TeamDTO = teamServiceImpl.save(teamDTO)
+        assertThat(savedTeam).isNotNull
+    }
+
 
     @Test
     @DisplayName("Test find by id method when the id is valid")
