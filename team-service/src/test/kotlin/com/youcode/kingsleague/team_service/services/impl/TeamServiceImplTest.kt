@@ -97,4 +97,23 @@ class TeamServiceImplTest {
         assertThrows(ResourceNotFoundException::class.java) { teamServiceImpl.delete(999L) }
         verify(exactly = 0) { teamRepository.deleteById(999L) }
     }
+
+    @Test
+    @DisplayName("Test update method when the id is valid")
+    fun testUpdateWhenIdIsValid() {
+        every { teamRepository.findById(1L) } returns Optional.of(team)
+        every { modelMapper.map(team, TeamDTO::class.java) } returns teamDTO
+        every { teamRepository.save(team) } returns team
+        val updatedTeam: TeamDTO = teamServiceImpl.update(1L, teamDTO)
+        verify(exactly = 1) { teamRepository.save(team) }
+        assertThat(updatedTeam).isNotNull
+    }
+
+    @Test
+    @DisplayName("Test update method when the id is not valid")
+    fun testUpdateWhenIdIsNotValid() {
+        every { teamRepository.findById(999L) } returns Optional.empty()
+        assertThrows(ResourceNotFoundException::class.java) { teamServiceImpl.update(999L, teamDTO) }
+        verify(exactly = 1) { teamRepository.findById(999L) }
+    }
 }
