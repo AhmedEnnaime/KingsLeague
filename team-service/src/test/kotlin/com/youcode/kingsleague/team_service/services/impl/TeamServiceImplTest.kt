@@ -4,9 +4,7 @@ import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.entities.Team
 import com.youcode.kingsleague.team_service.repositories.TeamRepository
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
@@ -83,4 +81,20 @@ class TeamServiceImplTest {
         assertThat(allTeams).isEmpty()
     }
 
+    @Test
+    @DisplayName("Test delete method when the id is valid")
+    fun testDeleteWhenIdIsValid() {
+        every { teamRepository.existsById(1L) } returns true
+        every { teamRepository.deleteById(1L) } just runs
+        teamServiceImpl.delete(1L)
+        verify(exactly = 1) { teamRepository.deleteById(1L) }
+    }
+
+    @Test
+    @DisplayName("Test delete method when the id is not valid")
+    fun testDeleteWhenIdIsInvalid() {
+        every { teamRepository.existsById(999L) } returns false
+        assertThrows(ResourceNotFoundException::class.java) { teamServiceImpl.delete(999L) }
+        verify(exactly = 0) { teamRepository.deleteById(999L) }
+    }
 }
