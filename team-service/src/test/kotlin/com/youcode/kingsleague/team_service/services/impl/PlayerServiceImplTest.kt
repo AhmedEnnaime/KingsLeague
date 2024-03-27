@@ -1,12 +1,13 @@
 package com.youcode.kingsleague.team_service.services.impl
 
+import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.team_service.models.dto.PlayerDTO
+import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.entities.Player
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
 import com.youcode.kingsleague.team_service.repositories.PlayerRepository
-import io.mockk.every
-import io.mockk.mockk
+import io.mockk.*
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -49,6 +50,41 @@ class PlayerServiceImplTest {
         every { playerRepository.save(player) } returns player
         val savedPlayer: PlayerDTO = playerServiceImpl.save(playerDTO)
         assertThat(savedPlayer).isNotNull
+    }
+
+    @Test
+    @DisplayName("Test get all method when the list is not empty")
+    fun testNotEmptyGetAll() {
+        every { playerRepository.findAll() } returns listOf(player)
+        every { modelMapper.map(player, PlayerDTO::class.java) } returns playerDTO
+        val allPlayers: List<PlayerDTO?>? = playerServiceImpl.getAll()
+        verify(exactly = 1) { playerRepository.findAll() }
+        assertThat(allPlayers).isNotNull.hasSize(1)
+    }
+
+    @Test
+    @DisplayName("Test get all method when the list is empty")
+    fun testEmptyGetAll() {
+        every { playerRepository.findAll() } returns emptyList()
+        val allPlayers: List<PlayerDTO?>? = playerServiceImpl.getAll()
+        assertThat(allPlayers).isEmpty()
+    }
+
+    @Test
+    @DisplayName("Test delete method when the id is valid")
+    fun testDeleteWhenIdIsValid() {
+        every { playerRepository.existsById(1L) } returns true
+        every { playerRepository.deleteById(1L) } just runs
+        playerServiceImpl.delete(1L)
+        verify(exactly = 1) { playerRepository.deleteById(1L) }
+    }
+
+    @Test
+    @DisplayName("Test delete method when the id is valid")
+    fun testDeleteWhenIdIsNotValid() {
+        every { playerRepository.existsById(999L) } returns false
+        assertThrows(ResourceNotFoundException::class.java) { playerServiceImpl.delete(999L) }
+        verify(exactly = 0) { playerRepository.deleteById(999L) }
     }
 
 }
