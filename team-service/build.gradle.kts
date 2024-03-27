@@ -43,7 +43,10 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.projectlombok:lombok")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(group = "org.mockito", module = "mockito-core")
+	}
+	testImplementation("com.ninja-squad:springmockk:4.0.2")
 }
 
 dependencyManagement {
