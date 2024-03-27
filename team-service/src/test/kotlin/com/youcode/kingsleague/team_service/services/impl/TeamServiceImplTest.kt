@@ -64,4 +64,23 @@ class TeamServiceImplTest {
         assertThrows(ResourceNotFoundException::class.java) { teamServiceImpl.findByID(999L) }
         verify(exactly = 1) { teamRepository.findById(999L) }
     }
+
+    @Test
+    @DisplayName("Test get all method when the list is not empty")
+    fun testNotEmptyFindAll() {
+        every { teamRepository.findAll() } returns listOf(team)
+        every { modelMapper.map(team, TeamDTO::class.java) } returns teamDTO
+        val allTeams: List<TeamDTO?>? = teamServiceImpl.getAll()
+        verify(exactly = 1) { teamRepository.findAll() }
+        assertThat(allTeams).isNotNull.hasSize(1)
+    }
+
+    @Test
+    @DisplayName("Test get all method when the list is empty")
+    fun testEmptyFindAll() {
+        every { teamRepository.findAll() } returns emptyList()
+        val allTeams: List<TeamDTO?>? = teamServiceImpl.getAll()
+        assertThat(allTeams).isEmpty()
+    }
+
 }
