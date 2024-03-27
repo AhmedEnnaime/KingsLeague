@@ -2,7 +2,6 @@ package com.youcode.kingsleague.team_service.services.impl
 
 import com.youcode.kingsleague.common.exceptions.ResourceNotFoundException
 import com.youcode.kingsleague.team_service.models.dto.PlayerDTO
-import com.youcode.kingsleague.team_service.models.dto.TeamDTO
 import com.youcode.kingsleague.team_service.models.entities.Player
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
@@ -14,6 +13,7 @@ import org.junit.jupiter.api.Test
 import org.modelmapper.ModelMapper
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.util.*
 
 class PlayerServiceImplTest {
     private val playerRepository: PlayerRepository = mockk()
@@ -85,6 +85,24 @@ class PlayerServiceImplTest {
         every { playerRepository.existsById(999L) } returns false
         assertThrows(ResourceNotFoundException::class.java) { playerServiceImpl.delete(999L) }
         verify(exactly = 0) { playerRepository.deleteById(999L) }
+    }
+
+    @Test
+    @DisplayName("Test find by id method when the id is valid")
+    fun testFindByIdWhenIdIsValid() {
+        every { playerRepository.findById(1L) } returns Optional.of(player)
+        every { modelMapper.map(player, PlayerDTO::class.java) } returns playerDTO
+        val foundPlayer: PlayerDTO? = playerServiceImpl.findByID(1L)
+        verify(exactly = 1) { playerRepository.findById(1L) }
+        assertThat(foundPlayer)
+    }
+
+    @Test
+    @DisplayName("Test find by id method when the id is not valid")
+    fun testFindByIdWhenIdIsNotValid() {
+        every { playerRepository.findById(999L) } returns Optional.empty()
+        assertThrows(ResourceNotFoundException::class.java) { playerServiceImpl.findByID(999L) }
+        verify(exactly = 1) { playerRepository.findById(999L) }
     }
 
 }
