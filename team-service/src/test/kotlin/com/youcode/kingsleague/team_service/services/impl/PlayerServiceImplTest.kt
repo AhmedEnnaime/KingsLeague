@@ -29,7 +29,7 @@ class PlayerServiceImplTest {
         createdAt = LocalDateTime.now(),
         updatedAt = LocalDateTime.now(),
     )
-    val playerDTO = PlayerDTO(
+    private val playerDTO = PlayerDTO(
         id = 1L,
         firstName = "John",
         lastName = "Doe",

@@ -461,3 +461,5 @@ fteam-service/src/test/kotlin/com/youcode/kingsleague/team_service/services/impl
 dteam-service/src/test/kotlin/com/youcode/kingsleague/team_service/services/impl/PlayerServiceImpl.kt,e/f/ef789e21a0c038e0e6f4ff9a09812d8638c0f87c
 ˜
 hteam-service/src/test/kotlin/com/youcode/kingsleague/team_service/services/impl/PlayerServiceImplTest.kt,0/4/045f5cd3b6c96dd734c1d2a6c1cf19df70276dbf
+œ
+lteam-service/src/test/kotlin/com/youcode/kingsleague/team_service/services/impl/TeamPlayerServiceImplTest.kt,0/3/03a718fe7d2d9873c8731fe33dc33f5690d99dd3
