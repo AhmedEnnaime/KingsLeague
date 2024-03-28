@@ -124,5 +124,22 @@ class TeamPlayerServiceImplTest {
         verify(exactly = 0) { teamPlayerRepository.save(any()) }
     }
 
+    @Test
+    @DisplayName("Test get all method when the list is not empty")
+    fun testNotEmptyFindAll() {
+        every { teamPlayerRepository.findAll() } returns listOf(teamPlayer)
+        every { modelMapper.map(teamPlayer, TeamPlayerDTO::class.java) } returns teamPlayerDTO
+        val allTeamPlayers: List<TeamPlayerDTO?>? = teamPlayerServiceImpl.findAll()
+        verify(exactly = 1) { teamPlayerRepository.findAll() }
+        assertThat(allTeamPlayers).isNotNull.hasSize(1)
+    }
+
+    @Test
+    @DisplayName("Test get all method when the list is not empty")
+    fun testEmptyFindAll() {
+        every { teamPlayerRepository.findAll() } returns emptyList()
+        val allTeamPlayers: List<TeamPlayerDTO?>? = teamPlayerServiceImpl.findAll()
+        assertThat(allTeamPlayers).isEmpty()
+    }
 
 }
