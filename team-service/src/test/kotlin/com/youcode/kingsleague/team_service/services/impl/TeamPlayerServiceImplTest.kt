@@ -11,9 +11,7 @@ import com.youcode.kingsleague.team_service.models.entities.TeamPlayer
 import com.youcode.kingsleague.team_service.repositories.TeamPlayerRepository
 import com.youcode.kingsleague.team_service.services.PlayerService
 import com.youcode.kingsleague.team_service.services.TeamService
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
+import io.mockk.*
 import org.modelmapper.ModelMapper
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -22,6 +20,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import java.util.*
 
 class TeamPlayerServiceImplTest {
     private val teamPlayerRepository: TeamPlayerRepository = mockk()
@@ -178,5 +177,26 @@ class TeamPlayerServiceImplTest {
         every { playerService.findByID(player.id) } returns null
         assertThrows(Exception::class.java) { teamPlayerServiceImpl.findTeamsByPlayer(playerId = player.id) }
         verify(exactly = 0) { teamPlayerRepository.findByPlayerId(any()) }
+    }
+
+    @Test
+    @DisplayName("Test remove player from when team player key is valid")
+    fun testRemovePlayerFromTeamWhenTeamPlayerKeyIsValid() {
+        every { teamService.findByID(team.id) } returns teamDTO
+        every { playerService.findByID(player.id) } returns playerDTO
+        every { teamPlayerRepository.findById(teamPlayerKey) } returns Optional.of(teamPlayer)
+        every { teamPlayerRepository.delete(teamPlayer) } just runs
+        teamPlayerServiceImpl.removePlayerFromTeam(teamId = team.id, playerId = player.id)
+        verify(exactly = 1) { teamPlayerRepository.delete(teamPlayer) }
+    }
+
+    @Test
+    @DisplayName("Test remove player from when team player key is not valid")
+    fun testRemovePlayerFromTeamWhenTeamPlayerKeyIsInValid() {
+        every { teamService.findByID(team.id) } returns teamDTO
+        every { playerService.findByID(player.id) } returns playerDTO
+        every { teamPlayerRepository.findById(teamPlayerKey) } returns Optional.empty()
+        assertThrows(ResourceNotFoundException::class.java) { teamPlayerServiceImpl.removePlayerFromTeam(teamId = team.id, playerId = player.id) }
+        verify(exactly = 0) { teamPlayerRepository.delete(any()) }
     }
 }
