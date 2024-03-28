@@ -7,7 +7,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.*
 import com.youcode.kingsleague.team_service.repositories.PlayerRepository
 import io.mockk.*
-import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.modelmapper.ModelMapper
@@ -102,6 +101,25 @@ class PlayerServiceImplTest {
     fun testFindByIdWhenIdIsNotValid() {
         every { playerRepository.findById(999L) } returns Optional.empty()
         assertThrows(ResourceNotFoundException::class.java) { playerServiceImpl.findByID(999L) }
+        verify(exactly = 1) { playerRepository.findById(999L) }
+    }
+
+    @Test
+    @DisplayName("Test update method when the id is valid")
+    fun testUpdateWhenIdIsValid() {
+        every { playerRepository.findById(1L) } returns Optional.of(player)
+        every { modelMapper.map(player, PlayerDTO::class.java) } returns playerDTO
+        every { playerRepository.save(player) } returns player
+        val updatedPlayer: PlayerDTO = playerServiceImpl.update(1L, playerDTO)
+        verify(exactly = 1) { playerRepository.save(player) }
+        assertThat(updatedPlayer).isNotNull
+    }
+
+    @Test
+    @DisplayName("Test update method when the id is not valid")
+    fun testUpdateWhenIdIsNotValid() {
+        every { playerRepository.findById(999L) } returns Optional.empty()
+        assertThrows(ResourceNotFoundException::class.java) { playerServiceImpl.update(999L, playerDTO) }
         verify(exactly = 1) { playerRepository.findById(999L) }
     }
 
