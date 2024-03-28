@@ -142,4 +142,23 @@ class TeamPlayerServiceImplTest {
         assertThat(allTeamPlayers).isEmpty()
     }
 
+    @Test
+    @DisplayName("Test find players by team id method when team id is valid")
+    fun testFindPlayerByTeamWhenTeamIdIsValid() {
+        every { teamService.findByID(team.id) } returns teamDTO
+        every { teamPlayerRepository.findByTeamId(teamId = team.id) } returns listOf(teamPlayer)
+        every { modelMapper.map(player, PlayerDTO::class.java) } returns playerDTO
+        val players: List<PlayerDTO> = teamPlayerServiceImpl.findPlayersByTeam(teamId = team.id)
+        verify(exactly = 1) { teamPlayerRepository.findByTeamId(teamId = team.id) }
+        assertThat(players).isNotNull.hasSize(1)
+    }
+
+    @Test
+    @DisplayName("Test find players by team id method when team id is not valid")
+    fun testFindPlayersByTeamWhenTeamIdIsNotValid() {
+        every { teamService.findByID(team.id) } returns null
+        assertThrows(Exception::class.java) { teamPlayerServiceImpl.findPlayersByTeam(teamId = team.id) }
+        verify(exactly = 0) { teamPlayerRepository.findByTeamId(any()) }
+    }
+
 }
