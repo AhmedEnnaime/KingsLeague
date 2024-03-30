@@ -1,12 +1,19 @@
-node {
+pipeline {
+    agent any
 
-  stage("Clone project") {
-    git branch: 'master', url: 'https://github.com/AhmedEnnaime/KingsLeague.git'
-  }
+    stages {
+        stage("Clone project") {
+            steps {
+                git branch: 'master', url: 'https://github.com/AhmedEnnaime/KingsLeague.git'
+            }
+        }
 
-  stage("Build project with test execution") {
-    dir('../') {
-        sh "./gradlew build -x test"
+        stage("Build project with test execution") {
+            steps {
+                dir("../") {
+                    sh "./gradlew build -x test"
+                }
+            }
+        }
     }
-}
 }
