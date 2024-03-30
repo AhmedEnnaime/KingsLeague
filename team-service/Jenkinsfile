@@ -1,7 +1,5 @@
 node {
-        tools {
-            jdk 'OpenJDK 19'
-        }
+
   stage("Clone project") {
     git branch: 'master', url: 'https://github.com/AhmedEnnaime/KingsLeague.git'
   }
