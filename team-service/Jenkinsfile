@@ -10,7 +10,7 @@ pipeline {
 
         stage("Build project with test execution") {
             steps {
-                dir("../") {
+                dir("../KingsLeague") {
                     sh 'ls -la' // Print directory contents for debugging
                     sh './gradlew build -x test'
                 }
