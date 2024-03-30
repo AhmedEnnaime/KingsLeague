@@ -5,6 +5,8 @@ node {
   }
 
   stage("Build project with test execution") {
-    sh "./gradlew --project-dir=../ build -x test"
-  }
+    dir('../') {
+        sh "./gradlew build -x test"
+    }
+}
 }
