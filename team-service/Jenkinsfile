@@ -8,13 +8,17 @@ pipeline {
             }
         }
 
-        stage("Build project with test execution") {
+        stage("Build project without test") {
             steps {
                 dir("../KingsLeague") {
-                    sh 'ls -la' // Print directory contents for debugging
                     sh './gradlew build -x test'
                 }
             }
         }
+        // stage("Testing") {
+        //     steps {
+        //         sh ""
+        //     }
+        // }
     }
 }
