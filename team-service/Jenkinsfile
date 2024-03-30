@@ -11,7 +11,8 @@ pipeline {
         stage("Build project with test execution") {
             steps {
                 dir("../") {
-                    sh "./gradlew build -x test"
+                    sh 'ls -la' // Print directory contents for debugging
+                    sh './gradlew build -x test'
                 }
             }
         }
