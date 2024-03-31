@@ -24,5 +24,10 @@ pipeline {
                 }
             }
         }
+        jacoco(
+            execPattern: '**/*.exec',
+            sourcePattern: 'src/main/kotlin',
+            exclusionPattern: 'src/test*'
+        )
     }
 }
