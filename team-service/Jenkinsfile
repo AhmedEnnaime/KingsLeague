@@ -1,6 +1,11 @@
 def projectDir = "../KingsLeague"
 
 pipeline {
+    environment { 
+        registry = "ahmedennaime/kingsleague_team-service" 
+        registryCredential = 'DOCKER_CRED' 
+        dockerImage = '' 
+    }
     agent any
     stages {
         stage("Clone project") {
@@ -38,18 +43,22 @@ pipeline {
             }
         }
 
-        stage("Deploy to DockerHub with Jib") {
-            steps {
-                dir(projectDir) {
-                    withCredentials([string(credentialsId: 'DOCKER_PASSWORD', variable: 'DOCKER_PASSWORD'), string(credentialsId: 'DOCKER_USERNAME', variable: 'DOCKER_USERNAME')]) {
-                        sh '''
-                        echo "${DOCKER_USERNAME}"
-                        echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
-                        ./gradlew :team-service:jib -Djib.to.auth.username="${DOCKER_USERNAME}" -Djib.to.auth.password="${DOCKER_PASSWORD}"
-                        '''
-                    }
+        stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
-            }
+            } 
         }
+        
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
     }
 }
