@@ -1,7 +1,7 @@
 def projectDir = "../KingsLeague"
 
 pipeline {
-
+    agent any
     stages {
         stage("Clone project") {
             steps {
