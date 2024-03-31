@@ -1,7 +1,6 @@
 def projectDir = "../KingsLeague"
 
 pipeline {
-    agent any
 
     stages {
         stage("Clone project") {
@@ -28,11 +27,14 @@ pipeline {
         
         stage("Publish code coverage") {
             steps {
-                jacoco(
-                    execPattern: '**/*.exec',
-                    sourcePattern: 'src/main/kotlin',
-                    exclusionPattern: 'src/test*'
-                )
+                dir(projectDir) {
+                    jacoco(
+                        execPattern: '**/*.exec',
+                        sourcePattern: 'src/main/kotlin',
+                        exclusionPattern: 'src/test*'
+                    )
+                }
+                
             }
         }
     }
