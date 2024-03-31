@@ -1,3 +1,5 @@
+def projectDir = "../KingsLeague"
+
 pipeline {
     agent any
 
@@ -10,15 +12,17 @@ pipeline {
 
         stage("Build project without test") {
             steps {
-                dir("../KingsLeague") {
+                dir(projectDir) {
                     sh './gradlew build -x test'
                 }
             }
         }
-        // stage("Testing") {
-        //     steps {
-        //         sh ""
-        //     }
-        // }
+        stage("Testing") {
+            steps {
+                dir(projectDir) {
+                    sh "./gradlew :team-service:test"
+                }
+            }
+        }
     }
 }
