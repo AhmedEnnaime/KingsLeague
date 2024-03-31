@@ -3,14 +3,26 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.2.2"
 	id("io.spring.dependency-management") version "1.1.4"
+	id("com.google.cloud.tools.jib") version "3.3.1"
 	jacoco
 	kotlin("jvm") version "1.9.22"
 	kotlin("plugin.spring") version "1.9.22"
 	kotlin("plugin.jpa") version "1.9.22"
 }
 
+val dockerHubUsername = "ahmedennaime"
+val repositoryName = "kingsleague_team-service"
+
+var version: String = "0.0.1-SNAPSHOT"
+
+jib {
+	to {
+		image = "$dockerHubUsername/$repositoryName"
+		tags = setOf(version, "latest")
+	}
+}
+
 group = "com.youcode.kingsleague"
-version = "0.0.1-SNAPSHOT"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
