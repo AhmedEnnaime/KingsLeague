@@ -17,6 +17,7 @@ pipeline {
                 }
             }
         }
+        
         stage("Testing") {
             steps {
                 dir(projectDir) {
@@ -24,10 +25,15 @@ pipeline {
                 }
             }
         }
-        jacoco(
-            execPattern: '**/*.exec',
-            sourcePattern: 'src/main/kotlin',
-            exclusionPattern: 'src/test*'
-        )
+        
+        stage("Publish code coverage") {
+            steps {
+                jacoco(
+                    execPattern: '**/*.exec',
+                    sourcePattern: 'src/main/kotlin',
+                    exclusionPattern: 'src/test*'
+                )
+            }
+        }
     }
 }
