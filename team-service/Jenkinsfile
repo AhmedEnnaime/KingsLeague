@@ -27,7 +27,7 @@ pipeline {
         
         stage("Publish code coverage") {
             steps {
-                dir(projectDir) {
+                dir("../KingsLeague/team-service") {
                     jacoco(
                         execPattern: '**/*.exec',
                         sourcePattern: 'src/main/kotlin/com/youcode/kingsleague/team_service/services',
