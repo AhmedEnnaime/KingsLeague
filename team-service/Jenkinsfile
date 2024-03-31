@@ -30,7 +30,7 @@ pipeline {
                 dir(projectDir) {
                     jacoco(
                         execPattern: '**/*.exec',
-                        sourcePattern: 'src/main/kotlin',
+                        sourcePattern: 'src/main/kotlin/com/youcode/kingsleague/team_service/services',
                         exclusionPattern: 'src/test*'
                     )
                 }
