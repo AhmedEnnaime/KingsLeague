@@ -57,6 +57,7 @@ dependencies {
 	implementation("org.modelmapper:modelmapper:3.2.0")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.4.0")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")

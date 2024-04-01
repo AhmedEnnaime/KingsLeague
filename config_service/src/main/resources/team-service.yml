@@ -22,6 +22,10 @@ eureka:
   instance:
     preferIpAddress: true
 
+team_service:
+  openapi:
+    dev-url: http://localhost:8083
+
 logging:
   level:
     org.hibernate.SQL: DEBUG
