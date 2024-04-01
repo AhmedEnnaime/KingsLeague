@@ -61,6 +61,7 @@ pipeline {
             }
         } 
     }
+    
     post {
         always {
             emailext body: 'The team service pipeline from kings league project was built after a commit', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Pipeline Build'
