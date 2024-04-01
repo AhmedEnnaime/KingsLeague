@@ -28,7 +28,7 @@ class OpenAPIConfig {
             .title("Team Service")
             .version("1.0")
             .contact(contact)
-            .description("This API exposes endpoints for a team service in kingsLeague project.")
+            .description("This API exposes endpoints for a team microservice in kingsLeague project.")
 
         return OpenAPI().info(info).servers(listOf(devServer))
     }
