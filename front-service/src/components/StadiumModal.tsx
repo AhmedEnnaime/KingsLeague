@@ -35,7 +35,6 @@ const StadiumModal = ({ open, setOpen, stadium }: StadiumModalProps) => {
   const uploadFile = async () => {
     try {
       const response = await dispatch(uploadImage(image as File)).unwrap();
-      console.log(response);
       setInputs((prevState) => ({
         ...prevState,
         image: response.url,
