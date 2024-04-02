@@ -15,7 +15,6 @@ const StadiumCard = ({ stadium }: StadiumCardProps) => {
           backgroundImage: "url('../assets/stadium.jpeg')",
         }}
       ></div>
-
       <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
         <h3 className="py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white">
           {stadium.name} ({stadium.capacity})
