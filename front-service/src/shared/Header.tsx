@@ -7,11 +7,6 @@ const Header = () => {
       <div className="flex lg:flex-1">
         <a href="/" className="-m-1.5 p-1.5">
           <span className="sr-only">Kings League</span>
-          <img
-            className="h-8 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt=""
-          />
         </a>
       </div>
       <div className="flex lg:hidden">
@@ -39,12 +34,6 @@ const Header = () => {
       <div className="hidden lg:flex lg:gap-x-12">
         <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
           Home
-        </a>
-        <a
-          href="/fixtures"
-          className="text-sm font-semibold leading-6 text-gray-900"
-        >
-          Referees
         </a>
         <a
           href="/tournaments"
