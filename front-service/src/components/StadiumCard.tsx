@@ -12,7 +12,8 @@ const StadiumCard = ({ stadium }: StadiumCardProps) => {
       <div
         className="w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md"
         style={{
-          backgroundImage: "url('../assets/stadium.jpeg')",
+          backgroundImage:
+            "url('https://www.fcbarcelona.com/fcbarcelona/photo/2018/06/07/fde8dc92-66b3-48f3-9996-22008151b267/DanHlskWsAADKM0.jpg')",
         }}
       ></div>
       <div className="w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-64 dark:bg-gray-800">

@@ -37,7 +37,7 @@ const PlayerCard = ({ player }: PlayerCardProps) => {
       <div className="w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <img
           className="object-cover object-center w-full h-56"
-          src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+          src="https://fcb-abj-pre.s3.amazonaws.com/img/jugadors/MESSI.jpg"
           alt="avatar"
         />
 
